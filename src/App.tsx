@@ -1,7 +1,11 @@
-import {Wrapper} from './components/Wrapper';
+import {Link} from 'react-router-dom';
 
 const App = () => {
-    return <Wrapper></Wrapper>;
+    return (
+        <div>
+            <Link to="/student">Student Page</Link>
+        </div>
+    );
 };
 
 export default App;
