@@ -1,12 +1,7 @@
-import {InfoButtons} from './components/InfoButtons';
 import {Wrapper} from './components/Wrapper';
 
 const App = () => {
-    return (
-        <Wrapper>
-            <InfoButtons />
-        </Wrapper>
-    );
+    return <Wrapper></Wrapper>;
 };
 
 export default App;
