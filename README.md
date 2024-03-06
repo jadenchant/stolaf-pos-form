@@ -8,6 +8,8 @@ Vite template with: typescript, sass and Gravity UI.
 - [TypeScript](https://www.typescriptlang.org/)
 - [Sass](https://sass-lang.com/)
 - [ESlint](https://eslint.org/) & [Prettier](https://prettier.io/)
+- Tailwind
+- React Router
 
 # 🚀 Start using it
 
