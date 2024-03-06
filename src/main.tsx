@@ -12,30 +12,30 @@ import FacultyHome from './pages/faculty/home';
 import DirectorHome from './pages/director/home';
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <App />,
-        errorElement: <NotFound />,
-    },
-    {
-        path: '/student',
-        element: <StudentHome />,
-    },
-    {
-        path: '/faculty',
-        element: <FacultyHome />,
-    },
-    {
-        path: '/director',
-        element: <DirectorHome />,
-    },
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: '/student',
+    element: <StudentHome />,
+  },
+  {
+    path: '/faculty',
+    element: <FacultyHome />,
+  },
+  {
+    path: '/director',
+    element: <DirectorHome />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-    <React.StrictMode>
-        <Wrapper>
-            <RouterProvider router={router} />
-        </Wrapper>
-    </React.StrictMode>,
+  <React.StrictMode>
+    <Wrapper>
+      <RouterProvider router={router} />
+    </Wrapper>
+  </React.StrictMode>,
 );
