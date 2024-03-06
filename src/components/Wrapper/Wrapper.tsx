@@ -35,6 +35,7 @@ export const Wrapper: React.FC<AppProps> = ({children}) => {
                         <Icon data={isDark ? Sun : Moon} />
                     </Button>
                 </div>
+                <div>{children}</div>
             </div>
         </ThemeProvider>
     );

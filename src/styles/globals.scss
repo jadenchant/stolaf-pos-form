@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body,
 #root {
@@ -5,3 +9,15 @@ body,
     min-width: 320px;
     margin: 0;
 }
+
+// .flex {
+//     display: flex;
+// }
+
+// .row {
+//     flex-direction: row;
+// }
+
+// .col {
+//     flex-direction: column;
+// }

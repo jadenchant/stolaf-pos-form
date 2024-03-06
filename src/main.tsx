@@ -7,6 +7,7 @@ import App from './App';
 import StudentHome from './pages/student/home';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import NotFound from './pages/NotFound';
+import {Wrapper} from './components/Wrapper';
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <Wrapper>
+            <RouterProvider router={router} />
+        </Wrapper>
     </React.StrictMode>,
 );
