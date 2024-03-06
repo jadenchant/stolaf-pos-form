@@ -1,10 +1,49 @@
-import {Table} from '@gravity-ui/uikit';
+import {Label, Table} from '@gravity-ui/uikit';
+import {Link} from 'react-router-dom';
 
 const data = [
-  {major: 'Computer Science', status: ['in progress', 'rejected'], updated: 'date'},
-  {major: 'Mathematics', status: 'submitted for review', updated: 'date'},
-  {major: 'Mathematics', status: 'complete', updated: 'date'},
-  {major: 'Computer Science', status: 'complete', updated: 'date'},
+  {
+    major: 'Computer Science',
+    status: (
+      <div className="flex justify-between">
+        <Link to="/">
+          <Label theme="info">In Progress</Label>
+        </Link>
+
+        <Link to="/">
+          <Label theme="danger">Rejected</Label>
+        </Link>
+      </div>
+    ),
+    updated: 'date',
+  },
+  {
+    major: 'Mathematics',
+    status: (
+      <Link to="/">
+        <Label theme="info">In Progress</Label>
+      </Link>
+    ),
+    updated: 'date',
+  },
+  {
+    major: 'Mathematics',
+    status: (
+      <Link to="/">
+        <Label theme="success">Complete</Label>
+      </Link>
+    ),
+    updated: 'date',
+  },
+  {
+    major: 'Computer Science',
+    status: (
+      <Link to="/">
+        <Label theme="success">Complete</Label>
+      </Link>
+    ),
+    updated: 'date',
+  },
 ];
 
 const col = [

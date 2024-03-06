@@ -1,8 +1,16 @@
-import {Table, withTableActions} from '@gravity-ui/uikit';
+import {Button, Label, Table, withTableActions} from '@gravity-ui/uikit';
+import {Link} from 'react-router-dom';
 
 const MyTable = withTableActions(Table);
 const data = [
-  {id: 1, text: 'Hello'},
+  {
+    id: 1,
+    text: (
+      <Link to="/">
+        <Label theme="info">Hi</Label>
+      </Link>
+    ),
+  },
   {id: 2, text: 'World'},
 ];
 const columns = [{id: 'id'}, {id: 'text'}];
