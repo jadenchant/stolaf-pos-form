@@ -11,6 +11,7 @@ import StudentHome from './pages/student/home';
 import FacultyHome from './pages/faculty/home';
 import DirectorHome from './pages/director/home';
 import Example from './pages/student/example';
+import Form from './pages/form/form';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
     element: <DirectorHome />,
   },
   {
-    path: '/example',
-    element: <Example />,
+    path: '/form',
+    element: <Form />,
   },
 ]);
 
