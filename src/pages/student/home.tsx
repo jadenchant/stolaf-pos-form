@@ -59,8 +59,16 @@ const col = [
 const StudentHome = () => {
   return (
     <section>
-      <h1 className="text-xl font-bold">St. Olaf POS</h1>
-      <Button>New</Button>
+      <div className="flex justify-between">
+        <h1 className="text-xl font-bold">St. Olaf POS</h1>
+
+        <Link to="/">
+          <Button size="l" view="action">
+            New
+          </Button>
+        </Link>
+      </div>
+
       <Table data={dataFormat} columns={col} className="" />
     </section>
   );
