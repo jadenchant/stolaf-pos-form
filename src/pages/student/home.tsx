@@ -1,19 +1,29 @@
-import {Label, Table} from '@gravity-ui/uikit';
+import {Button, Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
 const data = [
-  {major: 'Computer Science', status: ['in_progress', 'rejected'], updated: '01-02-2023 09:30 AM'},
-  {major: 'Mathematics', status: ['submitted_for_review'], updated: '01-02-2023 09:30 AM'},
-  {major: 'Mathematics', status: ['complete'], updated: '01-02-2023 09:30 AM'},
-  {major: 'Computer Science', status: ['complete'], updated: '01-02-2023 09:30 AM'},
+  {
+    form_id: 0,
+    major: 'Computer Science',
+    status: ['in_progress', 'rejected'],
+    updated: '01-02-2023 09:30 AM',
+  },
+  {
+    form_id: 1,
+    major: 'Mathematics',
+    status: ['submitted_for_review'],
+    updated: '01-02-2023 09:30 AM',
+  },
+  {form_id: 2, major: 'Mathematics', status: ['complete'], updated: '01-02-2023 09:30 AM'},
+  {form_id: 3, major: 'Computer Science', status: ['complete'], updated: '01-02-2023 09:30 AM'},
 ];
 
 const dataFormat = data.map((item) => ({
-  major: <Link to="/">{item.major}</Link>,
+  major: <Link to={'/form/' + String(item.form_id)}>{item.major}</Link>,
   status: (
     <div className="flex justify-between">
       {item.status.map((status) => (
-        <Link to="/">
+        <Link to={'/form/' + String(item.form_id)}>
           <Label
             theme={
               status === 'in_progress'
@@ -50,6 +60,7 @@ const StudentHome = () => {
   return (
     <section>
       <h1 className="text-xl font-bold">St. Olaf POS</h1>
+      <Button>New</Button>
       <Table data={dataFormat} columns={col} className="" />
     </section>
   );
