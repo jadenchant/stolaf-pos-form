@@ -2,55 +2,43 @@ import {Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
 const data = [
-  {major: 'Computer Science', status: ['in progress', 'rejected'], updated: 'date'},
-  {major: 'Mathematics', status: 'submitted for review', updated: 'date'},
-  {major: 'Mathematics', status: 'complete', updated: 'date'},
-  {major: 'Computer Science', status: 'complete', updated: 'date'},
+  {major: 'Computer Science', status: ['in_progress', 'rejected'], updated: '01-02-2023 09:30 AM'},
+  {major: 'Mathematics', status: ['submitted_for_review'], updated: '01-02-2023 09:30 AM'},
+  {major: 'Mathematics', status: ['complete'], updated: '01-02-2023 09:30 AM'},
+  {major: 'Computer Science', status: ['complete'], updated: '01-02-2023 09:30 AM'},
 ];
 
-const dataFormat = [
-  {
-    major: <Link to="/">Computer Science</Link>,
-    status: (
-      <div className="flex justify-between">
+const dataFormat = data.map((item) => ({
+  major: <Link to="/">{item.major}</Link>,
+  status: (
+    <div className="flex justify-between">
+      {item.status.map((status) => (
         <Link to="/">
-          <Label theme="info">In Progress</Label>
+          <Label
+            theme={
+              status === 'in_progress'
+                ? 'info'
+                : status === 'complete'
+                  ? 'success'
+                  : status === 'submitted_for_review'
+                    ? 'warning'
+                    : 'danger'
+            }
+          >
+            {status === 'in_progress'
+              ? 'In Progress'
+              : status === 'complete'
+                ? 'Complete'
+                : status === 'submitted_for_review'
+                  ? 'Submitted For Review'
+                  : 'Rejected'}
+          </Label>
         </Link>
-        <Link to="/">
-          <Label theme="danger">Rejected</Label>
-        </Link>
-      </div>
-    ),
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    major: <Link to="/">Mathematics</Link>,
-    status: (
-      <Link to="/">
-        <Label theme="info">In Progress</Label>
-      </Link>
-    ),
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    major: <Link to="/">Mathematics</Link>,
-    status: (
-      <Link to="/">
-        <Label theme="success">Complete</Label>
-      </Link>
-    ),
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    major: <Link to="/">Computer Science</Link>,
-    status: (
-      <Link to="/">
-        <Label theme="success">Complete</Label>
-      </Link>
-    ),
-    updated: '01-02-2023 09:30 AM',
-  },
-];
+      ))}
+    </div>
+  ),
+  updated: item.updated,
+}));
 
 const col = [
   {id: 'major', name: 'Major', width: 400},
