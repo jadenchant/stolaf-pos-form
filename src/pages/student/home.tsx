@@ -1,6 +1,7 @@
 import {Button, Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
+// Dummy data
 const data = [
   {
     form_id: 0,
@@ -60,8 +61,8 @@ const StudentHome = () => {
   return (
     <section>
       <div className="flex justify-between">
-        <h1 className="text-xl font-bold">St. Olaf POS</h1>
-        <Link to="/">
+        <h1 className="text-3xl font-bold">St. Olaf POS</h1>
+        <Link to="/form">
           <Button size="l" view="action">
             New
           </Button>
