@@ -13,10 +13,17 @@ const electiveData = [
   {id: 'csci333', name: 'Theory of Computation', prerequisite: ['math234']},
 ];
 
+const formatID = (id: string) => {
+  const matchResult = id.match(/[a-zA-Z]+/);
+  const prefix = matchResult ? matchResult[0].toUpperCase() : '';
+  const num = id.slice(4);
+  return `${prefix} ${num}`;
+};
+
 const electiveSelect = (
   <Select width="max" size="l" multiple filterable hasClear>
     {electiveData.map((item) => (
-      <Select.Option value={item.id}>{item.name}</Select.Option>
+      <Select.Option value={item.id}>{`${formatID(item.id)}: ${item.name}`}</Select.Option>
     ))}
   </Select>
 );
