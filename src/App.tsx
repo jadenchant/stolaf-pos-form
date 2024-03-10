@@ -3,7 +3,7 @@ import './styles/globals.scss';
 
 const App = () => {
   return (
-    <div className="flex flex-col justify-between h-40 text-lg underline">
+    <div className="flex flex-col justify-between h-40 text-2xl underline">
       <Link to="/student" className="hover:opacity-85">
         Student Page
       </Link>
