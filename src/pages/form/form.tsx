@@ -77,7 +77,7 @@ const otherElectiveData: ClassData = [
   {
     id: 'math282',
     name: 'Computational Geometry',
-    prerequisite: ['none'],
+    prerequisite: [],
   },
   {
     id: 'mscs341',
@@ -96,18 +96,19 @@ const otherElectiveData: ClassData = [
 ];
 
 const formatID = (id: string) => {
-  const matchResult = id.match(/[a-zA-Z]+/);
-  const prefix = matchResult
-    ? matchResult[0].toUpperCase()
+  const charMatch = id.match(/[a-zA-Z]+/);
+  const prefix = charMatch
+    ? charMatch[0].toUpperCase()
     : '';
-  const num = id.slice(4);
-  return `${prefix} ${num}`;
+  const numMatch = id.match(/[0-9]+/);
+  const suffix = numMatch ? numMatch[0] : '';
+  return `${prefix} ${suffix}`;
 };
 
 const electiveSelect = (data: ClassData) => {
   return (
     <Select
-      width="max"
+      width={512}
       size="l"
       multiple
       filterable
@@ -120,11 +121,11 @@ const electiveSelect = (data: ClassData) => {
             value={formatID(item.id)}
             key={outerIndex}
           >
-            <div className="w-full flex justify-between">
+            <div className="flex justify-between w-116">
               <p>{`${formatID(item.id)}: ${
                 item.name
               }`}</p>
-              <div className="flex">
+              <div className="flex flex-row justify-end">
                 {item.prerequisite.map(
                   (
                     prereq: string,
@@ -151,7 +152,7 @@ const electiveSelect = (data: ClassData) => {
 const Form = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-96">
+    <div className="w-128">
       <h1 className="text-3xl font-bold">
         St. Olaf POS Form
       </h1>
