@@ -12,29 +12,29 @@ import {
 type ClassData = {
   id: string;
   name: string;
-  prerequisite: string[];
+  prerequisite: string;
 }[];
 
 const electiveData: ClassData = [
   {
     id: 'csci273',
     name: 'Operating Systems',
-    prerequisite: ['csci241', 'csci251'],
+    prerequisite: 'csci241 && csci251',
   },
   {
     id: 'csci276',
     name: 'Programming Languages',
-    prerequisite: ['csci251'],
+    prerequisite: 'csci251',
   },
   {
     id: 'csci3??',
     name: 'Artificial Intelligence',
-    prerequisite: ['csci251', 'math234'],
+    prerequisite: 'csci251 && math234',
   },
   {
     id: 'csci333',
     name: 'Theory of Computation',
-    prerequisite: ['math234'],
+    prerequisite: 'math234',
   },
 ];
 
@@ -42,73 +42,80 @@ const otherElectiveData: ClassData = [
   {
     id: 'csci200',
     name: 'Topics in CS',
-    prerequisite: ['varies'],
+    prerequisite: 'varies',
   },
   {
     id: 'csci300',
     name: 'Topics in CS',
-    prerequisite: ['varies'],
+    prerequisite: 'varies',
   },
   {
     id: 'csci284',
     name: 'Mobile Computing Applications',
-    prerequisite: ['csci251'],
+    prerequisite: 'csci251',
   },
   {
     id: 'csci336',
     name: 'Logic Programming',
-    prerequisite: ['csci251'],
+    prerequisite: 'csci251',
   },
   {
     id: 'csci356',
     name: 'Parallel and Distributed Systems',
-    prerequisite: ['csci241', 'csci251'],
+    prerequisite: 'csci241 && csci251',
   },
   {
     id: 'csci390',
     name: 'Senior Capstone',
-    prerequisite: ['csci263', 'csci353'],
+    prerequisite: 'csci263 && csci353',
   },
   {
     id: 'csci391',
     name: 'Senior Capstone',
-    prerequisite: ['csci263', 'csci353'],
+    prerequisite: 'csci263 && csci353',
   },
   {
     id: 'math282',
     name: 'Computational Geometry',
-    prerequisite: [],
+    prerequisite: 'none',
   },
   {
     id: 'mscs341',
     name: 'Algorithms for Decision Making',
-    prerequisite: [
-      'csci251',
-      'math220',
-      'stat272',
-    ],
+    prerequisite: 'csci251 || math220 || stat272',
   },
   {
     id: 'phys246',
     name: 'Electronics',
-    prerequisite: ['phys125', 'phys131'],
+    prerequisite: 'phys125 || phys131',
   },
 ];
 
 const formatID = (id: string) => {
-  const charMatch = id.match(/[a-zA-Z]+/);
-  const prefix = charMatch
-    ? charMatch[0].toUpperCase()
-    : '';
-  const numMatch = id.match(/[0-9]+/);
-  const suffix = numMatch ? numMatch[0] : '';
-  return `${prefix} ${suffix}`;
+  return id
+    .split(' ')
+    .map((part) => {
+      if (part === '||' || part === '&&') {
+        return part;
+      } else {
+        const charMatch = part.match(/[a-zA-Z]+/);
+        const prefix = charMatch
+          ? charMatch[0].toUpperCase()
+          : '';
+        const numMatch = part.match(/[0-9]+/);
+        const suffix = numMatch
+          ? numMatch[0]
+          : '';
+        return `${prefix} ${suffix}`;
+      }
+    })
+    .join(' ');
 };
 
 const electiveSelect = (data: ClassData) => {
   return (
     <Select
-      width={512}
+      width="max"
       size="l"
       multiple
       filterable
@@ -121,26 +128,12 @@ const electiveSelect = (data: ClassData) => {
             value={formatID(item.id)}
             key={outerIndex}
           >
-            <div className="flex justify-between w-116">
+            <div className="flex justify-between w-[632px]">
               <p>{`${formatID(item.id)}: ${
                 item.name
               }`}</p>
               <div className="flex flex-row justify-end">
-                {item.prerequisite.map(
-                  (
-                    prereq: string,
-                    innerIndex: any,
-                  ) => {
-                    return (
-                      <p
-                        key={`${outerIndex}-${innerIndex}`}
-                        className="ml-2"
-                      >
-                        {formatID(prereq)}
-                      </p>
-                    );
-                  },
-                )}
+                {formatID(item.prerequisite)}
               </div>
             </div>
           </Select.Option>
@@ -153,7 +146,7 @@ const electiveSelect = (data: ClassData) => {
 const Form = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-128">
+    <div className="w-[700px]">
       <h1 className="text-3xl font-bold">
         St. Olaf POS Form
       </h1>
@@ -164,18 +157,22 @@ const Form = () => {
         <h2 className="text-2xl font-bold my-4">
           Electives
         </h2>
-        <h3 className="mb-2">
-          <span className="font-bold">
-            Designated:
-          </span>{' '}
-          Select at least 2 classes
-        </h3>
+        <div className="flex justify-between mb-2">
+          <p>
+            <span className="font-bold">
+              Designated:
+            </span>{' '}
+            Select at least 2 classes
+          </p>
+          <p className="mr-8">Prerequisites</p>
+        </div>
         {electiveSelect(electiveData)}
-        <h3 className="mb-2">
-          <span className="font-bold">
+        <div className="flex justify-between mb-2">
+          <p className="font-bold">
             Other Electives
-          </span>
-        </h3>
+          </p>
+          <p className="mr-8">Prerequisites</p>
+        </div>
         {electiveSelect(otherElectiveData)}
         <div className="flex justify-between mt-4">
           <Button
