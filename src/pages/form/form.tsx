@@ -45,7 +45,7 @@ const electiveSelect = (data: any[]) => {
           <Select.Option value={formatID(item.id)} key={outerIndex}>
             <div className="w-full flex justify-between">
               <p>{`${formatID(item.id)}: ${item.name}`}</p>
-              <div>
+              <div className="flex">
                 {item.prerequisite.map((prereq: string, innerIndex: any) => {
                   return <p key={`${outerIndex}-${innerIndex}`}>{formatID(prereq)}</p>;
                 })}
@@ -88,6 +88,13 @@ const Form = () => {
               Submit
             </Button>
           </Link>
+        </div>
+      </div>
+      <div className="w-full flex justify-between">
+        <p>Class name</p>
+        <div className="flex">
+          <p>Pre req 1</p>
+          <p>Pre req 2</p>
         </div>
       </div>
     </div>
