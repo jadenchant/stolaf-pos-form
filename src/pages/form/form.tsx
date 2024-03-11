@@ -134,6 +134,7 @@ const electiveSelect = (data: ClassData) => {
                     return (
                       <p
                         key={`${outerIndex}-${innerIndex}`}
+                        className="ml-2"
                       >
                         {formatID(prereq)}
                       </p>
