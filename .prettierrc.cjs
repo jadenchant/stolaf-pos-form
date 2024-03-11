@@ -1,7 +1,7 @@
 module.exports = {
   bracketSpacing: false,
   tabWidth: 2,
-  printWidth: 100,
+  printWidth: 50,
   singleQuote: true,
   trailingComma: 'all',
   overrides: [
@@ -12,7 +12,12 @@ module.exports = {
       },
     },
     {
-      files: ['*.md', '*.json', '*.yaml', '*.yml'],
+      files: [
+        '*.md',
+        '*.json',
+        '*.yaml',
+        '*.yml',
+      ],
       options: {
         tabWidth: 2,
       },

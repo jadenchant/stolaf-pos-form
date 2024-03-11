@@ -1,6 +1,11 @@
 import React from 'react';
 import block from 'bem-cn-lite';
-import {Button, Icon, Theme, ThemeProvider} from '@gravity-ui/uikit';
+import {
+  Button,
+  Icon,
+  Theme,
+  ThemeProvider,
+} from '@gravity-ui/uikit';
 import {Moon, Sun} from '@gravity-ui/icons';
 
 import './Wrapper.scss';
@@ -17,8 +22,12 @@ export type AppProps = {
   children: React.ReactNode;
 };
 
-export const Wrapper: React.FC<AppProps> = ({children}) => {
-  const [theme, setTheme] = React.useState<Theme>(DEFAULT_THEME);
+export const Wrapper: React.FC<AppProps> = ({
+  children,
+}) => {
+  const [theme, setTheme] = React.useState<Theme>(
+    DEFAULT_THEME,
+  );
   const isDark = theme === DARK;
 
   return (

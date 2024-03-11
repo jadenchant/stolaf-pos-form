@@ -10,7 +10,9 @@ export default defineConfig({
     extensions: ['.css'],
     esbuildOptions: {
       plugins: [
-        (await import('esbuild-sass-plugin')).sassPlugin({
+        (
+          await import('esbuild-sass-plugin')
+        ).sassPlugin({
           type: 'style',
         }),
       ],
