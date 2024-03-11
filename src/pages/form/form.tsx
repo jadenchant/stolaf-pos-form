@@ -9,7 +9,13 @@ import {
 // Submit sends a post requst to the database for both form data and form status
 // Changes status to submitted_for_review
 
-const electiveData = [
+type ClassData = {
+  id: string;
+  name: string;
+  prerequisite: string[];
+}[];
+
+const electiveData: ClassData = [
   {
     id: 'csci273',
     name: 'Operating Systems',
@@ -32,7 +38,7 @@ const electiveData = [
   },
 ];
 
-const otherElectiveData = [
+const otherElectiveData: ClassData = [
   {
     id: 'csci200',
     name: 'Topics in CS',
@@ -98,7 +104,7 @@ const formatID = (id: string) => {
   return `${prefix} ${num}`;
 };
 
-const electiveSelect = (data: any[]) => {
+const electiveSelect = (data: ClassData) => {
   return (
     <Select
       width="max"
@@ -186,13 +192,6 @@ const Form = () => {
               Submit
             </Button>
           </Link>
-        </div>
-      </div>
-      <div className="w-full flex justify-between">
-        <p>Class name</p>
-        <div className="flex">
-          <p>Pre req 1</p>
-          <p>Pre req 2</p>
         </div>
       </div>
     </div>
