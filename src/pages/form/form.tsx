@@ -112,6 +112,7 @@ const electiveSelect = (data: ClassData) => {
       multiple
       filterable
       hasClear
+      className="mb-4"
     >
       {data.map((item, outerIndex) => {
         return (
@@ -158,17 +159,17 @@ const Form = () => {
         <h2 className="text-2xl font-bold mt-8">
           Primary Classes
         </h2>
-        <h2 className="text-2xl font-bold mt-4">
+        <h2 className="text-2xl font-bold my-4">
           Electives
         </h2>
-        <h3>
+        <h3 className="mb-2">
           <span className="font-bold">
             Designated:
           </span>{' '}
           Select at least 2 classes
         </h3>
         {electiveSelect(electiveData)}
-        <h3>
+        <h3 className="mb-2">
           <span className="font-bold">
             Other Electives
           </span>
