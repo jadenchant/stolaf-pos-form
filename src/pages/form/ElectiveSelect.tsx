@@ -1,17 +1,8 @@
 import {Select} from '@gravity-ui/uikit';
-
-type ClassData = {
-  id: string;
-  name: string;
-  prerequisite: string;
-}[];
-
-type ElectiveSelectProps = {
-  data: ClassData;
-  setSelectedElectiveValues: React.Dispatch<
-    React.SetStateAction<string[]>
-  >;
-};
+import {
+  ClassData,
+  ElectiveSelectProps,
+} from '../../interface';
 
 const formatID = (id: string) => {
   return id

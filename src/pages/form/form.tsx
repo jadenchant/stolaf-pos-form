@@ -5,19 +5,14 @@ import {
 } from 'react-router-dom';
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
+import {ClassData} from '../../interface';
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
 // Submit sends a post requst to the database for both form data and form status
 // Changes status to submitted_for_review
 
-type ClassData = {
-  id: string;
-  name: string;
-  prerequisite: string;
-}[];
-
-const electiveData: ClassData = [
+const electiveData: ClassData[] = [
   {
     id: 'csci273',
     name: 'Operating Systems',
