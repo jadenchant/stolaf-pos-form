@@ -1,39 +1,6 @@
-import {
-  Button,
-  Label,
-  Table,
-} from '@gravity-ui/uikit';
-import {Link} from 'react-router-dom';
+import { Table } from "@gravity-ui/uikit";
 
-// Dummy data
-const data = [
-  {
-    form_id: 0,
-    major: 'Computer Science',
-    status: ['in_progress', 'rejected'],
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    form_id: 1,
-    major: 'Mathematics',
-    status: ['submitted_for_review'],
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    form_id: 2,
-    major: 'Mathematics',
-    status: ['complete'],
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    form_id: 3,
-    major: 'Computer Science',
-    status: ['complete'],
-    updated: '01-02-2023 09:30 AM',
-  },
-];
-
-const dataFormat = data.map((item) => ({
+const dataFormat = .map((item) => ({
   major: (
     <Link to={'/form/' + String(item.form_id)}>
       {item.major}
@@ -79,22 +46,6 @@ const col = [
   {id: 'updated', name: 'Updated', width: 500},
 ];
 
-const StudentHome = () => {
-  return (
-    <section>
-      <div className="flex justify-between">
-        <h1 className="text-3xl font-bold">
-          St. Olaf POS
-        </h1>
-        <Link to="/form">
-          <Button size="l" view="action">
-            New
-          </Button>
-        </Link>
-      </div>
-      <Table data={dataFormat} columns={col} />
-    </section>
-  );
-};
+const ElectiveTable = ({}) => {<Table data={dataFormat} columns={col} />};
 
-export default StudentHome;
+export default ElectiveTable;
