@@ -1,8 +1,4 @@
-import {
-  Button,
-  Label,
-  Table,
-} from '@gravity-ui/uikit';
+import {Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
 const data = [
@@ -74,7 +70,7 @@ const FacultyHome = () => {
       <h1 className="text-xl font-bold">
         St. Olaf POS
       </h1>
-      <Button>New</Button>
+      {/*<Button>New</Button>*/}
       <Table
         data={dataFormat}
         columns={col}
