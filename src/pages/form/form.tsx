@@ -165,6 +165,11 @@ const Form = () => {
     setSelectedElectiveValues,
   ] = useState<string[]>([]);
 
+  const [
+    selectedOtherElectiveValues,
+    setSelectedOtherElectiveValues,
+  ] = useState<string[]>([]);
+
   return (
     <div className="w-[700px]">
       <h1 className="text-3xl font-bold">
@@ -188,8 +193,11 @@ const Form = () => {
         </div>
         {electiveSelect({
           data: electiveData,
-          setSelectedElectiveValues,
+          setSelectedElectiveValues:
+            setSelectedElectiveValues,
         })}
+
+        {selectedElectiveValues}
 
         <div className="flex justify-between mb-2">
           <p className="font-bold">
@@ -197,12 +205,14 @@ const Form = () => {
           </p>
           <p className="mr-8">Prerequisites</p>
         </div>
+
         {electiveSelect({
           data: otherElectiveData,
-          setSelectedElectiveValues,
+          setSelectedElectiveValues:
+            setSelectedOtherElectiveValues,
         })}
 
-        {selectedElectiveValues}
+        {selectedOtherElectiveValues}
 
         <div className="flex justify-between mt-4">
           <Button
