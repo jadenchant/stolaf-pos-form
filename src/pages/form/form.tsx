@@ -3,6 +3,7 @@ import {
   Link,
   useNavigate,
 } from 'react-router-dom';
+import {useState} from 'react';
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
@@ -112,7 +113,17 @@ const formatID = (id: string) => {
     .join(' ');
 };
 
-const electiveSelect = (data: ClassData) => {
+type ElectiveSelectProps = {
+  data: ClassData;
+  setSelectedElectiveValues: React.Dispatch<
+    React.SetStateAction<string[]>
+  >;
+};
+
+const electiveSelect = ({
+  data,
+  setSelectedElectiveValues,
+}: ElectiveSelectProps) => {
   return (
     <Select
       width="max"
@@ -121,6 +132,9 @@ const electiveSelect = (data: ClassData) => {
       filterable
       hasClear
       className="mb-4"
+      onUpdate={(values: string[]) =>
+        setSelectedElectiveValues(values)
+      }
     >
       {data.map((item, outerIndex) => {
         return (
@@ -145,6 +159,12 @@ const electiveSelect = (data: ClassData) => {
 
 const Form = () => {
   const navigate = useNavigate();
+
+  const [
+    selectedElectiveValues,
+    setSelectedElectiveValues,
+  ] = useState<string[]>([]);
+
   return (
     <div className="w-[700px]">
       <h1 className="text-3xl font-bold">
@@ -166,14 +186,24 @@ const Form = () => {
           </p>
           <p className="mr-8">Prerequisites</p>
         </div>
-        {electiveSelect(electiveData)}
+        {electiveSelect({
+          data: electiveData,
+          setSelectedElectiveValues,
+        })}
+
         <div className="flex justify-between mb-2">
           <p className="font-bold">
             Other Electives
           </p>
           <p className="mr-8">Prerequisites</p>
         </div>
-        {electiveSelect(otherElectiveData)}
+        {electiveSelect({
+          data: otherElectiveData,
+          setSelectedElectiveValues,
+        })}
+
+        {selectedElectiveValues}
+
         <div className="flex justify-between mt-4">
           <Button
             view="normal"
