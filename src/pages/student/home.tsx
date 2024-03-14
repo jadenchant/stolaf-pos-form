@@ -1,8 +1,4 @@
-import {
-  Button,
-  Label,
-  Table,
-} from '@gravity-ui/uikit';
+import {Button, Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
 // Dummy data
@@ -35,24 +31,19 @@ const data = [
 
 const dataFormat = data.map((item) => ({
   major: (
-    <Link to={'/form/' + String(item.form_id)}>
-      {item.major}
-    </Link>
+    <Link to={'/form/' + String(item.form_id)}>{item.major}</Link>
   ),
   status: (
     <div className="flex justify-between">
       {item.status.map((status) => (
-        <Link
-          to={'/form/' + String(item.form_id)}
-        >
+        <Link to={'/form/' + String(item.form_id)}>
           <Label
             theme={
               status === 'in_progress'
                 ? 'info'
                 : status === 'complete'
                   ? 'success'
-                  : status ===
-                      'submitted_for_review'
+                  : status === 'submitted_for_review'
                     ? 'warning'
                     : 'danger'
             }
@@ -61,8 +52,7 @@ const dataFormat = data.map((item) => ({
               ? 'In Progress'
               : status === 'complete'
                 ? 'Complete'
-                : status ===
-                    'submitted_for_review'
+                : status === 'submitted_for_review'
                   ? 'Submitted For Review'
                   : 'Rejected'}
           </Label>
@@ -83,9 +73,7 @@ const StudentHome = () => {
   return (
     <section>
       <div className="flex justify-between">
-        <h1 className="text-3xl font-bold">
-          St. Olaf POS
-        </h1>
+        <h1 className="text-3xl font-bold">St. Olaf POS</h1>
         <Link to="/form">
           <Button size="l" view="action">
             New
