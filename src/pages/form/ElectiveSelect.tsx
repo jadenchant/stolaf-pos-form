@@ -1,5 +1,5 @@
 import {Select} from '@gravity-ui/uikit';
-import {ElectiveSelectProps} from '../../interface';
+import {ElectiveSelectProps} from '@/interface';
 
 const formatID = (id: string) => {
   return id
@@ -9,9 +9,13 @@ const formatID = (id: string) => {
         return part;
       } else {
         const charMatch = part.match(/[a-zA-Z]+/);
-        const prefix = charMatch ? charMatch[0].toUpperCase() : '';
+        const prefix = charMatch
+          ? charMatch[0].toUpperCase()
+          : '';
         const numMatch = part.match(/[0-9]+/);
-        const suffix = numMatch ? numMatch[0] : '';
+        const suffix = numMatch
+          ? numMatch[0]
+          : '';
         return `${prefix} ${suffix}`;
       }
     })
@@ -36,9 +40,14 @@ const ElectiveSelect = ({
     >
       {data.map((item, outerIndex) => {
         return (
-          <Select.Option value={formatID(item.id)} key={outerIndex}>
+          <Select.Option
+            value={formatID(item.id)}
+            key={outerIndex}
+          >
             <div className="flex justify-between w-[632px]">
-              <p>{`${formatID(item.id)}: ${item.name}`}</p>
+              <p>{`${formatID(item.id)}: ${
+                item.name
+              }`}</p>
               <div className="flex flex-row justify-end">
                 {formatID(item.prerequisite)}
               </div>

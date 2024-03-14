@@ -1,4 +1,5 @@
 import {Table} from '@gravity-ui/uikit';
+import { ElectiveSelectProps } from '@/interface';
 
 const dataFormat = selectedElectiveValues.map(
   (item) => ({
