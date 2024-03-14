@@ -104,7 +104,7 @@ const Form = () => {
   return (
     <div className="w-[700px]">
       <h1 className="text-3xl font-bold">
-        St. Olaf POS Form
+        St. Olaf Program of Study Form
       </h1>
       <div className="">
         <h2 className="text-2xl font-bold mt-8">
