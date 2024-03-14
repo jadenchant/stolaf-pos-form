@@ -1,8 +1,5 @@
 import {Button} from '@gravity-ui/uikit';
-import {
-  Link,
-  useNavigate,
-} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
 import {ClassData} from '../../interface';
@@ -92,10 +89,8 @@ const otherElectiveData: ClassData[] = [
 const Form = () => {
   const navigate = useNavigate();
 
-  const [
-    selectedElectiveValues,
-    setSelectedElectiveValues,
-  ] = useState<ClassData[]>([]);
+  const [selectedElectiveValues, setSelectedElectiveValues] =
+    useState<ClassData[]>([]);
 
   const [
     selectedOtherElectiveValues,
@@ -103,63 +98,45 @@ const Form = () => {
   ] = useState<ClassData[]>([]);
 
   return (
-    <div className="w-[700px]">
+    <div className="w-[1000px]">
       <h1 className="text-3xl font-bold">
         St. Olaf Program of Study Form
       </h1>
       <div className="">
-        <h2 className="text-2xl font-bold mt-8">
-          Primary Classes
-        </h2>
-        <h2 className="text-2xl font-bold my-4">
-          Electives
-        </h2>
+        <h2 className="text-2xl font-bold mt-8">Primary Classes</h2>
+        <h2 className="text-2xl font-bold my-4">Electives</h2>
         <div className="flex justify-between mb-2">
           <p>
-            <span className="font-bold">
-              Designated:
-            </span>{' '}
-            Select at least 2 classes
+            <span className="font-bold">Designated:</span> Select at
+            least 2 classes
           </p>
           <p className="mr-8">Prerequisites</p>
         </div>
         {ElectiveSelect({
           data: electiveData,
-          setSelectedElectiveValues:
-            setSelectedElectiveValues,
+          setSelectedElectiveValues: setSelectedElectiveValues,
         })}
 
         <ElectiveTable
-          selectedElectiveValues={
-            selectedElectiveValues
-          }
+          selectedElectiveValues={selectedElectiveValues}
         />
 
         <div className="flex justify-between mb-2">
-          <p className="font-bold">
-            Other Electives
-          </p>
+          <p className="font-bold">Other Electives</p>
           <p className="mr-8">Prerequisites</p>
         </div>
 
         {ElectiveSelect({
           data: otherElectiveData,
-          setSelectedElectiveValues:
-            setSelectedOtherElectiveValues,
+          setSelectedElectiveValues: setSelectedOtherElectiveValues,
         })}
 
         <ElectiveTable
-          selectedElectiveValues={
-            selectedOtherElectiveValues
-          }
+          selectedElectiveValues={selectedOtherElectiveValues}
         />
 
         <div className="flex justify-between mt-4">
-          <Button
-            view="normal"
-            size="l"
-            onClick={() => navigate(-1)}
-          >
+          <Button view="normal" size="l" onClick={() => navigate(-1)}>
             Cancel
           </Button>
           <Link to="/">

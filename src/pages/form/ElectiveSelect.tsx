@@ -1,8 +1,5 @@
 import {Select} from '@gravity-ui/uikit';
-import {
-  ClassData,
-  ElectiveSelectProps,
-} from '@/interface';
+import {ClassData, ElectiveSelectProps} from '@/interface';
 import formatID from './FormatID';
 
 const ElectiveSelect = ({
@@ -20,27 +17,17 @@ const ElectiveSelect = ({
       onUpdate={(values: string[]) => {
         const selectedElectives = values
           .map((value) => {
-            return data.find(
-              (item) =>
-                formatID(item.id) === value,
-            );
+            return data.find((item) => formatID(item.id) === value);
           })
           .filter(Boolean) as ClassData[];
-        setSelectedElectiveValues(
-          selectedElectives,
-        );
+        setSelectedElectiveValues(selectedElectives);
       }}
     >
       {data.map((item, outerIndex) => {
         return (
-          <Select.Option
-            value={formatID(item.id)}
-            key={outerIndex}
-          >
-            <div className="flex justify-between w-[632px]">
-              <p>{`${formatID(item.id)}: ${
-                item.name
-              }`}</p>
+          <Select.Option value={formatID(item.id)} key={outerIndex}>
+            <div className="flex justify-between w-[950px]">
+              <p>{`${formatID(item.id)}: ${item.name}`}</p>
               <div className="flex flex-row justify-end">
                 {formatID(item.prerequisite)}
               </div>
