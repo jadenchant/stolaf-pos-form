@@ -6,6 +6,7 @@ import {
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
 import {ClassData} from '../../interface';
+import ElectiveTable from './ElectiveTable';
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
@@ -94,12 +95,12 @@ const Form = () => {
   const [
     selectedElectiveValues,
     setSelectedElectiveValues,
-  ] = useState<string[]>([]);
+  ] = useState<ClassData[]>([]);
 
   const [
     selectedOtherElectiveValues,
     setSelectedOtherElectiveValues,
-  ] = useState<string[]>([]);
+  ] = useState<ClassData[]>([]);
 
   return (
     <div className="w-[700px]">
@@ -128,7 +129,11 @@ const Form = () => {
             setSelectedElectiveValues,
         })}
 
-        {selectedElectiveValues}
+        <ElectiveTable
+          selectedElectiveValues={
+            selectedElectiveValues
+          }
+        />
 
         <div className="flex justify-between mb-2">
           <p className="font-bold">
@@ -143,7 +148,11 @@ const Form = () => {
             setSelectedOtherElectiveValues,
         })}
 
-        {selectedOtherElectiveValues}
+        <ElectiveTable
+          selectedElectiveValues={
+            selectedOtherElectiveValues
+          }
+        />
 
         <div className="flex justify-between mt-4">
           <Button

@@ -7,6 +7,6 @@ export interface ClassData {
 export interface ElectiveSelectProps {
   data: ClassData[];
   setSelectedElectiveValues: React.Dispatch<
-    React.SetStateAction<string[]>
+    React.SetStateAction<ClassData[]>
   >;
 }

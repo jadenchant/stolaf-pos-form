@@ -1,26 +1,36 @@
 import {Table} from '@gravity-ui/uikit';
-import { ElectiveSelectProps } from '@/interface';
+import {ClassData} from '@/interface';
+import formatID from './FormatID';
 
-const dataFormat = selectedElectiveValues.map(
-  (item) => ({
-    id: (
-      {item.id}
-    ),
-    status: (
-      <div className="flex justify-between"></div>
-    ),
-    updated: item.updated,
-  }),
-);
+const dataFormat = (data: ClassData[]) => {
+  return data.map((item) => ({
+    class: `${formatID(item.id)}: ${item.name}`,
+    prerequisite: formatID(item.prerequisite),
+  }));
+};
 
 const col = [
-  {id: 'id', name: 'Class ID', width: 400},
+  {id: 'class', name: 'Class', width: 400},
+  {
+    id: 'prerequisite',
+    name: 'Prerequisites',
+    width: 400,
+  },
 ];
+
+interface ElectiveTableProps {
+  selectedElectiveValues: ClassData[];
+}
 
 const ElectiveTable = ({
   selectedElectiveValues,
-}) => {
-  <Table data={dataFormat} columns={col} />;
+}: ElectiveTableProps) => {
+  return (
+    <Table
+      data={dataFormat(selectedElectiveValues)}
+      columns={col}
+    />
+  );
 };
 
 export default ElectiveTable;

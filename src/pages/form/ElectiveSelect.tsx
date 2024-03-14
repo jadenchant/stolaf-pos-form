@@ -1,26 +1,9 @@
 import {Select} from '@gravity-ui/uikit';
-import {ElectiveSelectProps} from '@/interface';
-
-const formatID = (id: string) => {
-  return id
-    .split(' ')
-    .map((part) => {
-      if (part === '||' || part === '&&') {
-        return part;
-      } else {
-        const charMatch = part.match(/[a-zA-Z]+/);
-        const prefix = charMatch
-          ? charMatch[0].toUpperCase()
-          : '';
-        const numMatch = part.match(/[0-9]+/);
-        const suffix = numMatch
-          ? numMatch[0]
-          : '';
-        return `${prefix} ${suffix}`;
-      }
-    })
-    .join(' ');
-};
+import {
+  ClassData,
+  ElectiveSelectProps,
+} from '@/interface';
+import formatID from './FormatID';
 
 const ElectiveSelect = ({
   data,
@@ -34,9 +17,19 @@ const ElectiveSelect = ({
       filterable
       hasClear
       className="mb-4"
-      onUpdate={(values: string[]) =>
-        setSelectedElectiveValues(values)
-      }
+      onUpdate={(values: string[]) => {
+        const selectedElectives = values
+          .map((value) => {
+            return data.find(
+              (item) =>
+                formatID(item.id) === value,
+            );
+          })
+          .filter(Boolean) as ClassData[];
+        setSelectedElectiveValues(
+          selectedElectives,
+        );
+      }}
     >
       {data.map((item, outerIndex) => {
         return (
