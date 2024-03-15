@@ -33,27 +33,55 @@ const Form = () => {
         St. Olaf Program of Study Form
       </h1>
       <div className="">
-        <h2 className="text-2xl font-bold mt-8">Primary Classes</h2>
-        <ClassTable selectedValues={foundationData} />
-        <ClassTable selectedValues={requiredData} />
-        <h2 className="text-2xl font-bold my-4">Electives</h2>
-        <div className="flex justify-between mb-2">
-          <p>
-            <span className="font-bold">Designated:</span> Select at
-            least 2 classes
-          </p>
-          <p className="mr-8">Prerequisites</p>
+        <h2 className="text-2xl font-bold mt-8 mb-2">
+          Foundational Courses
+        </h2>
+        <p className="mb-2">
+          Must complete by the end of sophomore year.
+        </p>
+        <ClassTable
+          selectedValues={foundationData}
+          classNames="mb-8"
+        />
+        <h2 className="text-2xl font-bold mt-8 mb-4">
+          Required Courses
+        </h2>
+        <p className="mb-2">
+          Generally completed by end of junior year, perhaps 1 for
+          senior year.
+        </p>
+        <ClassTable selectedValues={requiredData} classNames="mb-8" />
+        <h2 className="text-2xl font-bold mb-2">Electives</h2>
+        <p className="mb-2">
+          Complete 3, at least 1 must be 300-level
+        </p>
+
+        <div className="flex justify-between mb-2 align-baseline">
+          <h2 className="text-lg font-bold">
+            Designated:{' '}
+            <span className="text-sm font-normal">
+              Select at least 2 classes
+            </span>
+          </h2>
+          <div className="flex flex-col justify-end mr-8">
+            <p className="h-5">Prerequisites</p>
+          </div>
         </div>
         {ElectiveSelect({
           data: electiveData,
           setSelectedElectiveValues: setSelectedElectiveValues,
         })}
 
-        <ClassTable selectedValues={selectedElectiveValues} />
+        <ClassTable
+          selectedValues={selectedElectiveValues}
+          classNames="mb-8"
+        />
 
-        <div className="flex justify-between mb-2">
-          <p className="font-bold">Other Electives</p>
-          <p className="mr-8">Prerequisites</p>
+        <div className="flex justify-between mb-2 align-baseline">
+          <h2 className="text-lg font-bold">Other Electives</h2>
+          <div className="flex flex-col justify-end mr-8">
+            <p className="h-5">Prerequisites</p>
+          </div>
         </div>
 
         {ElectiveSelect({
