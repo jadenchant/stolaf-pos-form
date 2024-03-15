@@ -1,4 +1,4 @@
-import {Button, Table} from '@gravity-ui/uikit';
+import {Button} from '@gravity-ui/uikit';
 import {Link, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
