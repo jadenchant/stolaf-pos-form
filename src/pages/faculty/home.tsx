@@ -1,8 +1,4 @@
-import {
-  Label,
-  Table,
-  TextInput,
-} from '@gravity-ui/uikit';
+import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
 const data = [
@@ -38,8 +34,7 @@ const dataFormat = data.map((item) => ({
                 ? 'info'
                 : status === 'complete'
                   ? 'success'
-                  : status ===
-                      'submitted_for_review'
+                  : status === 'submitted_for_review'
                     ? 'warning'
                     : 'danger'
             }
@@ -48,8 +43,7 @@ const dataFormat = data.map((item) => ({
               ? 'In Progress'
               : status === 'complete'
                 ? 'Complete'
-                : status ===
-                    'submitted_for_review'
+                : status === 'submitted_for_review'
                   ? 'Submitted For Review'
                   : 'Rejected'}
           </Label>
@@ -68,14 +62,9 @@ const col = [
 ];
 
 const searchBar = () => {
-  const [text, onChangeText] = React.useState('');
   return (
     <view>
-      <TextInput
-        placeholder="Search"
-        value={text}
-        onChange={onChangeText}
-      />
+      <TextInput placeholder="Search" />
     </view>
   );
 };
@@ -83,16 +72,10 @@ const searchBar = () => {
 const FacultyHome = () => {
   return (
     <section>
-      <h1 className="text-xl font-bold">
-        St. Olaf POS
-      </h1>
+      <h1 className="text-xl font-bold">St. Olaf POS</h1>
       {searchBar()}
       {/*<Button>New</Button>*/}
-      <Table
-        data={dataFormat}
-        columns={col}
-        className=""
-      />
+      <Table data={dataFormat} columns={col} className="" />
     </section>
   );
 };
