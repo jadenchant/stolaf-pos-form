@@ -48,10 +48,20 @@ const col = [
 
 interface ClassTableProps {
   selectedValues: ClassData[];
+  classNames?: string;
 }
 
-const ClassTable = ({selectedValues}: ClassTableProps) => {
-  return <Table data={dataFormat(selectedValues)} columns={col} />;
+const ClassTable = ({
+  selectedValues,
+  classNames,
+}: ClassTableProps) => {
+  return (
+    <Table
+      data={dataFormat(selectedValues)}
+      columns={col}
+      className={`border rounded-md border-zinc-300 ${classNames}`}
+    />
+  );
 };
 
 export default ClassTable;

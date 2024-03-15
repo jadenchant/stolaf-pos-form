@@ -14,7 +14,7 @@ export const foundationData: ClassData[] = [
   {
     id: 'csci221',
     name: 'Intro to Data Structures in C++',
-    prerequisite: 'Intro to CS or equivalent',
+    prerequisite: 'csci121 || csci125',
   },
   {
     id: 'math220',
