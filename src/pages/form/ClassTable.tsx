@@ -46,16 +46,12 @@ const col = [
   {id: 'year', name: 'Year', width: 200},
 ];
 
-interface ElectiveTableProps {
-  selectedElectiveValues: ClassData[];
+interface ClassTableProps {
+  selectedValues: ClassData[];
 }
 
-const ElectiveTable = ({
-  selectedElectiveValues,
-}: ElectiveTableProps) => {
-  return (
-    <Table data={dataFormat(selectedElectiveValues)} columns={col} />
-  );
+const ClassTable = ({selectedValues}: ClassTableProps) => {
+  return <Table data={dataFormat(selectedValues)} columns={col} />;
 };
 
-export default ElectiveTable;
+export default ClassTable;

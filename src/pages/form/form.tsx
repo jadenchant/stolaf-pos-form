@@ -1,14 +1,65 @@
-import {Button} from '@gravity-ui/uikit';
+import {Button, Table} from '@gravity-ui/uikit';
 import {Link, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
 import {ClassData} from '../../interface';
-import ElectiveTable from './ElectiveTable';
+import ClassTable from './ClassTable';
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
 // Submit sends a post requst to the database for both form data and form status
 // Changes status to submitted_for_review
+
+const foundationData: ClassData[] = [
+  {
+    id: 'csci121',
+    name: 'Intro to CS course',
+    prerequisite: 'None',
+  },
+  {
+    id: 'csci125',
+    name: 'Intro to CS course',
+    prerequisite: 'Calculus I',
+  },
+  {
+    id: 'csci221',
+    name: 'Intro to Data Structures in C++',
+    prerequisite: 'Intro to CS or equivalent',
+  },
+  {
+    id: 'math220',
+    name: 'Elementary Linear Algebra',
+    prerequisite: 'CSCI 221 or Calculus I',
+  },
+];
+
+const requiredData: ClassData[] = [
+  {
+    id: 'csci241',
+    name: 'Hardware Design',
+    prerequisite: 'CSCI 221',
+  },
+  {
+    id: 'csci251',
+    name: 'Software Design',
+    prerequisite: 'CSCI 221',
+  },
+  {
+    id: 'csci263',
+    name: 'Ethical Issues in Software Design',
+    prerequisite: 'CSCI 251',
+  },
+  {
+    id: 'math234',
+    name: 'Discrete Math Reasoning',
+    prerequisite: 'CSCI 221 || Calculus II',
+  },
+  {
+    id: 'csci353',
+    name: 'Analysis of Algorithms',
+    prerequisite: 'CSCI 251 && MATH 234',
+  },
+];
 
 const electiveData: ClassData[] = [
   {
@@ -104,6 +155,8 @@ const Form = () => {
       </h1>
       <div className="">
         <h2 className="text-2xl font-bold mt-8">Primary Classes</h2>
+        <ClassTable selectedValues={foundationData} />
+        <ClassTable selectedValues={requiredData} />
         <h2 className="text-2xl font-bold my-4">Electives</h2>
         <div className="flex justify-between mb-2">
           <p>
@@ -117,9 +170,7 @@ const Form = () => {
           setSelectedElectiveValues: setSelectedElectiveValues,
         })}
 
-        <ElectiveTable
-          selectedElectiveValues={selectedElectiveValues}
-        />
+        <ClassTable selectedValues={selectedElectiveValues} />
 
         <div className="flex justify-between mb-2">
           <p className="font-bold">Other Electives</p>
@@ -131,9 +182,7 @@ const Form = () => {
           setSelectedElectiveValues: setSelectedOtherElectiveValues,
         })}
 
-        <ElectiveTable
-          selectedElectiveValues={selectedOtherElectiveValues}
-        />
+        <ClassTable selectedValues={selectedOtherElectiveValues} />
 
         <div className="flex justify-between mt-4">
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
