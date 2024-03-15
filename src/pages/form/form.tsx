@@ -28,7 +28,7 @@ const Form = () => {
   ] = useState<ClassData[]>([]);
 
   return (
-    <div className="w-[1000px]">
+    <div className="lg:w-[1000px]">
       <h1 className="text-3xl font-bold">
         St. Olaf Program of Study Form
       </h1>
