@@ -67,7 +67,7 @@ const Form = () => {
             <p className="h-5">Prerequisites</p>
           </div>
         </div>
-        {El({
+        {ElectiveSelect({
           data: electiveData,
           setSelectedElectiveValues,
         })}
@@ -83,9 +83,9 @@ const Form = () => {
             <p className="h-5">Prerequisites</p>
           </div>
         </div>
-        {electiveSelect({
+        {ElectiveSelect({
           data: otherElectiveData,
-          setSelectedElectiveValues,
+          setSelectedOtherElectiveValues,
         })}
 
         {selectedElectiveValues}
