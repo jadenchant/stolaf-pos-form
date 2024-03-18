@@ -31,7 +31,9 @@ const data = [
 
 const dataFormat = data.map((item) => ({
   major: (
-    <Link to={'/form/' + String(item.form_id)}>{item.major}</Link>
+    <Link className="underline" to={'/form/' + String(item.form_id)}>
+      {item.major}
+    </Link>
   ),
   status: (
     <div className="flex justify-between">
