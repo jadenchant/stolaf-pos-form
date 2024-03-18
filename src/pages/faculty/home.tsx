@@ -1,5 +1,7 @@
 import {Label, Table, TextInput} from '@gravity-ui/uikit';
+import {Magnifier} from '@gravity-ui/icons';
 import {Link} from 'react-router-dom';
+import React, {useState} from 'react';
 
 const data = [
   {
@@ -20,7 +22,9 @@ const data = [
   },
 ];
 
-const dataFormat = data.map((item) => ({
+let filteredData = data;
+
+const dataFormat = filteredData.map((item) => ({
   faculty: item.faculty,
   student: item.student,
   major: <Link to="/">{item.major}</Link>,
@@ -62,9 +66,29 @@ const col = [
 ];
 
 const searchBar = () => {
+  const [inputText, setInputText] = useState('');
+  const handleTextChange = (newText: string) => {
+    setInputText(newText);
+    filteredData = data.filter(
+      (item) =>
+        item.faculty
+          .toLowerCase()
+          .includes(inputText.toLowerCase()) ||
+        item.student
+          .toLowerCase()
+          .includes(inputText.toLowerCase()) ||
+        item.major.toLowerCase().includes(inputText.toLowerCase()),
+    );
+  };
+
   return (
     <view>
-      <TextInput placeholder="Search" />
+      <TextInput
+        placeholder="Search"
+        leftContent={<Magnifier></Magnifier>}
+        value={inputText}
+        onUpdate={handleTextChange}
+      />
     </view>
   );
 };
