@@ -1,4 +1,4 @@
-import {Label, Table} from '@gravity-ui/uikit';
+import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
 const data = [
@@ -53,7 +53,6 @@ const dataFormat = data.map((item) => ({
   ),
   updated: item.updated,
 }));
-
 const col = [
   {id: 'faculty', name: 'faculty', width: 200},
   {id: 'student', name: 'student', width: 200},
@@ -62,10 +61,19 @@ const col = [
   {id: 'updated', name: 'Updated', width: 300},
 ];
 
+const searchBar = () => {
+  return (
+    <view>
+      <TextInput placeholder="Search" />
+    </view>
+  );
+};
+
 const FacultyHome = () => {
   return (
     <section>
       <h1 className="text-xl font-bold">St. Olaf POS</h1>
+      {searchBar()}
       {/*<Button>New</Button>*/}
       <Table data={dataFormat} columns={col} className="" />
     </section>

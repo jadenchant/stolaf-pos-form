@@ -67,9 +67,9 @@ const Form = () => {
             <p className="h-5">Prerequisites</p>
           </div>
         </div>
-        {ElectiveSelect({
+        {El({
           data: electiveData,
-          setSelectedElectiveValues: setSelectedElectiveValues,
+          setSelectedElectiveValues,
         })}
 
         <ClassTable
@@ -83,13 +83,12 @@ const Form = () => {
             <p className="h-5">Prerequisites</p>
           </div>
         </div>
-
-        {ElectiveSelect({
+        {electiveSelect({
           data: otherElectiveData,
-          setSelectedElectiveValues: setSelectedOtherElectiveValues,
+          setSelectedElectiveValues,
         })}
 
-        <ClassTable selectedValues={selectedOtherElectiveValues} />
+        {selectedElectiveValues}
 
         <div className="flex justify-between mt-4">
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
