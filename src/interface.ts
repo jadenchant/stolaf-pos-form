@@ -11,10 +11,19 @@ export interface ElectiveSelectProps {
   >;
 }
 
-export interface FormData {
+/*export interface FormData {
   id: string;
   name: string;
   prerequisite: string;
   term: 'fall' | 'jterm' | 'spring' | 'summer';
   year: number;
+}*/
+
+export interface FacultyClassList {
+  faculty: string;
+  student: string;
+  major: string;
+  status: Array<string>;
+  updated: string;
+  id: string;
 }
