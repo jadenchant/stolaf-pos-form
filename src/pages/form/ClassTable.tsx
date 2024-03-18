@@ -14,7 +14,7 @@ const dataFormat = (data: ClassData[]) => {
         <Select.Option value="jterm" key="jterm">
           J-Term
         </Select.Option>
-        <Select.Option value="spring" key="Spring">
+        <Select.Option value="spring" key="spring">
           Spring
         </Select.Option>
         <Select.Option value="summer" key="summer">
@@ -51,6 +51,7 @@ const col = [
 
 interface ClassTableProps {
   selectedValues: ClassData[];
+  // setSelectedElectiveValues,
   classNames?: string;
 }
 
