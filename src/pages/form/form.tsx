@@ -27,6 +27,8 @@ const Form = () => {
     setSelectedOtherElectiveValues,
   ] = useState<ClassData[]>([]);
 
+  const [formValues, setFormValues] = useState<FormData[]>([]);
+
   return (
     <div className="lg:w-[1000px]">
       <h1 className="text-3xl font-bold">
@@ -91,7 +93,7 @@ const Form = () => {
 
         <ClassTable selectedValues={selectedOtherElectiveValues} />
 
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between mt-20">
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
             Cancel
           </Button>

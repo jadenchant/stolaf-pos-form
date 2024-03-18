@@ -17,6 +17,9 @@ const dataFormat = (data: ClassData[]) => {
         <Select.Option value="spring" key="Spring">
           Spring
         </Select.Option>
+        <Select.Option value="summer" key="summer">
+          Summer
+        </Select.Option>
       </Select>
     ),
     year: (
