@@ -1,223 +1,106 @@
-import {Button, Select} from '@gravity-ui/uikit';
-import {
-  Link,
-  useNavigate,
-} from 'react-router-dom';
+import {Button} from '@gravity-ui/uikit';
+import {Link, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
+import ElectiveSelect from './ElectiveSelect';
+import {ClassData} from '../../interface';
+import ClassTable from './ClassTable';
+import {
+  foundationData,
+  requiredData,
+  electiveData,
+  otherElectiveData,
+} from './CSFormData';
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
 // Submit sends a post requst to the database for both form data and form status
 // Changes status to submitted_for_review
 
-type ClassData = {
-  id: string;
-  name: string;
-  prerequisite: string;
-}[];
-
-const electiveData: ClassData = [
-  {
-    id: 'csci273',
-    name: 'Operating Systems',
-    prerequisite: 'csci241 && csci251',
-  },
-  {
-    id: 'csci276',
-    name: 'Programming Languages',
-    prerequisite: 'csci251',
-  },
-  {
-    id: 'csci3??',
-    name: 'Artificial Intelligence',
-    prerequisite: 'csci251 && math234',
-  },
-  {
-    id: 'csci333',
-    name: 'Theory of Computation',
-    prerequisite: 'math234',
-  },
-];
-
-const otherElectiveData: ClassData = [
-  {
-    id: 'csci200',
-    name: 'Topics in CS',
-    prerequisite: 'varies',
-  },
-  {
-    id: 'csci300',
-    name: 'Topics in CS',
-    prerequisite: 'varies',
-  },
-  {
-    id: 'csci284',
-    name: 'Mobile Computing Applications',
-    prerequisite: 'csci251',
-  },
-  {
-    id: 'csci336',
-    name: 'Logic Programming',
-    prerequisite: 'csci251',
-  },
-  {
-    id: 'csci356',
-    name: 'Parallel and Distributed Systems',
-    prerequisite: 'csci241 && csci251',
-  },
-  {
-    id: 'csci390',
-    name: 'Senior Capstone',
-    prerequisite: 'csci263 && csci353',
-  },
-  {
-    id: 'csci391',
-    name: 'Senior Capstone',
-    prerequisite: 'csci263 && csci353',
-  },
-  {
-    id: 'math282',
-    name: 'Computational Geometry',
-    prerequisite: 'none',
-  },
-  {
-    id: 'mscs341',
-    name: 'Algorithms for Decision Making',
-    prerequisite: 'csci251 || math220 || stat272',
-  },
-  {
-    id: 'phys246',
-    name: 'Electronics',
-    prerequisite: 'phys125 || phys131',
-  },
-];
-
-const formatID = (id: string) => {
-  return id
-    .split(' ')
-    .map((part) => {
-      if (part === '||' || part === '&&') {
-        return part;
-      } else {
-        const charMatch = part.match(/[a-zA-Z]+/);
-        const prefix = charMatch
-          ? charMatch[0].toUpperCase()
-          : '';
-        const numMatch = part.match(/[0-9]+/);
-        const suffix = numMatch
-          ? numMatch[0]
-          : '';
-        return `${prefix} ${suffix}`;
-      }
-    })
-    .join(' ');
-};
-
-type ElectiveSelectProps = {
-  data: ClassData;
-  setSelectedElectiveValues: React.Dispatch<
-    React.SetStateAction<string[]>
-  >;
-};
-
-const electiveSelect = ({
-  data,
-  setSelectedElectiveValues,
-}: ElectiveSelectProps) => {
-  return (
-    <Select
-      width="max"
-      size="l"
-      multiple
-      filterable
-      hasClear
-      className="mb-4"
-      onUpdate={(values: string[]) =>
-        setSelectedElectiveValues(values)
-      }
-    >
-      {data.map((item, outerIndex) => {
-        return (
-          <Select.Option
-            value={formatID(item.id)}
-            key={outerIndex}
-          >
-            <div className="flex justify-between w-[632px]">
-              <p>{`${formatID(item.id)}: ${
-                item.name
-              }`}</p>
-              <div className="flex flex-row justify-end">
-                {formatID(item.prerequisite)}
-              </div>
-            </div>
-          </Select.Option>
-        );
-      })}
-    </Select>
-  );
-};
-
 const Form = () => {
   const navigate = useNavigate();
 
+  const [selectedElectiveValues, setSelectedElectiveValues] =
+    useState<ClassData[]>([]);
+
   const [
-    selectedElectiveValues,
-    setSelectedElectiveValues,
-  ] = useState<string[]>([]);
+    selectedOtherElectiveValues,
+    setSelectedOtherElectiveValues,
+  ] = useState<ClassData[]>([]);
 
   return (
-    <div className="w-[700px]">
+    <div className="lg:w-[1000px]">
       <h1 className="text-3xl font-bold">
-        St. Olaf POS Form
+        St. Olaf Program of Study Form
       </h1>
       <div className="">
-        <h2 className="text-2xl font-bold mt-8">
-          Primary Classes
+        <h2 className="text-2xl font-bold mt-8 mb-2">
+          Foundational Courses
         </h2>
-        <h2 className="text-2xl font-bold my-4">
-          Electives
+        <p className="mb-2">
+          Must complete by the end of sophomore year.
+        </p>
+        <ClassTable
+          selectedValues={foundationData}
+          classNames="mb-8"
+        />
+        <h2 className="text-2xl font-bold mt-8 mb-4">
+          Required Courses
         </h2>
-        <div className="flex justify-between mb-2">
-          <p>
-            <span className="font-bold">
-              Designated:
-            </span>{' '}
-            Select at least 2 classes
-          </p>
-          <p className="mr-8">Prerequisites</p>
+        <p className="mb-2">
+          Generally completed by end of junior year, perhaps 1 for
+          senior year.
+        </p>
+        <ClassTable selectedValues={requiredData} classNames="mb-8" />
+        <h2 className="text-2xl font-bold mb-2">Electives</h2>
+        <p className="mb-2">
+          Complete 3, at least 1 must be 300-level
+        </p>
+
+        <div className="flex justify-between mb-2 align-baseline">
+          <h2 className="text-lg font-bold">
+            Designated:{' '}
+            <span className="text-sm font-normal">
+              Select at least 2 classes
+            </span>
+          </h2>
+          <div className="flex flex-col justify-end mr-8">
+            <p className="h-5">Prerequisites</p>
+          </div>
         </div>
-        {electiveSelect({
+        {ElectiveSelect({
           data: electiveData,
-          setSelectedElectiveValues,
+          setSelectedElectiveValues: setSelectedElectiveValues,
         })}
 
-        <div className="flex justify-between mb-2">
-          <p className="font-bold">
-            Other Electives
-          </p>
-          <p className="mr-8">Prerequisites</p>
+        <ClassTable
+          selectedValues={selectedElectiveValues}
+          classNames="mb-8"
+        />
+
+        <div className="flex justify-between mb-2 align-baseline">
+          <h2 className="text-lg font-bold">Other Electives</h2>
+          <div className="flex flex-col justify-end mr-8">
+            <p className="h-5">Prerequisites</p>
+          </div>
         </div>
-        {electiveSelect({
+
+        {ElectiveSelect({
           data: otherElectiveData,
-          setSelectedElectiveValues,
+          setSelectedElectiveValues: setSelectedOtherElectiveValues,
         })}
 
-        {selectedElectiveValues}
+        <ClassTable selectedValues={selectedOtherElectiveValues} />
 
         <div className="flex justify-between mt-4">
-          <Button
-            view="normal"
-            size="l"
-            onClick={() => navigate(-1)}
-          >
+          <Button view="normal" size="l" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Link to="/">
+          <Link to="/student">
             <Button view="action" size="l">
               Save
             </Button>
           </Link>
-          <Link to="/">
+          <Link to="/student">
             <Button view="action" size="l">
               Submit
             </Button>
