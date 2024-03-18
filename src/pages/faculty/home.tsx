@@ -65,8 +65,7 @@ const col = [
   {id: 'updated', name: 'Updated', width: 300},
 ];
 
-const searchBar = () => {
-  const [inputText, setInputText] = useState('');
+const searchBar = (inputText: string, setInputText: Function) => {
   const handleTextChange = (newText: string) => {
     setInputText(newText);
     filteredData = data.filter(
@@ -79,6 +78,8 @@ const searchBar = () => {
           .includes(inputText.toLowerCase()) ||
         item.major.toLowerCase().includes(inputText.toLowerCase()),
     );
+    console.log(filteredData);
+    <Table data={dataFormat} columns={col} className="" />;
   };
 
   return (
@@ -94,12 +95,13 @@ const searchBar = () => {
 };
 
 const FacultyHome = () => {
+  const [inputText, setInputText] = useState('');
   return (
     <section>
       <h1 className="text-xl font-bold">St. Olaf POS</h1>
-      {searchBar()}
+      {searchBar(inputText, setInputText)}
       {/*<Button>New</Button>*/}
-      <Table data={dataFormat} columns={col} className="" />
+      {<Table data={dataFormat} columns={col} className="" />}
     </section>
   );
 };
