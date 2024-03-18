@@ -78,7 +78,7 @@ const StudentHome = () => {
         <h1 className="text-3xl font-bold">
           St. Olaf Program of Study
         </h1>
-        <Link to="/form">
+        <Link to="/form/new">
           <Button size="l" view="action">
             New
           </Button>

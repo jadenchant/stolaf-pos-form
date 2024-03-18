@@ -95,12 +95,12 @@ const Form = () => {
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Link to="/">
+          <Link to="/student">
             <Button view="action" size="l">
               Save
             </Button>
           </Link>
-          <Link to="/">
+          <Link to="/student">
             <Button view="action" size="l">
               Submit
             </Button>
