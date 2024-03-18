@@ -1,7 +1,8 @@
 import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Magnifier} from '@gravity-ui/icons';
 import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import {useState} from 'react';
+import {FacultyClassList} from '@/interface';
 
 const data = [
   {
@@ -24,39 +25,41 @@ const data = [
 
 let filteredData = data;
 
-const dataFormat = filteredData.map((item) => ({
-  faculty: item.faculty,
-  student: item.student,
-  major: <Link to="/">{item.major}</Link>,
-  status: (
-    <div className="flex justify-between">
-      {item.status.map((status) => (
-        <Link to="/">
-          <Label
-            theme={
-              status === 'in_progress'
-                ? 'info'
+const dataFormat = function (data: FacultyClassList[]) {
+  return data.map((item) => ({
+    faculty: item.faculty,
+    student: item.student,
+    major: <Link to="/">{item.major}</Link>,
+    status: (
+      <div className="flex justify-between">
+        {item.status.map((status) => (
+          <Link to="/">
+            <Label
+              theme={
+                status === 'in_progress'
+                  ? 'info'
+                  : status === 'complete'
+                    ? 'success'
+                    : status === 'submitted_for_review'
+                      ? 'warning'
+                      : 'danger'
+              }
+            >
+              {status === 'in_progress'
+                ? 'In Progress'
                 : status === 'complete'
-                  ? 'success'
+                  ? 'Complete'
                   : status === 'submitted_for_review'
-                    ? 'warning'
-                    : 'danger'
-            }
-          >
-            {status === 'in_progress'
-              ? 'In Progress'
-              : status === 'complete'
-                ? 'Complete'
-                : status === 'submitted_for_review'
-                  ? 'Submitted For Review'
-                  : 'Rejected'}
-          </Label>
-        </Link>
-      ))}
-    </div>
-  ),
-  updated: item.updated,
-}));
+                    ? 'Submitted For Review'
+                    : 'Rejected'}
+            </Label>
+          </Link>
+        ))}
+      </div>
+    ),
+    updated: item.updated,
+  }));
+};
 const col = [
   {id: 'faculty', name: 'faculty', width: 200},
   {id: 'student', name: 'student', width: 200},
@@ -70,16 +73,11 @@ const searchBar = (inputText: string, setInputText: Function) => {
     setInputText(newText);
     filteredData = data.filter(
       (item) =>
-        item.faculty
-          .toLowerCase()
-          .includes(inputText.toLowerCase()) ||
-        item.student
-          .toLowerCase()
-          .includes(inputText.toLowerCase()) ||
-        item.major.toLowerCase().includes(inputText.toLowerCase()),
+        item.faculty.toLowerCase().includes(newText.toLowerCase()) ||
+        item.student.toLowerCase().includes(newText.toLowerCase()) ||
+        item.major.toLowerCase().includes(newText.toLowerCase()),
     );
     console.log(filteredData);
-    <Table data={dataFormat} columns={col} className="" />;
   };
 
   return (
@@ -89,6 +87,11 @@ const searchBar = (inputText: string, setInputText: Function) => {
         leftContent={<Magnifier></Magnifier>}
         value={inputText}
         onUpdate={handleTextChange}
+      />
+      <Table
+        data={dataFormat(filteredData)}
+        columns={col}
+        className=""
       />
     </view>
   );
@@ -101,7 +104,7 @@ const FacultyHome = () => {
       <h1 className="text-xl font-bold">St. Olaf POS</h1>
       {searchBar(inputText, setInputText)}
       {/*<Button>New</Button>*/}
-      {<Table data={dataFormat} columns={col} className="" />}
+      {/*<Table data={dataFormat} columns={col} className="" />*/}
     </section>
   );
 };
