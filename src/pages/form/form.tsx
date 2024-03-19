@@ -2,7 +2,7 @@ import {Button} from '@gravity-ui/uikit';
 import {Link, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
-import {ClassData} from '../../interface';
+import {ClassData, FormData} from '../../interface';
 import ClassTable from './ClassTable';
 import {
   foundationData,
@@ -55,7 +55,11 @@ const Form = () => {
         </p>
         <ClassTable
           selectedValues={requiredData}
-          setFormValues={setFormValues}
+          setFormValues={
+            setFormValues as React.Dispatch<
+              React.SetStateAction<FormData[]>
+            >
+          }
           classNames="mb-8"
         />
         <h2 className="text-2xl font-bold mb-2">Electives</h2>
