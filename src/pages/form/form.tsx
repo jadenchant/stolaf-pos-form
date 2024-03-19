@@ -43,6 +43,7 @@ const Form = () => {
         </p>
         <ClassTable
           selectedValues={foundationData}
+          setFormValues={setFormValues}
           classNames="mb-8"
         />
         <h2 className="text-2xl font-bold mt-8 mb-4">
@@ -52,7 +53,11 @@ const Form = () => {
           Generally completed by end of junior year, perhaps 1 for
           senior year.
         </p>
-        <ClassTable selectedValues={requiredData} classNames="mb-8" />
+        <ClassTable
+          selectedValues={requiredData}
+          setFormValues={setFormValues}
+          classNames="mb-8"
+        />
         <h2 className="text-2xl font-bold mb-2">Electives</h2>
         <p className="mb-2">
           Complete 3, at least 1 must be 300-level
@@ -76,6 +81,7 @@ const Form = () => {
 
         <ClassTable
           selectedValues={selectedElectiveValues}
+          setFormValues={setFormValues}
           classNames="mb-8"
         />
 
@@ -91,7 +97,10 @@ const Form = () => {
           setSelectedElectiveValues: setSelectedOtherElectiveValues,
         })}
 
-        <ClassTable selectedValues={selectedOtherElectiveValues} />
+        <ClassTable
+          selectedValues={selectedOtherElectiveValues}
+          setFormValues={setFormValues}
+        />
 
         <div className="flex justify-between mt-20">
           <Button view="normal" size="l" onClick={() => navigate(-1)}>

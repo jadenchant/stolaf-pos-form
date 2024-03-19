@@ -15,8 +15,8 @@ export interface FormData {
   id: string;
   name: string;
   prerequisite: string;
-  term: 'fall' | 'jterm' | 'spring' | 'summer';
-  year: number;
+  term?: 'fall' | 'jterm' | 'spring' | 'summer';
+  year?: number;
 }
 
 export interface FacultyClassList {

@@ -1,5 +1,5 @@
 import {Select, Table} from '@gravity-ui/uikit';
-import {ClassData} from '@/interface';
+import {ClassData, FormData} from '@/interface';
 import formatID from './FormatID';
 
 const dataFormat = (data: ClassData[]) => {
@@ -39,7 +39,7 @@ const dataFormat = (data: ClassData[]) => {
 };
 
 const col = [
-  {id: 'class', name: 'Class', width: 400},
+  {id: 'class', name: 'Class', width: 200},
   {
     id: 'prerequisite',
     name: 'Prerequisites',
@@ -51,12 +51,13 @@ const col = [
 
 interface ClassTableProps {
   selectedValues: ClassData[];
-  // setSelectedElectiveValues,
+  setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
   classNames?: string;
 }
 
 const ClassTable = ({
   selectedValues,
+  setFormValues,
   classNames,
 }: ClassTableProps) => {
   return (
