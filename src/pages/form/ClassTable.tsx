@@ -39,7 +39,7 @@ const dataFormat = (data: ClassData[]) => {
 };
 
 const col = [
-  {id: 'class', name: 'Class', width: 200},
+  {id: 'class', name: 'Class', width: 300},
   {
     id: 'prerequisite',
     name: 'Prerequisites',
