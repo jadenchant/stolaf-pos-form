@@ -43,6 +43,7 @@ const Form = () => {
         </p>
         <ClassTable
           selectedValues={foundationData}
+          formValues={formValues}
           setFormValues={setFormValues}
           classNames="mb-8"
         />
@@ -55,11 +56,8 @@ const Form = () => {
         </p>
         <ClassTable
           selectedValues={requiredData}
-          setFormValues={
-            setFormValues as React.Dispatch<
-              React.SetStateAction<FormData[]>
-            >
-          }
+          formValues={formValues}
+          setFormValues={setFormValues}
           classNames="mb-8"
         />
         <h2 className="text-2xl font-bold mb-2">Electives</h2>
@@ -85,6 +83,7 @@ const Form = () => {
 
         <ClassTable
           selectedValues={selectedElectiveValues}
+          formValues={formValues}
           setFormValues={setFormValues}
           classNames="mb-8"
         />
@@ -103,6 +102,7 @@ const Form = () => {
 
         <ClassTable
           selectedValues={selectedOtherElectiveValues}
+          formValues={formValues}
           setFormValues={setFormValues}
         />
 
