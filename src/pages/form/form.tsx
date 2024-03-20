@@ -1,5 +1,5 @@
 import {Button} from '@gravity-ui/uikit';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
 import {ClassData, FormData} from '../../interface';
@@ -10,6 +10,11 @@ import {
   electiveData,
   otherElectiveData,
 } from './CSFormData';
+import form0 from '../../data/form0.json';
+import form1 from '../../data/form1.json';
+import form2 from '../../data/form2.json';
+
+const forms: any = [form0, form1, form2];
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
@@ -18,6 +23,13 @@ import {
 
 const Form = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const formDataJson = forms[location.pathname.slice(-1)];
+
+  console.log(location.pathname.slice(-1));
+
+  console.log(formDataJson);
 
   const [selectedElectiveValues, setSelectedElectiveValues] =
     useState<ClassData[]>([]);
@@ -27,7 +39,8 @@ const Form = () => {
     setSelectedOtherElectiveValues,
   ] = useState<ClassData[]>([]);
 
-  const [formValues, setFormValues] = useState<FormData[]>([]);
+  const [formValues, setFormValues] =
+    useState<FormData[]>(formDataJson);
 
   return (
     <div className="lg:w-[1000px]">

@@ -14,24 +14,30 @@ const dataFormat = (
       <Select
         width="max"
         size="m"
+        value={[
+          formValues.find(
+            (value) => formatID(item.id) === formatID(value.id),
+          )?.term ?? '',
+        ]}
         onUpdate={(values: string[]) => {
           let isFound = false;
 
-          formValues.map((value) => {
+          const newFormValues = formValues.map((value) => {
             if (formatID(item.id) === formatID(value.id)) {
-              value.term = values[0];
               isFound = true;
-              return;
+              return {...value, term: values[0]};
+            } else {
+              return value;
             }
           });
 
           if (!isFound) {
-            formValues.push({...item, term: values[0]});
+            newFormValues.push({...item, term: values[0]});
           }
 
-          setFormValues(formValues);
+          setFormValues(newFormValues);
 
-          console.log(formValues);
+          console.log(newFormValues);
         }}
       >
         <Select.Option value="fall" key="fall">
@@ -52,26 +58,32 @@ const dataFormat = (
       <Select
         width="max"
         size="m"
+        value={[
+          formValues
+            .find((value) => formatID(item.id) === formatID(value.id))
+            ?.year?.toString() ?? '',
+        ]}
         onUpdate={(values: string[]) => {
           const selectedYear = Number(values[0]);
 
           let isFound = false;
 
-          formValues.map((value) => {
+          const newFormValues = formValues.map((value) => {
             if (formatID(item.id) === formatID(value.id)) {
-              value.year = selectedYear;
               isFound = true;
-              return;
+              return {...value, year: selectedYear};
+            } else {
+              return value;
             }
           });
 
           if (!isFound) {
-            formValues.push({...item, year: selectedYear});
+            newFormValues.push({...item, year: selectedYear});
           }
 
-          setFormValues(formValues);
+          setFormValues(newFormValues);
 
-          console.log(formValues);
+          console.log(newFormValues);
         }}
       >
         <Select.Option value="2024" key="2024">
