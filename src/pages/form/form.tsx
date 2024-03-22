@@ -13,8 +13,9 @@ import {
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
+import form3 from '../../data/form3.json';
 
-const forms: any = [form0, form1, form2];
+const forms: any = [form0, form1, form2, form3];
 
 // Cancel doesn't save the form
 // Save sends a post request to the database
@@ -25,7 +26,13 @@ const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const formDataJson = forms[location.pathname.slice(-1)];
+  const lastCharacter = location.pathname.slice(-1);
+
+  let formDataJson = [];
+
+  if (!isNaN(Number(lastCharacter))) {
+    formDataJson = forms[lastCharacter];
+  }
 
   console.log(location.pathname.slice(-1));
 
@@ -39,8 +46,9 @@ const Form = () => {
     setSelectedOtherElectiveValues,
   ] = useState<ClassData[]>([]);
 
-  const [formValues, setFormValues] =
-    useState<FormData[]>(formDataJson);
+  const [formValues, setFormValues] = useState<FormData[]>(
+    formDataJson as FormData[],
+  );
 
   return (
     <div className="lg:w-[1000px]">
