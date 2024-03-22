@@ -2,6 +2,8 @@ import {Select} from '@gravity-ui/uikit';
 import {ClassData, ElectiveSelectProps} from '@/interface';
 import formatID from './FormatID';
 
+// Pass down formData and setFormData
+
 const ElectiveSelect = ({
   classes,
   setSelectedElectiveValues,
