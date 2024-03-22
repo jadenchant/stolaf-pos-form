@@ -26,5 +26,54 @@
     "prerequisite": "CSCI 221 or Calculus I",
     "term": "fall",
     "year": 2026
+  },
+  {
+    "id": "csci241",
+    "name": "Hardware Design",
+    "prerequisite": "CSCI 221",
+    "term": "fall",
+    "year": 2026
+  },
+  {
+    "id": "csci251",
+    "name": "Software Design",
+    "prerequisite": "CSCI 221",
+    "term": "fall",
+    "year": 2026
+  },
+  {
+    "id": "csci263",
+    "name": "Ethical Issues in Software Design",
+    "prerequisite": "CSCI 251",
+    "term": "fall",
+    "year": 2026
+  },
+  {
+    "id": "math234",
+    "name": "Discrete Math Reasoning",
+    "prerequisite": "CSCI 221 || Calculus II",
+    "term": "fall",
+    "year": 2026
+  },
+  {
+    "id": "csci353",
+    "name": "Analysis of Algorithms",
+    "prerequisite": "CSCI 251 && MATH 234",
+    "term": "fall",
+    "year": 2026
+  },
+  {
+    "id": "csci273",
+    "name": "Operating Systems",
+    "prerequisite": "csci241 && csci251",
+    "term": "fall",
+    "year": 2026
+  },
+  {
+    "id": "csci276",
+    "name": "Programming Languages",
+    "prerequisite": "csci251",
+    "term": "fall",
+    "year": 2026
   }
 ]

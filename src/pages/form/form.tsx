@@ -97,10 +97,11 @@ const Form = () => {
             <p className="h-5">Prerequisites</p>
           </div>
         </div>
-        {ElectiveSelect({
-          data: electiveData,
-          setSelectedElectiveValues: setSelectedElectiveValues,
-        })}
+
+        <ElectiveSelect
+          data={electiveData}
+          setSelectedElectiveValues={setSelectedElectiveValues}
+        />
 
         <ClassTable
           selectedValues={selectedElectiveValues}
@@ -116,10 +117,10 @@ const Form = () => {
           </div>
         </div>
 
-        {ElectiveSelect({
-          data: otherElectiveData,
-          setSelectedElectiveValues: setSelectedOtherElectiveValues,
-        })}
+        <ElectiveSelect
+          data={otherElectiveData}
+          setSelectedElectiveValues={setSelectedOtherElectiveValues}
+        />
 
         <ClassTable
           selectedValues={selectedOtherElectiveValues}
