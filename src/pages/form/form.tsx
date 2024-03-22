@@ -99,7 +99,7 @@ const Form = () => {
         </div>
 
         <ElectiveSelect
-          data={electiveData}
+          classes={electiveData}
           setSelectedElectiveValues={setSelectedElectiveValues}
         />
 
@@ -118,7 +118,7 @@ const Form = () => {
         </div>
 
         <ElectiveSelect
-          data={otherElectiveData}
+          classes={otherElectiveData}
           setSelectedElectiveValues={setSelectedOtherElectiveValues}
         />
 
