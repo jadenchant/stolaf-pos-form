@@ -1,19 +1,17 @@
 import {Select} from '@gravity-ui/uikit';
-import {ClassData} from '@/interface';
+import {ClassData, ElectiveSelectProps} from '@/interface';
 import formatID from './FormatID';
 import {electiveData, otherElectiveData} from './CSFormData';
 
 // Pass down formData and setFormData
 
-const ElectiveSelect = (
-  classes: ClassData[],
-  setSelectedElectiveValues: React.Dispatch<
-    React.SetStateAction<ClassData[]>
-  >,
-  formValues: FormData[],
-  setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>,
-  isOtherElective?: boolean,
-) => {
+const ElectiveSelect = ({
+  classes,
+  setSelectedElectiveValues,
+  formValues,
+  setFormValues,
+  isOtherElective,
+}: ElectiveSelectProps) => {
   return (
     <Select
       width="max"
