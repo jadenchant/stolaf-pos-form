@@ -20,14 +20,22 @@ const ElectiveSelect = ({
       filterable
       hasClear
       className="mb-4"
-      value={[
-        formValues.find(
-          (value) =>
-            (electiveData.includes(formatID(value.id)) ||
-              otherElectiveData.includes(formatID(value.id))) &&
-            formatID(item.id) === formatID(value.id),
-        )?.term ?? '',
-      ]}
+      // value={
+      //   [
+      // formValues.find(
+      //   (value) =>
+      //     (electiveData.includes(formatID(value)) ||
+      //       otherElectiveData.includes(
+      //         formatID(value.id as ClassData),
+      //       )) &&
+      //     formatID(item.id) === formatID(value.id as ClassData),
+      // )?.term ?? '',
+      // formValues.find(
+      //   (value) =>
+      //     formatID(electiveData[0].id) === formatID(value.id),
+      // )?.id ?? '',
+      //   ]
+      // }
       onUpdate={(values: string[]) => {
         const selectedElectives = values
           .map((value) => {
