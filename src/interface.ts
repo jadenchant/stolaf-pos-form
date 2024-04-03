@@ -4,13 +4,6 @@ export interface ClassData {
   prerequisite: string;
 }
 
-export interface ElectiveSelectProps {
-  classes: ClassData[];
-  setSelectedElectiveValues: React.Dispatch<
-    React.SetStateAction<ClassData[]>
-  >;
-}
-
 export interface ClassTableProps {
   selectedValues: ClassData[];
   formValues: FormData[];

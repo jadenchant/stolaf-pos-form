@@ -97,6 +97,8 @@ const Form = () => {
         <ElectiveSelect
           classes={electiveData}
           setSelectedElectiveValues={setSelectedElectiveValues}
+          formValues={formValues}
+          setFormValues={setFormValues}
         />
 
         <ClassTable
@@ -116,6 +118,8 @@ const Form = () => {
         <ElectiveSelect
           classes={otherElectiveData}
           setSelectedElectiveValues={setSelectedOtherElectiveValues}
+          formValues={formValues}
+          setFormValues={setFormValues}
         />
 
         <ClassTable

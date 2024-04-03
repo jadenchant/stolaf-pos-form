@@ -1,13 +1,19 @@
 import {Select} from '@gravity-ui/uikit';
-import {ClassData, ElectiveSelectProps} from '@/interface';
+import {ClassData} from '@/interface';
 import formatID from './FormatID';
+import {electiveData, otherElectiveData} from './CSFormData';
 
 // Pass down formData and setFormData
 
-const ElectiveSelect = ({
-  classes,
-  setSelectedElectiveValues,
-}: ElectiveSelectProps) => {
+const ElectiveSelect = (
+  classes: ClassData[],
+  setSelectedElectiveValues: React.Dispatch<
+    React.SetStateAction<ClassData[]>
+  >,
+  formValues: FormData[],
+  setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>,
+  isOtherElective?: boolean,
+) => {
   return (
     <Select
       width="max"
@@ -16,6 +22,14 @@ const ElectiveSelect = ({
       filterable
       hasClear
       className="mb-4"
+      value={[
+        formValues.find(
+          (value) =>
+            (electiveData.includes(formatID(value.id)) ||
+              otherElectiveData.includes(formatID(value.id))) &&
+            formatID(item.id) === formatID(value.id),
+        )?.term ?? '',
+      ]}
       onUpdate={(values: string[]) => {
         const selectedElectives = values
           .map((value) => {

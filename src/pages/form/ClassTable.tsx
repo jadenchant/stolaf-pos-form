@@ -36,8 +36,6 @@ const dataFormat = (
           }
 
           setFormValues(newFormValues);
-
-          console.log(newFormValues);
         }}
       >
         <Select.Option value="fall" key="fall">
