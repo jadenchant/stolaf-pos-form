@@ -34,10 +34,6 @@ const Form = () => {
     formDataJson = forms[lastCharacter];
   }
 
-  console.log(location.pathname.slice(-1));
-
-  console.log(formDataJson);
-
   const [selectedElectiveValues, setSelectedElectiveValues] =
     useState<ClassData[]>([]);
 

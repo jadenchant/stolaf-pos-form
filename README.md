@@ -17,7 +17,8 @@ npm run dev
 
 ## To Do List
 
-- Get Elective Form Data from json
+- Get Elective Form Data for dropdown from json
+- Rejection Reasons
 - API endpoints
 - Authentication
 - DB Connection
