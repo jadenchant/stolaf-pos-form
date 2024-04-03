@@ -1,42 +1,23 @@
-# gravity-ui-vite-example
+# St. Olaf Program of Study
 
-Vite template with: typescript, sass and Gravity UI.
-
-## ⚗️ Technologies list
+## Technologies list
 
 - [Gravity UI](https://gravity-ui.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Sass](https://sass-lang.com/)
 - [ESlint](https://eslint.org/) & [Prettier](https://prettier.io/)
-- Tailwind
-- React Router
+- [Tailwind](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/en/main)
 
-# 🚀 Start using it
-
-To use this template for your app you can run:
+## Dev
 
 ```sh
-npx degit gravity-ui/gravity-ui-vite-example#main my-project
-cd my-project
-
-npm install
 npm run dev
 ```
 
-or
+## To Do List
 
-```sh
-yarn degit gravity-ui-vite-example#main my-project
-cd my-project
-
-npm install
-npm run dev
-```
-
-# 📖 Learn More
-
-This package includes scripts and configuration used by [Vite](https://vitejs.dev/).\
-Please refer to its documentation:
-
-- [Getting Started](https://vitejs.dev/guide/) – How to create a new app.
-- [User Guide](https://vitejs.dev/) – How to develop apps bootstrapped with Vite.
+- Get Elective Form Data from json
+- API endpoints
+- Authentication
+- DB Connection
