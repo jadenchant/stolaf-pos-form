@@ -12,11 +12,7 @@ const formatID = (id: string) => {
         return ' ';
       } else {
         const charMatch = part.match(/[a-zA-Z]+/);
-        if (
-          charMatch &&
-          charMatch[0].length >= 3 &&
-          charMatch[0].length <= 4
-        ) {
+        if (charMatch && charMatch[0].length <= 4) {
           const prefix = charMatch[0].toUpperCase();
           const numMatch = part.match(/[0-9]+/);
           const suffix = numMatch ? numMatch[0] : '';
