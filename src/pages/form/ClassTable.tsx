@@ -35,6 +35,8 @@ const dataFormat = (
             newFormValues.push({...item, term: values[0]});
           }
 
+          console.log(newFormValues);
+
           setFormValues(newFormValues);
         }}
       >

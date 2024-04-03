@@ -37,14 +37,35 @@ const ElectiveSelect = ({
       //   ]
       // }
       onUpdate={(values: string[]) => {
-        const selectedElectives = values
-          .map((value) => {
-            return classes.find(
-              (item) => formatID(item.id) === value,
-            );
-          })
-          .filter(Boolean) as ClassData[];
-        setSelectedElectiveValues(selectedElectives);
+        // const selectedElectives = values
+        //   .map((value) => {
+        //     return classes.find(
+        //       (item) => formatID(item.id) === value,
+        //     );
+        //   })
+        //   .filter(Boolean) as ClassData[];
+        // setSelectedElectiveValues(selectedElectives);
+        let isFound = false;
+
+        // THIS IS NOT RIGHT
+
+        const newFormValues = formValues.map((formValue) => {
+          electiveData.forEach((elective) => {
+            if (formatID(elective.id) === formatID(formValue.id)) {
+              isFound = true;
+              return {...formValue, term: values[0]};
+            }
+          });
+          return formValue;
+        });
+
+        if (!isFound) {
+          electiveData.forEach((elective) => {
+            newFormValues.push({...elective, term: values[0]});
+          });
+        }
+
+        setFormValues(newFormValues);
       }}
     >
       {classes.map((item, outerIndex) => {
