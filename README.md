@@ -18,7 +18,11 @@ npm run dev
 ## To Do List
 
 - Get Elective Form Data for dropdown from json
+  - Have items alread selected
+  - Remove items when the selection is removed
 - Rejection Reasons
+- Faculty View
+- Director View
 - API endpoints
 - Authentication
 - DB Connection

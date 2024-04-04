@@ -14,6 +14,7 @@ import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
+import formatID from './FormatID';
 
 const forms: any = [form0, form1, form2, form3];
 
@@ -97,10 +98,17 @@ const Form = () => {
         <ElectiveSelect
           classes={electiveData}
           setSelectedElectiveValues={setSelectedElectiveValues}
+          formValues={formValues}
+          setFormValues={setFormValues}
         />
 
         <ClassTable
-          selectedValues={selectedElectiveValues}
+          selectedValues={electiveData.filter((elective) =>
+            formValues.some(
+              (formValue) =>
+                formatID(elective.id) === formatID(formValue.id),
+            ),
+          )}
           formValues={formValues}
           setFormValues={setFormValues}
           classNames="mb-8"
@@ -116,10 +124,17 @@ const Form = () => {
         <ElectiveSelect
           classes={otherElectiveData}
           setSelectedElectiveValues={setSelectedOtherElectiveValues}
+          formValues={formValues}
+          setFormValues={setFormValues}
         />
 
         <ClassTable
-          selectedValues={selectedOtherElectiveValues}
+          selectedValues={otherElectiveData.filter((elective) =>
+            formValues.some(
+              (formValue) =>
+                formatID(elective.id) === formatID(formValue.id),
+            ),
+          )}
           formValues={formValues}
           setFormValues={setFormValues}
         />

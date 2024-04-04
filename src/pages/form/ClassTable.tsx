@@ -35,9 +35,9 @@ const dataFormat = (
             newFormValues.push({...item, term: values[0]});
           }
 
-          setFormValues(newFormValues);
-
           console.log(newFormValues);
+
+          setFormValues(newFormValues);
         }}
       >
         <Select.Option value="fall" key="fall">
