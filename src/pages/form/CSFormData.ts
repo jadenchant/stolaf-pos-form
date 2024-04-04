@@ -63,7 +63,7 @@ export const electiveData: ClassData[] = [
     prerequisite: 'csci251',
   },
   {
-    id: 'csci3??',
+    id: 'csci300',
     name: 'Artificial Intelligence',
     prerequisite: 'csci251 && math234',
   },

@@ -37,27 +37,8 @@ const ElectiveSelect = ({
       //   ]
       // }
       onUpdate={(values: string[]) => {
-        // const selectedElectives = values
-        //   .map((value) => {
-        //     return classes.find(
-        //       (item) => formatID(item.id) === value,
-        //     );
-        //   })
-        //   .filter(Boolean) as ClassData[];
-        // setSelectedElectiveValues(selectedElectives);
-
         // THIS IS NOT RIGHT
-
-        // const newFormValues = formValues.map((formValue) => {
-        //   electiveData.forEach((elective) => {
-        //     if (formatID(elective.id) === formatID(formValue.id)) {
-        //       isFound = true;
-        //       console.log('is found');
-        //       return {...formValue};
-        //     }
-        //   });
-        //   return formValue;
-        // });
+        // Need to remove any values not in values
 
         let isFound = new Array(values.length).fill(false);
 
@@ -69,6 +50,7 @@ const ElectiveSelect = ({
               formatID(elective.id) === formatID(formValue.id) &&
               values.includes(elective.id)
             ) {
+              console.log(isFound);
               isFound[index] = true;
             }
           });
@@ -76,18 +58,15 @@ const ElectiveSelect = ({
           return updatedFormValue;
         });
 
-        if (!isFound.includes(true)) {
-          values.forEach((value) => {
+        for (let i = 0; i < isFound.length; i++) {
+          if (!isFound[i]) {
             const elective = electiveData.find(
-              (elective) => elective.id === value,
+              (elective) => elective.id === values[i],
             );
             if (elective) {
-              newFormValues.push({
-                ...elective,
-                id: value,
-              });
+              newFormValues.push(elective);
             }
-          });
+          }
         }
 
         console.log(newFormValues);
