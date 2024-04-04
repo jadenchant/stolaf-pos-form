@@ -21,6 +21,8 @@ npm run dev
   - Have items alread selected
   - Remove items when the selection is removed
 - Rejection Reasons
+- Faculty View
+- Director View
 - API endpoints
 - Authentication
 - DB Connection
