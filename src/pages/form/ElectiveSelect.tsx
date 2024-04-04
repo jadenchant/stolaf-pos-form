@@ -45,32 +45,59 @@ const ElectiveSelect = ({
         //   })
         //   .filter(Boolean) as ClassData[];
         // setSelectedElectiveValues(selectedElectives);
-        let isFound = false;
 
         // THIS IS NOT RIGHT
 
+        // const newFormValues = formValues.map((formValue) => {
+        //   electiveData.forEach((elective) => {
+        //     if (formatID(elective.id) === formatID(formValue.id)) {
+        //       isFound = true;
+        //       console.log('is found');
+        //       return {...formValue};
+        //     }
+        //   });
+        //   return formValue;
+        // });
+
+        let isFound = new Array(values.length).fill(false);
+
         const newFormValues = formValues.map((formValue) => {
-          electiveData.forEach((elective) => {
-            if (formatID(elective.id) === formatID(formValue.id)) {
-              isFound = true;
-              return {...formValue, term: values[0]};
+          let updatedFormValue = formValue;
+
+          electiveData.forEach((elective, index) => {
+            if (
+              formatID(elective.id) === formatID(formValue.id) &&
+              values.includes(elective.id)
+            ) {
+              isFound[index] = true;
             }
           });
-          return formValue;
+
+          return updatedFormValue;
         });
 
-        if (!isFound) {
-          electiveData.forEach((elective) => {
-            newFormValues.push({...elective, term: values[0]});
+        if (!isFound.includes(true)) {
+          values.forEach((value) => {
+            const elective = electiveData.find(
+              (elective) => elective.id === value,
+            );
+            if (elective) {
+              newFormValues.push({
+                ...elective,
+                id: value,
+              });
+            }
           });
         }
+
+        console.log(newFormValues);
 
         setFormValues(newFormValues);
       }}
     >
       {classes.map((item, outerIndex) => {
         return (
-          <Select.Option value={formatID(item.id)} key={outerIndex}>
+          <Select.Option value={item.id} key={outerIndex}>
             <div className="flex justify-between lg:w-[950px] md:w-[600px] w-[400px]">
               <p>{`${formatID(item.id)}: ${item.name}`}</p>
               <div className="flex flex-row justify-end">
