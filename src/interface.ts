@@ -38,3 +38,11 @@ export interface FacultyClassList {
   updated: string;
   id: string;
 }
+
+export interface FilterObject {
+  unfilteredSearchQ: boolean;
+  searchTerm: string;
+  professors: Array<string>;
+  formStatus: Array<string>;
+  timeFrame: string;
+}

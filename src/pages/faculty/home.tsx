@@ -2,7 +2,7 @@ import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Magnifier} from '@gravity-ui/icons';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
-import {FacultyClassList} from '@/interface';
+import {FacultyClassList, FilterObject} from '@/interface';
 
 const data = [
   {
@@ -23,6 +23,14 @@ const data = [
   },
 ];
 
+const professorName = 'Walter White';
+const filters = {
+  unfilteredSearchQ: true,
+  searchTerm: '',
+  professors: [professorName, 'undecided'],
+  formStatus: ['submitted_for_review'],
+  timeFrame: 'Last 20 years',
+};
 let filteredData = data;
 
 const dataFormat = function (data: FacultyClassList[]) {
@@ -68,6 +76,26 @@ const col = [
   {id: 'updated', name: 'Updated', width: 300},
 ];
 
+const filterFunction = (filterObject: FilterObject) => {
+  if (
+    filterObject.unfilteredSearchQ &&
+    filterObject.searchTerm.length > 0
+  ) {
+    filteredData = data.filter(
+      (item) =>
+        item.faculty
+          .toLowerCase()
+          .includes(filterObject.searchTerm.toLowerCase()) ||
+        item.student
+          .toLowerCase()
+          .includes(filterObject.searchTerm.toLowerCase()) ||
+        item.major
+          .toLowerCase()
+          .includes(filterObject.searchTerm.toLowerCase()),
+    );
+  }
+};
+
 const searchBar = (inputText: string, setInputText: Function) => {
   const handleTextChange = (newText: string) => {
     setInputText(newText);
@@ -77,7 +105,6 @@ const searchBar = (inputText: string, setInputText: Function) => {
         item.student.toLowerCase().includes(newText.toLowerCase()) ||
         item.major.toLowerCase().includes(newText.toLowerCase()),
     );
-    console.log(filteredData);
   };
 
   return (
@@ -103,8 +130,6 @@ const FacultyHome = () => {
     <section>
       <h1 className="text-xl font-bold">St. Olaf POS</h1>
       {searchBar(inputText, setInputText)}
-      {/*<Button>New</Button>*/}
-      {/*<Table data={dataFormat} columns={col} className="" />*/}
     </section>
   );
 };
