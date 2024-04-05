@@ -35,14 +35,6 @@ const Form = () => {
     formDataJson = forms[lastCharacter];
   }
 
-  const [selectedElectiveValues, setSelectedElectiveValues] =
-    useState<ClassData[]>([]);
-
-  const [
-    selectedOtherElectiveValues,
-    setSelectedOtherElectiveValues,
-  ] = useState<ClassData[]>([]);
-
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson as FormData[],
   );
@@ -97,7 +89,6 @@ const Form = () => {
 
         <ElectiveSelect
           classes={electiveData}
-          setSelectedElectiveValues={setSelectedElectiveValues}
           formValues={formValues}
           setFormValues={setFormValues}
         />
@@ -123,9 +114,9 @@ const Form = () => {
 
         <ElectiveSelect
           classes={otherElectiveData}
-          setSelectedElectiveValues={setSelectedOtherElectiveValues}
           formValues={formValues}
           setFormValues={setFormValues}
+          isOtherElective
         />
 
         <ClassTable
