@@ -20,43 +20,40 @@ const ElectiveSelect = ({
       filterable
       hasClear
       className="mb-4"
-      // value={
-      //   [
-      // formValues.find(
-      //   (value) =>
-      //     (electiveData.includes(formatID(value)) ||
-      //       otherElectiveData.includes(
-      //         formatID(value.id as ClassData),
-      //       )) &&
-      //     formatID(item.id) === formatID(value.id as ClassData),
-      // )?.term ?? '',
-      // formValues.find(
-      //   (value) =>
-      //     formatID(electiveData[0].id) === formatID(value.id),
-      // )?.id ?? '',
-      //   ]
-      // }
+      value={formValues
+        .filter((value) =>
+          electiveData.find((elective) => elective.id === value.id),
+        )
+        .map((value) => value.id)}
       onUpdate={(values: string[]) => {
         // THIS IS NOT RIGHT
         // Need to remove any values not in values
 
         let isFound = new Array(values.length).fill(false);
 
-        const newFormValues = formValues.map((formValue) => {
-          let updatedFormValue = formValue;
+        const newFormValues = formValues
+          .filter(
+            (formValue) =>
+              !electiveData.some(
+                (elective) =>
+                  formatID(elective.id) === formatID(formValue.id),
+              ),
+          )
+          .map((formValue) => {
+            let updatedFormValue = formValue;
 
-          electiveData.forEach((elective, index) => {
-            if (
-              formatID(elective.id) === formatID(formValue.id) &&
-              values.includes(elective.id)
-            ) {
-              console.log(isFound);
-              isFound[index] = true;
-            }
+            electiveData.forEach((elective, index) => {
+              if (
+                formatID(elective.id) === formatID(formValue.id) &&
+                values.includes(elective.id)
+              ) {
+                console.log(isFound);
+                isFound[index] = true;
+              }
+            });
+
+            return updatedFormValue;
           });
-
-          return updatedFormValue;
-        });
 
         for (let i = 0; i < isFound.length; i++) {
           if (!isFound[i]) {
