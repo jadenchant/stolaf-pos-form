@@ -1,8 +1,8 @@
+import {useState} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
-import {useState} from 'react';
 import ElectiveSelect from './ElectiveSelect';
-import {ClassData, FormData} from '../../interface';
+import {FormData} from '../../interface';
 import ClassTable from './ClassTable';
 import {
   foundationData,
