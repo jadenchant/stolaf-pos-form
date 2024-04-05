@@ -18,7 +18,7 @@ npm run dev
 ## To Do List
 
 - Rejection Reasons
-- PDF Generation
+- PDF Generation - Jaden
 - Faculty View
 - Director View
 - API endpoints
