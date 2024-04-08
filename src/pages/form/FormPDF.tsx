@@ -5,12 +5,20 @@ import {
   Document,
   StyleSheet,
 } from '@react-pdf/renderer';
-import {foundationData} from './CSFormData';
+import {
+  electiveData,
+  foundationData,
+  otherElectiveData,
+  requiredData,
+} from './CSFormData';
+import formatID from './FormatID';
+import {ClassData} from '@/interface';
 
 const styles = StyleSheet.create({
   page: {
     display: 'flex',
     flexDirection: 'column',
+    padding: 10,
   },
   titleSection: {
     margin: 10,
@@ -32,12 +40,31 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  tableView: {
+    marginRight: 5,
+    marginLeft: 5,
+  },
   table: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: 10,
-    borderWidth: 1,
+    marginRight: 5,
+    marginLeft: 5,
+    borderBottomWidth: 1,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+  },
+  tableHeader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginRight: 5,
+    marginLeft: 5,
+    borderBottomWidth: 1,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderTopWidth: 1,
+    fontWeight: 'bold',
   },
   tableClass: {
     width: '45%',
@@ -58,12 +85,41 @@ const styles = StyleSheet.create({
     width: '10%',
     padding: 5,
   },
+  signature: {
+    margin: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
 });
 
 const data = {
   name: 'John Doe',
   gradYear: '2024',
 };
+
+const Table = ({data}: {data: ClassData[]}) => (
+  <View style={styles.tableView}>
+    <View style={styles.tableHeader}>
+      <Text style={styles.tableClass}>Course</Text>
+      <Text style={styles.tablePrereq}>Prerequisite(s)</Text>
+      <Text style={styles.tableTerm}>Term</Text>
+      <Text style={styles.tableYear}>Year</Text>
+    </View>
+    {data.map((course: ClassData) => (
+      <View style={styles.table} key={course.id}>
+        <Text style={styles.tableClass}>
+          {formatID(course.id)}: {course.name}
+        </Text>
+        <Text style={styles.tablePrereq}>
+          {formatID(course.prerequisite)}
+        </Text>
+        <Text style={styles.tableTerm}>Spring</Text>
+        <Text style={styles.tableYear}>2024</Text>
+      </View>
+    ))}
+  </View>
+);
 
 export const FormPDF = () => (
   <Document
@@ -84,18 +140,48 @@ export const FormPDF = () => (
         <Text style={styles.bold}>Foundational Courses: </Text>
         <Text>Must complete by the end of sophomore year.</Text>
       </View>
-      <View style={styles.table}>
-        <Text style={styles.tableClass}>Course</Text>
-        <Text style={styles.tablePrereq}>Prerequisite(s)</Text>
-        <Text style={styles.tableTerm}>Term</Text>
-        <Text style={styles.tableYear}>Year</Text>
+
+      <Table data={foundationData} />
+
+      <View style={styles.section}>
+        <Text style={styles.bold}>Required Courses: </Text>
+        <Text>
+          Generally completed by end of junior year, perhaps 1 for
+          senior year.
+        </Text>
       </View>
-      {foundationData.map((course) => (
-        <View style={styles.section} key={course.id}>
-          <Text>{course.name}</Text>
-          <Text>Prerequisite: {course.prerequisite}</Text>
-        </View>
-      ))}
+
+      <Table data={requiredData} />
+
+      <View style={styles.section}>
+        <Text style={styles.bold}>Electives: Complete 3, </Text>
+        <Text>at least 1 must be 300-level</Text>
+      </View>
+      <View style={styles.section}>
+        <Text style={styles.bold}>Designated: </Text>
+        <Text>Must complete at least 2 of these</Text>
+      </View>
+
+      <Table data={electiveData} />
+
+      <View style={styles.section}>
+        <Text style={styles.bold}>Other electives Include: </Text>
+      </View>
+
+      <Table data={otherElectiveData} />
+
+      <View style={styles.signature}>
+        <Text>Student Signature: </Text>
+        <Text>Date: </Text>
+      </View>
+      <View style={styles.signature}>
+        <Text>Faculty Signature: </Text>
+        <Text>Date: </Text>
+      </View>
+      <View style={styles.signature}>
+        <Text>CS Director Signature: </Text>
+        <Text>Date: </Text>
+      </View>
     </Page>
   </Document>
 );
