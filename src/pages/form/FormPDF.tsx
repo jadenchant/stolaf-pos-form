@@ -50,9 +50,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 5,
     marginLeft: 5,
-    borderBottomWidth: 1,
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
   },
   tableHeader: {
     display: 'flex',
@@ -60,26 +60,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 5,
     marginLeft: 5,
-    borderBottomWidth: 1,
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
-    borderTopWidth: 1,
+    borderBottomWidth: 2,
+    borderRightWidth: 2,
+    borderLeftWidth: 2,
+    borderTopWidth: 2,
     fontWeight: 'bold',
   },
   tableClass: {
     width: '45%',
     padding: 5,
-    borderRightWidth: 1,
+    borderRightWidth: 2,
   },
   tablePrereq: {
     width: '35%',
     padding: 5,
-    borderRightWidth: 1,
+    borderRightWidth: 2,
   },
   tableTerm: {
     width: '10%',
     padding: 5,
-    borderRightWidth: 1,
+    borderRightWidth: 2,
   },
   tableYear: {
     width: '10%',
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
 });
 
 const data = {
-  name: 'John Doe',
-  gradYear: '2024',
+  name: 'John Cena',
+  gradYear: '1993',
 };
 
 const Table = ({data}: {data: ClassData[]}) => (
