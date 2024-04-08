@@ -8,18 +8,26 @@ import {
 
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
+    display: 'flex',
+    flexDirection: 'column',
   },
   section: {
     margin: 10,
     padding: 10,
-    flexGrow: 1,
+  },
+  title: {
+    fontSize: 24,
   },
 });
 
 export const FormPDF = () => (
-  <Document>
+  <Document title="St. Olaf Program Of Study Form" language="english">
     <Page size="A4" style={styles.page}>
+      <View style={styles.section}>
+        <Text style={styles.title}>
+          Computer Science Major Plan (CSMaP)
+        </Text>
+      </View>
       <View style={styles.section}>
         <Text>Section #1</Text>
       </View>
