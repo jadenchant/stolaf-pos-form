@@ -16,30 +16,36 @@ import {ClassData} from '@/interface';
 
 const styles = StyleSheet.create({
   page: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: 10,
-    fontSize: 12,
+    // display: 'flex',
+    // flexDirection: 'column',
+    padding: 15,
+    fontSize: 10,
+    fontWeight: 'bold',
   },
   titleSection: {
-    margin: 10,
     display: 'flex',
     justifyContent: 'center',
+    width: '100%',
+    fontWeight: 'bold',
+    marginBottom: 15,
   },
   title: {
-    fontSize: 24,
+    fontSize: 16,
   },
   headText: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    margin: 10,
-  },
-  section: {
-    margin: 10,
+    marginBottom: 5,
+    fontSize: 12,
   },
   bold: {
     fontWeight: 'bold',
+  },
+  flexRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    fontSize: 12,
   },
   tableView: {
     marginRight: 5,
@@ -134,23 +140,30 @@ export const FormPDF = () => (
         </Text>
       </View>
       <View style={styles.headText}>
-        <View>
-          <Text style={styles.bold}>Name: </Text>
+        <View style={styles.flexRow}>
+          <View>
+            <Text style={{fontWeight: 'heavy'}}>Name: </Text>
+          </View>
+
           <Text>{data.name}</Text>
         </View>
         <View>
-          <Text style={styles.bold}>Expected graduation year: </Text>
-          <Text>{data.gradYear}</Text>
+          <View style={styles.flexRow}>
+            <Text style={styles.bold}>
+              Expected graduation year:{' '}
+            </Text>
+            <Text>{data.gradYear}</Text>
+          </View>
         </View>
       </View>
-      <View style={styles.section}>
+      <View style={styles.flexRow}>
         <Text style={styles.bold}>Foundational Courses: </Text>
         <Text>Must complete by the end of sophomore year.</Text>
       </View>
 
       <Table data={foundationData} />
 
-      <View style={styles.section}>
+      <View style={styles.flexRow}>
         <Text style={styles.bold}>Required Courses: </Text>
         <Text>
           Generally completed by end of junior year, perhaps 1 for
@@ -160,18 +173,18 @@ export const FormPDF = () => (
 
       <Table data={requiredData} />
 
-      <View style={styles.section}>
+      <View style={styles.flexRow}>
         <Text style={styles.bold}>Electives: Complete 3, </Text>
         <Text>at least 1 must be 300-level</Text>
       </View>
-      <View style={styles.section}>
+      <View style={styles.flexRow}>
         <Text style={styles.bold}>Designated: </Text>
         <Text>Must complete at least 2 of these</Text>
       </View>
 
       <Table data={electiveData} />
 
-      <View style={styles.section}>
+      <View style={styles.flexRow}>
         <Text style={styles.bold}>Other electives Include: </Text>
       </View>
 
