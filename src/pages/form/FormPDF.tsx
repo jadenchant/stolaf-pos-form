@@ -37,18 +37,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     margin: 10,
+    borderWidth: 1,
   },
   tableClass: {
     width: '45%',
+    padding: 5,
+    borderRightWidth: 1,
   },
   tablePrereq: {
     width: '35%',
+    padding: 5,
+    borderRightWidth: 1,
   },
   tableTerm: {
     width: '10%',
+    padding: 5,
+    borderRightWidth: 1,
   },
   tableYear: {
     width: '10%',
+    padding: 5,
   },
 });
 
