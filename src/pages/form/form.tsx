@@ -15,6 +15,7 @@ import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import formatID from './FormatID';
+import {FormPDF} from './FormPDF';
 
 const forms: any = [form0, form1, form2, form3];
 
@@ -145,6 +146,9 @@ const Form = () => {
             </Button>
           </Link>
         </div>
+
+        {/* Temporary To View PDF */}
+        <FormPDF />
       </div>
     </div>
   );
