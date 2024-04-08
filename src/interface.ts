@@ -13,9 +13,6 @@ export interface ClassTableProps {
 
 export interface ElectiveSelectProps {
   classes: ClassData[];
-  setSelectedElectiveValues: React.Dispatch<
-    React.SetStateAction<ClassData[]>
-  >;
   formValues: FormData[];
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
   isOtherElective?: boolean;

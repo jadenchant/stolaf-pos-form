@@ -1,8 +1,9 @@
+import {useState} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
-import {useState} from 'react';
+import {PDFViewer} from '@react-pdf/renderer';
 import ElectiveSelect from './ElectiveSelect';
-import {ClassData, FormData} from '../../interface';
+import {FormData} from '../../interface';
 import ClassTable from './ClassTable';
 import {
   foundationData,
@@ -15,6 +16,8 @@ import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import formatID from './FormatID';
+
+import {FormPDF} from './FormPDF';
 
 const forms: any = [form0, form1, form2, form3];
 
@@ -34,14 +37,6 @@ const Form = () => {
   if (!isNaN(Number(lastCharacter))) {
     formDataJson = forms[lastCharacter];
   }
-
-  const [selectedElectiveValues, setSelectedElectiveValues] =
-    useState<ClassData[]>([]);
-
-  const [
-    selectedOtherElectiveValues,
-    setSelectedOtherElectiveValues,
-  ] = useState<ClassData[]>([]);
 
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson as FormData[],
@@ -97,7 +92,6 @@ const Form = () => {
 
         <ElectiveSelect
           classes={electiveData}
-          setSelectedElectiveValues={setSelectedElectiveValues}
           formValues={formValues}
           setFormValues={setFormValues}
         />
@@ -123,9 +117,9 @@ const Form = () => {
 
         <ElectiveSelect
           classes={otherElectiveData}
-          setSelectedElectiveValues={setSelectedOtherElectiveValues}
           formValues={formValues}
           setFormValues={setFormValues}
+          isOtherElective
         />
 
         <ClassTable
@@ -154,6 +148,11 @@ const Form = () => {
             </Button>
           </Link>
         </div>
+
+        {/* Temporary To View PDF */}
+        <PDFViewer width="100%" height="800">
+          <FormPDF />
+        </PDFViewer>
       </div>
     </div>
   );
