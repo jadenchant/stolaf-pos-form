@@ -133,8 +133,14 @@ export const FormPDF = () => (
         </Text>
       </View>
       <View style={styles.headText}>
-        <Text>Name: {data.name}</Text>
-        <Text>Expected graduation year: {data.gradYear}</Text>
+        <View>
+          <Text style={styles.bold}>Name: </Text>
+          <Text>{data.name}</Text>
+        </View>
+        <View>
+          <Text style={styles.bold}>Expected graduation year: </Text>
+          <Text>{data.gradYear}</Text>
+        </View>
       </View>
       <View style={styles.section}>
         <Text style={styles.bold}>Foundational Courses: </Text>
