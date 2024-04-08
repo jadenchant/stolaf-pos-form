@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {PDFViewer} from '@react-pdf/renderer';
 import ElectiveSelect from './ElectiveSelect';
 import {FormData} from '../../interface';
 import ClassTable from './ClassTable';
@@ -15,6 +16,7 @@ import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import formatID from './FormatID';
+
 import {FormPDF} from './FormPDF';
 
 const forms: any = [form0, form1, form2, form3];
@@ -148,7 +150,9 @@ const Form = () => {
         </div>
 
         {/* Temporary To View PDF */}
-        <FormPDF />
+        <PDFViewer width="100%" height="800">
+          <FormPDF />
+        </PDFViewer>
       </div>
     </div>
   );

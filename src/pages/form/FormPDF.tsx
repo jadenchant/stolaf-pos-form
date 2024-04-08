@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     padding: 10,
+    fontSize: 12,
   },
   titleSection: {
     margin: 10,
