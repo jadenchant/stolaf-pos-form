@@ -15,10 +15,22 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
   },
+  headText: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 10,
+    padding: 10,
+  },
   title: {
     fontSize: 24,
   },
 });
+
+const data = {
+  name: 'John Doe',
+  gradYear: '2024',
+};
 
 export const FormPDF = () => (
   <Document title="St. Olaf Program Of Study Form" language="english">
@@ -28,8 +40,9 @@ export const FormPDF = () => (
           Computer Science Major Plan (CSMaP)
         </Text>
       </View>
-      <View style={styles.section}>
-        <Text>Section #1</Text>
+      <View style={styles.headText}>
+        <Text>Name: {data.name}</Text>
+        <Text>Expected graduation year: {data.gradYear}</Text>
       </View>
       <View style={styles.section}>
         <Text>Section #2</Text>
