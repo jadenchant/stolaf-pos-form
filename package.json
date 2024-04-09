@@ -39,7 +39,8 @@
     "@react-pdf/renderer": "^3.4.2",
     "bem-cn-lite": "^4.1.0",
     "react-router": "^6.22.2",
-    "react-router-dom": "^6.22.2"
+    "react-router-dom": "^6.22.2",
+    "react-signature-canvas": "^1.0.6"
   },
   "devDependencies": {
     "@gravity-ui/browserslist-config": "^4.1.0",
@@ -49,6 +50,7 @@
     "@gravity-ui/tsconfig": "^1.0.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
+    "@types/react-signature-canvas": "^1.0.5",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.18",
     "esbuild-sass-plugin": "^2.16.0",

@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
+import SignatureCanvas from 'react-signature-canvas';
 import ElectiveSelect from './ElectiveSelect';
 import {FormData} from '../../interface';
 import ClassTable from './ClassTable';
@@ -29,6 +30,8 @@ const forms: any = [form0, form1, form2, form3];
 const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [openModel, setOpenModal] = useState(false);
 
   const lastCharacter = location.pathname.slice(-1);
 
@@ -132,6 +135,31 @@ const Form = () => {
           formValues={formValues}
           setFormValues={setFormValues}
         />
+
+        <Button onClick={() => setOpenModal(true)}>
+          Create Signature
+        </Button>
+
+        {openModel && (
+          <div className="flex fixed justify-center align-middle w-screen h-full top-0 bottom-0 left-0 right-0 opacity-40">
+            <div className="w-11/12 max-w-[500px] p-3 border-2 bg-slate-200">
+              <div className="">
+                <SignatureCanvas
+                  penColor="black"
+                  canvasProps={{className: 'bg-white border-2'}}
+                />
+              </div>
+              <div className="mt-3">
+                <Button
+                  onClick={() => setOpenModal(false)}
+                  className="pt-2"
+                >
+                  Cancel
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="flex justify-between mt-20">
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
