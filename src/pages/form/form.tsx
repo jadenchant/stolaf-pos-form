@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import {Button} from '@gravity-ui/uikit';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
@@ -31,6 +31,7 @@ const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const sigCanvas = useRef(null);
   const [openModel, setOpenModal] = useState(false);
 
   const lastCharacter = location.pathname.slice(-1);
@@ -141,20 +142,34 @@ const Form = () => {
         </Button>
 
         {openModel && (
-          <div className="flex fixed justify-center align-middle w-screen h-full top-0 bottom-0 left-0 right-0 opacity-40">
-            <div className="w-11/12 max-w-[500px] p-3 border-2 bg-slate-200">
-              <div className="">
-                <SignatureCanvas
-                  penColor="black"
-                  canvasProps={{className: 'bg-white border-2'}}
-                />
-              </div>
+          <div className="flex fixed justify-center items-center w-screen h-screen top-0 bottom-0 left-0 right-0 z-50">
+            <div className="flex flex-col justify-center items-center w-11/12 max-w-[700px] max-h-[300px] p-3 border-2 bg-slate-200 opacity-100">
+              <SignatureCanvas
+                penColor="black"
+                canvasProps={{
+                  width: 600,
+                  height: 200,
+                  className: 'bg-white',
+                }}
+                ref={sigCanvas as any}
+              />
+
               <div className="mt-3">
                 <Button
                   onClick={() => setOpenModal(false)}
                   className="pt-2"
+                  size="l"
+                  view="outlined-warning"
                 >
                   Cancel
+                </Button>
+                <Button
+                  onClick={() => setOpenModal(false)}
+                  className="pt-2"
+                  size="l"
+                  view="action"
+                >
+                  Submit
                 </Button>
               </div>
             </div>

@@ -17,7 +17,7 @@ npm run dev
 
 ## To Do List
 
-- Rejection Reasons
+- Rejection Reasons - Jaden
 - PDF Generation - Jaden
 - Signature - Jaden
 - Faculty View
