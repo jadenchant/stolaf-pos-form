@@ -31,7 +31,7 @@ const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const sigCanvas = useRef(null);
+  const sigCanvas = useRef<SignatureCanvas | null>(null);
   const [openModel, setOpenModal] = useState(false);
 
   const lastCharacter = location.pathname.slice(-1);
@@ -154,18 +154,23 @@ const Form = () => {
                 ref={sigCanvas as any}
               />
 
-              <div className="mt-3">
+              <div className="flex justify-between mt-3">
                 <Button
                   onClick={() => setOpenModal(false)}
-                  className="pt-2"
                   size="l"
                   view="outlined-warning"
                 >
                   Cancel
                 </Button>
                 <Button
+                  onClick={() => sigCanvas.current?.clear()}
+                  size="l"
+                  view="outlined-warning"
+                >
+                  Clear
+                </Button>
+                <Button
                   onClick={() => setOpenModal(false)}
-                  className="pt-2"
                   size="l"
                   view="action"
                 >
