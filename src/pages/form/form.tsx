@@ -1,8 +1,9 @@
 import {useRef, useState} from 'react';
-import {Button} from '@gravity-ui/uikit';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
+import useScreenSize from '../../hooks/useScreenSize';
+import {Button} from '@gravity-ui/uikit';
 import ElectiveSelect from './ElectiveSelect';
 import {FormData} from '../../interface';
 import ClassTable from './ClassTable';
@@ -31,6 +32,8 @@ const Form = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const screenSize = useScreenSize();
+
   const sigCanvas = useRef<SignatureCanvas | null>(null);
   const [openModel, setOpenModal] = useState(false);
 
@@ -47,7 +50,7 @@ const Form = () => {
   );
 
   return (
-    <div className="lg:w-[1000px]">
+    <div className="lg:w-[1000px] md:w-[800px] w-[400px]">
       <h1 className="text-3xl font-bold">
         St. Olaf Program of Study Form
       </h1>
@@ -143,18 +146,21 @@ const Form = () => {
 
         {openModel && (
           <div className="flex fixed justify-center items-center w-screen h-screen top-0 bottom-0 left-0 right-0 z-50">
-            <div className="flex flex-col justify-center items-center w-11/12 max-w-[700px] max-h-[300px] p-3 border-2 bg-slate-200 opacity-100">
+            <div className="flex flex-col justify-center items-center w-11/12 max-w-[850px] max-h-[300px] p-3 border-2 bg-slate-200 opacity-100">
               <SignatureCanvas
                 penColor="black"
                 canvasProps={{
-                  width: 600,
+                  width:
+                    screenSize.width > 800
+                      ? 800
+                      : screenSize.width - 60,
                   height: 200,
                   className: 'bg-white',
                 }}
                 ref={sigCanvas as any}
               />
 
-              <div className="flex justify-between mt-3">
+              <div className="flex justify-between mt-3 w-[400px]">
                 <Button
                   onClick={() => setOpenModal(false)}
                   size="l"
