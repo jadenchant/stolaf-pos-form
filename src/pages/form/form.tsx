@@ -49,8 +49,20 @@ const Form = () => {
     formDataJson as FormData[],
   );
 
+  const [imageURL, setImageURL] = useState<string | null>(null);
+
+  const create = () => {
+    if (sigCanvas.current) {
+      const URL = sigCanvas.current
+        .getTrimmedCanvas()
+        .toDataURL('image/png');
+      setImageURL(URL);
+    }
+    setOpenModal(false);
+  };
+
   return (
-    <div className="lg:w-[1000px] md:w-[800px] w-[400px]">
+    <div className="lg:w-[1000px] md:w-[800px] w-[400px] md:text-sm text-[10px]">
       <h1 className="text-3xl font-bold">
         St. Olaf Program of Study Form
       </h1>
@@ -160,7 +172,7 @@ const Form = () => {
                 ref={sigCanvas as any}
               />
 
-              <div className="flex justify-between mt-3 w-[400px]">
+              <div className="flex justify-between mt-3 w-11/12 max-w-[400px]">
                 <Button
                   onClick={() => setOpenModal(false)}
                   size="l"
@@ -175,16 +187,16 @@ const Form = () => {
                 >
                   Clear
                 </Button>
-                <Button
-                  onClick={() => setOpenModal(false)}
-                  size="l"
-                  view="action"
-                >
-                  Submit
+                <Button onClick={create} size="l" view="action">
+                  Save
                 </Button>
               </div>
             </div>
           </div>
+        )}
+
+        {imageURL && (
+          <img src={imageURL} alt="signature" className="signature" />
         )}
 
         <div className="flex justify-between mt-20">
