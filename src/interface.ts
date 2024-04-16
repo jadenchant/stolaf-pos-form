@@ -1,3 +1,8 @@
+export interface ScreenSize {
+  width: number;
+  height: number;
+}
+
 export interface ClassData {
   id: string;
   name: string;

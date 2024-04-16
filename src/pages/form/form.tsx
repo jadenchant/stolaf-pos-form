@@ -62,7 +62,7 @@ const Form = () => {
   };
 
   return (
-    <div className="lg:w-[1000px] md:w-[800px] w-[400px] md:text-sm text-[10px]">
+    <div className="lg:w-[1000px] md:w-[800px] w-[375px] md:text-sm text-[10px]">
       <h1 className="text-3xl font-bold">
         St. Olaf Program of Study Form
       </h1>

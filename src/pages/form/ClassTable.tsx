@@ -1,11 +1,18 @@
 import {Select, Table} from '@gravity-ui/uikit';
-import {ClassData, FormData, ClassTableProps} from '@/interface';
+import {
+  ClassData,
+  FormData,
+  ClassTableProps,
+  ScreenSize,
+} from '@/interface';
 import formatID from './FormatID';
+import useScreenSize from '../../hooks/useScreenSize';
 
 const dataFormat = (
   data: ClassData[],
   formValues: FormData[],
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>,
+  screenSize: ScreenSize,
 ) => {
   return data.map((item) => ({
     class: `${formatID(item.id)}: ${item.name}`,
@@ -105,7 +112,7 @@ const col = [
   {
     id: 'prerequisite',
     name: 'Prerequisites',
-    width: 400,
+    width: 200,
   },
   {id: 'term', name: 'Term', width: 200},
   {id: 'year', name: 'Year', width: 200},
@@ -117,9 +124,16 @@ const ClassTable = ({
   setFormValues,
   classNames,
 }: ClassTableProps) => {
+  const screenSize = useScreenSize();
+
   return (
     <Table
-      data={dataFormat(selectedValues, formValues, setFormValues)}
+      data={dataFormat(
+        selectedValues,
+        formValues,
+        setFormValues,
+        screenSize,
+      )}
       columns={col}
       className={`border rounded-md border-zinc-300 ${classNames}`}
     />

@@ -1,9 +1,5 @@
 import {useState, useEffect} from 'react';
-
-interface ScreenSize {
-  width: number;
-  height: number;
-}
+import {ScreenSize} from '@/interface';
 
 const useScreenSize = (): ScreenSize => {
   const [screenSize, setScreenSize] = useState<ScreenSize>({

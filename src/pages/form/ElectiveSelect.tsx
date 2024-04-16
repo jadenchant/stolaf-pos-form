@@ -86,11 +86,11 @@ const ElectiveSelect = ({
       {classes.map((item, outerIndex) => {
         return (
           <Select.Option value={item.id} key={outerIndex}>
-            <div className="flex justify-between lg:w-[950px] md:w-[600px] w-[400px]">
-              <p className=" md:text-sm text-[10px]">{`${formatID(
+            <div className="flex justify-between lg:w-[950px] md:w-[725px] w-[325px]">
+              <p className="md:text-[12px] text-[10px]">{`${formatID(
                 item.id,
               )}: ${item.name}`}</p>
-              <div className="flex flex-row justify-end  md:text-sm text-[10px]">
+              <div className="flex flex-row justify-end  md:text-[12px] text-[10px]">
                 {formatID(item.prerequisite)}
               </div>
             </div>
