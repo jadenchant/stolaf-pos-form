@@ -152,9 +152,11 @@ const Form = () => {
           setFormValues={setFormValues}
         />
 
-        <Button onClick={() => setOpenModal(true)}>
-          Create Signature
-        </Button>
+        <div className="flex justify-center mt-8">
+          <Button onClick={() => setOpenModal(true)} view="action">
+            Create Signature
+          </Button>
+        </div>
 
         <Modal open={openModel} onClose={() => setOpenModal(false)}>
           <div className="">
@@ -196,7 +198,13 @@ const Form = () => {
         </Modal>
 
         {imageURL && (
-          <img src={imageURL} alt="signature" className="signature" />
+          <div className="flex justify-center mt-8 bg-slate-200">
+            <img
+              src={imageURL}
+              alt="signature"
+              className="signature"
+            />
+          </div>
         )}
 
         <div className="flex justify-between mt-20">

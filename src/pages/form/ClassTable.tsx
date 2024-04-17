@@ -116,11 +116,11 @@ const dataFormat = (
 };
 
 const col = [
-  {id: 'class', name: 'Class', width: 300},
+  {id: 'class', name: 'Class', width: 400},
   {
     id: 'prerequisite',
     name: 'Prerequisites',
-    width: 200,
+    width: 300,
   },
   {id: 'term', name: 'Term', width: 200},
   {id: 'year', name: 'Year', width: 200},
