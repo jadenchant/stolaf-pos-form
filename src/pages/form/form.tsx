@@ -45,7 +45,6 @@ const Form = () => {
     formDataJson = forms[lastCharacter];
   }
 
-  // Check if the form status is complete or submitted_for_review
   const [formStatus, setFormStatus] = useState<string>(
     formDataJson.formStatus,
   );
