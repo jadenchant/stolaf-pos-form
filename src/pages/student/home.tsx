@@ -1,4 +1,4 @@
-import {ClassData, ScreenSize} from '@/interface';
+import {ScreenSize} from '@/interface';
 import useScreenSize from '../../hooks/useScreenSize';
 import {Button, Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
@@ -56,7 +56,7 @@ const dataFormat = (data: any, screenSize: ScreenSize) => {
                       : 'danger'
               }
             >
-              <span className="md:text-[12px] text-[10px]">
+              <span className="lg:text-[14px] md:text-[12px] text-[10px]">
                 {status === 'in_progress'
                   ? 'In Progress'
                   : status === 'complete'
@@ -78,9 +78,19 @@ const dataFormat = (data: any, screenSize: ScreenSize) => {
 };
 
 const col = [
-  {id: 'major', name: 'Major', width: 400},
+  {
+    id: 'major',
+    name: 'Major',
+    width: 400,
+    className: 'md:text-[14px] text-[12px]',
+  },
   {id: 'status', name: 'Status', width: 200},
-  {id: 'updated', name: 'Updated', width: 500},
+  {
+    id: 'updated',
+    name: 'Updated',
+    width: 500,
+    className: 'md:text-[14px] text-[12px]',
+  },
 ];
 
 const StudentHome = () => {
