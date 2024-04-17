@@ -24,10 +24,20 @@ const dataFormat = (
           <div className="w-20 text-wrap">{item.name}</div>
         </div>
       ),
-    prerequisite: formatID(item.prerequisite),
+    // Add tooltip to show the class name for prerequisites
+    prerequisite:
+      screenSize.width > 750 ? (
+        formatID(item.prerequisite)
+      ) : (
+        <div className="w-20 text-wrap">
+          {formatID(item.prerequisite)}
+        </div>
+      ),
     term: (
       <Select
         width="max"
+        // Not working as expected
+        className="!text-[30px]"
         size={screenSize.width > 750 ? 'm' : 's'}
         value={[
           formValues.find(
