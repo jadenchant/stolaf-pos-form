@@ -45,7 +45,10 @@ const Form = () => {
     formDataJson = forms[lastCharacter];
   }
 
-  const [formStatus, setFormStatus] = useState(formDataJson.status);
+  // Check if the form status is complete or submitted_for_review
+  const [formStatus, setFormStatus] = useState<string>(
+    formDataJson.status,
+  );
 
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson.classes as FormData[],
@@ -207,20 +210,25 @@ const Form = () => {
           </div>
         )}
 
+        {/* FIX */}
         <div className="flex justify-between mt-20">
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          <Link to="/student">
-            <Button view="action" size="l">
-              Save
-            </Button>
-          </Link>
-          <Link to="/student">
-            <Button view="action" size="l">
-              Submit
-            </Button>
-          </Link>
+          {formStatus === 'submitted_for_review' && (
+            <Link to="/student">
+              <Button view="action" size="l">
+                Save
+              </Button>
+            </Link>
+          )}
+          {formStatus === 'submitted_for_review' && (
+            <Link to="/student">
+              <Button view="action" size="l">
+                Submit
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Temporary To View PDF */}
