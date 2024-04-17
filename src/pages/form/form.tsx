@@ -159,40 +159,38 @@ const Form = () => {
         </div>
 
         <Modal open={openModel} onClose={() => setOpenModal(false)}>
-          <div className="">
-            <div className="flex flex-col justify-center items-center m-4">
-              <SignatureCanvas
-                penColor="black"
-                canvasProps={{
-                  width:
-                    screenSize.width > 800
-                      ? 800
-                      : screenSize.width - 60,
-                  height: 200,
-                  className: 'bg-white',
-                }}
-                ref={sigCanvas as any}
-              />
+          <div className="flex flex-col justify-center items-center m-4">
+            <SignatureCanvas
+              penColor="black"
+              canvasProps={{
+                width:
+                  screenSize.width > 800
+                    ? 800
+                    : screenSize.width - 60,
+                height: 200,
+                className: 'bg-white',
+              }}
+              ref={sigCanvas as any}
+            />
 
-              <div className="flex justify-between mt-3 w-11/12 max-w-[400px]">
-                <Button
-                  onClick={() => setOpenModal(false)}
-                  size="l"
-                  view="outlined-warning"
-                >
-                  Cancel
-                </Button>
-                <Button
-                  onClick={() => sigCanvas.current?.clear()}
-                  size="l"
-                  view="outlined-warning"
-                >
-                  Clear
-                </Button>
-                <Button onClick={create} size="l" view="action">
-                  Save
-                </Button>
-              </div>
+            <div className="flex justify-between mt-3 w-11/12 max-w-[400px]">
+              <Button
+                onClick={() => setOpenModal(false)}
+                size="l"
+                view="outlined-warning"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => sigCanvas.current?.clear()}
+                size="l"
+                view="outlined-warning"
+              >
+                Clear
+              </Button>
+              <Button onClick={create} size="l" view="action">
+                Save
+              </Button>
             </div>
           </div>
         </Modal>

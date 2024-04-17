@@ -36,8 +36,6 @@ const dataFormat = (
     term: (
       <Select
         width="max"
-        // Not working as expected
-        className="!text-[30px]"
         size={screenSize.width > 750 ? 'm' : 's'}
         value={[
           formValues.find(
