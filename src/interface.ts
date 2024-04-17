@@ -10,6 +10,7 @@ export interface ClassData {
 }
 
 export interface ClassTableProps {
+  formStatus: string;
   selectedValues: ClassData[];
   formValues: FormData[];
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
@@ -17,6 +18,7 @@ export interface ClassTableProps {
 }
 
 export interface ElectiveSelectProps {
+  formStatus: string;
   classes: ClassData[];
   formValues: FormData[];
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;

@@ -10,6 +10,7 @@ import useScreenSize from '../../hooks/useScreenSize';
 
 const dataFormat = (
   data: ClassData[],
+  formStatus: string,
   formValues: FormData[],
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>,
   screenSize: ScreenSize,
@@ -36,6 +37,10 @@ const dataFormat = (
     term: (
       <Select
         width="max"
+        disabled={
+          formStatus === 'complete' ||
+          formStatus === 'submitted_for_review'
+        }
         size={screenSize.width > 750 ? 'm' : 's'}
         value={[
           formValues.find(
@@ -80,6 +85,10 @@ const dataFormat = (
     year: (
       <Select
         width="max"
+        disabled={
+          formStatus === 'complete' ||
+          formStatus === 'submitted_for_review'
+        }
         size={screenSize.width > 750 ? 'm' : 's'}
         value={[
           formValues
@@ -135,6 +144,7 @@ const col = [
 ];
 
 const ClassTable = ({
+  formStatus,
   selectedValues,
   formValues,
   setFormValues,
@@ -146,6 +156,7 @@ const ClassTable = ({
     <Table
       data={dataFormat(
         selectedValues,
+        formStatus,
         formValues,
         setFormValues,
         screenSize,

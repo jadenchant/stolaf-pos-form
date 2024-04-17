@@ -47,7 +47,7 @@ const Form = () => {
 
   // Check if the form status is complete or submitted_for_review
   const [formStatus, setFormStatus] = useState<string>(
-    formDataJson.status,
+    formDataJson.formStatus,
   );
 
   const [formValues, setFormValues] = useState<FormData[]>(
@@ -79,6 +79,7 @@ const Form = () => {
           Must complete by the end of sophomore year.
         </p>
         <ClassTable
+          formStatus={formStatus}
           selectedValues={foundationData}
           formValues={formValues}
           setFormValues={setFormValues}
@@ -92,6 +93,7 @@ const Form = () => {
           senior year.
         </p>
         <ClassTable
+          formStatus={formStatus}
           selectedValues={requiredData}
           formValues={formValues}
           setFormValues={setFormValues}
@@ -115,12 +117,14 @@ const Form = () => {
         </div>
 
         <ElectiveSelect
+          formStatus={formStatus}
           classes={electiveData}
           formValues={formValues}
           setFormValues={setFormValues}
         />
 
         <ClassTable
+          formStatus={formStatus}
           selectedValues={electiveData.filter((elective) =>
             formValues.some(
               (formValue) =>
@@ -140,6 +144,7 @@ const Form = () => {
         </div>
 
         <ElectiveSelect
+          formStatus={formStatus}
           classes={otherElectiveData}
           formValues={formValues}
           setFormValues={setFormValues}
@@ -147,6 +152,7 @@ const Form = () => {
         />
 
         <ClassTable
+          formStatus={formStatus}
           selectedValues={otherElectiveData.filter((elective) =>
             formValues.some(
               (formValue) =>
@@ -210,25 +216,33 @@ const Form = () => {
           </div>
         )}
 
-        {/* FIX */}
-        <div className="flex justify-between mt-20">
+        <div
+          className={`flex ${
+            formStatus !== 'submitted_for_review' &&
+            formStatus !== 'complete'
+              ? 'justify-between'
+              : 'justify-center'
+          } mt-20 mx-4`}
+        >
           <Button view="normal" size="l" onClick={() => navigate(-1)}>
             Cancel
           </Button>
-          {formStatus === 'submitted_for_review' && (
-            <Link to="/student">
-              <Button view="action" size="l">
-                Save
-              </Button>
-            </Link>
-          )}
-          {formStatus === 'submitted_for_review' && (
-            <Link to="/student">
-              <Button view="action" size="l">
-                Submit
-              </Button>
-            </Link>
-          )}
+          {formStatus !== 'submitted_for_review' &&
+            formStatus !== 'complete' && (
+              <Link to="/student">
+                <Button view="action" size="l">
+                  Save
+                </Button>
+              </Link>
+            )}
+          {formStatus !== 'submitted_for_review' &&
+            formStatus !== 'complete' && (
+              <Link to="/student">
+                <Button view="action" size="l">
+                  Submit
+                </Button>
+              </Link>
+            )}
         </div>
 
         {/* Temporary To View PDF */}

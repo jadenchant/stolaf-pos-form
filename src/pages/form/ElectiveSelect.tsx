@@ -4,6 +4,7 @@ import formatID from './FormatID';
 import {electiveData, otherElectiveData} from './CSFormData';
 
 const ElectiveSelect = ({
+  formStatus,
   classes,
   formValues,
   setFormValues,
@@ -13,6 +14,10 @@ const ElectiveSelect = ({
     <Select
       width="max"
       size="l"
+      disabled={
+        formStatus === 'complete' ||
+        formStatus === 'submitted_for_review'
+      }
       multiple
       filterable
       hasClear
