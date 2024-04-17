@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
   flexRow: {
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'baseline',
     fontSize: '12pt',
     marginBottom: 5,
   },
@@ -159,7 +160,11 @@ const Table = ({data}: {data: ClassData[]}) => (
   </View>
 );
 
-export const FormPDF = () => {
+interface FormPDFProps {
+  formValues: FormData[];
+}
+
+export const FormPDF = ({formValues}: FormPDFProps) => {
   return (
     <Document
       title="St. Olaf CS Program Of Study Form"
@@ -173,10 +178,7 @@ export const FormPDF = () => {
         </View>
         <View style={styles.headText}>
           <View style={styles.flexRow}>
-            <View>
-              <Text style={{fontWeight: 'heavy'}}>Name: </Text>
-            </View>
-
+            <Text>Name: </Text>
             <Text>{data.name}</Text>
           </View>
           <View>

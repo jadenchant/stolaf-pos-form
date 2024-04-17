@@ -246,7 +246,7 @@ const Form = () => {
 
         {/* Temporary To View PDF */}
         <PDFViewer width="100%" height="800">
-          <FormPDF />
+          <FormPDF formValues={formValues} />
         </PDFViewer>
       </div>
     </div>
