@@ -1,30 +1,33 @@
-[
-  {
-    "id": "csci121",
-    "name": "Intro to CS course",
-    "prerequisite": "None",
-    "term": "jterm",
-    "year": 2025
-  },
-  {
-    "id": "csci125",
-    "name": "Intro to CS course",
-    "prerequisite": "Calculus I",
-    "term": "spring",
-    "year": 2025
-  },
-  {
-    "id": "csci221",
-    "name": "Intro to Data Structures in C++",
-    "prerequisite": "csci121 || csci125",
-    "term": "summer",
-    "year": 2025
-  },
-  {
-    "id": "math220",
-    "name": "Elementary Linear Algebra",
-    "prerequisite": "CSCI 221 or Calculus I",
-    "term": "fall",
-    "year": 2026
-  }
-]
+{
+  "formStatus": "submitted_for_review",
+  "classes": [
+    {
+      "id": "csci121",
+      "name": "Intro to CS course",
+      "prerequisite": "None",
+      "term": "jterm",
+      "year": 2025
+    },
+    {
+      "id": "csci125",
+      "name": "Intro to CS course",
+      "prerequisite": "Calculus I",
+      "term": "spring",
+      "year": 2025
+    },
+    {
+      "id": "csci221",
+      "name": "Intro to Data Structures in C++",
+      "prerequisite": "csci121 || csci125",
+      "term": "summer",
+      "year": 2025
+    },
+    {
+      "id": "math220",
+      "name": "Elementary Linear Algebra",
+      "prerequisite": "CSCI 221 or Calculus I",
+      "term": "fall",
+      "year": 2026
+    }
+  ]
+}

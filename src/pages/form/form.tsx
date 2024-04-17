@@ -45,8 +45,10 @@ const Form = () => {
     formDataJson = forms[lastCharacter];
   }
 
+  const [formStatus, setFormStatus] = useState(formDataJson.status);
+
   const [formValues, setFormValues] = useState<FormData[]>(
-    formDataJson as FormData[],
+    formDataJson.classes as FormData[],
   );
 
   const [imageURL, setImageURL] = useState<string | null>(null);
@@ -196,7 +198,7 @@ const Form = () => {
         </Modal>
 
         {imageURL && (
-          <div className="flex justify-center mt-8 bg-slate-200">
+          <div className="flex justify-center mt-8 bg-slate-100">
             <img
               src={imageURL}
               alt="signature"
