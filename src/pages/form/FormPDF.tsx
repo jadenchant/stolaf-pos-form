@@ -126,6 +126,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  smallerText: {
+    fontSize: '10pt',
+  },
 });
 
 const data = {
@@ -187,14 +190,16 @@ export const FormPDF = () => {
         </View>
         <View style={styles.flexRow}>
           <Text style={styles.bold}>Foundational Courses: </Text>
-          <Text>Must complete by the end of sophomore year.</Text>
+          <Text style={styles.smallerText}>
+            Must complete by the end of sophomore year.
+          </Text>
         </View>
 
         <Table data={foundationData} />
 
         <View style={styles.flexRow}>
           <Text style={styles.bold}>Required Courses: </Text>
-          <Text>
+          <Text style={styles.smallerText}>
             Generally completed by end of junior year, perhaps 1 for
             senior year.
           </Text>
@@ -203,12 +208,16 @@ export const FormPDF = () => {
         <Table data={requiredData} />
 
         <View style={styles.flexRow}>
-          <Text style={styles.bold}>Electives: Complete 3, </Text>
-          <Text>at least 1 must be 300-level</Text>
+          <Text style={styles.bold}>Electives: </Text>
+          <Text style={styles.smallerText}>
+            Complete 3, at least 1 must be 300-level
+          </Text>
         </View>
         <View style={styles.flexRow}>
           <Text style={styles.bold}>Designated: </Text>
-          <Text>Must complete at least 2 of these</Text>
+          <Text style={styles.smallerText}>
+            Must complete at least 2 of these
+          </Text>
         </View>
 
         <Table data={electiveData} />
