@@ -22,16 +22,16 @@ const data = [
     id: '02',
   },
 ];
+let filteredData = data;
 
 const professorName = 'Walter White';
-const filters = {
+const defaultFilters = {
   unfilteredSearchQ: true,
   searchTerm: '',
   professors: [professorName, 'undecided'],
-  formStatus: ['submitted_for_review'],
+  formStatus: ['submitted_for_review', 'in_progress', 'complete'],
   timeFrame: 'Last 20 years',
 };
-let filteredData = data;
 
 const dataFormat = function (data: FacultyClassList[]) {
   return data.map((item) => ({
@@ -77,10 +77,8 @@ const col = [
 ];
 
 const filterFunction = (filterObject: FilterObject) => {
-  if (
-    filterObject.unfilteredSearchQ &&
-    filterObject.searchTerm.length > 0
-  ) {
+  filteredData = data;
+  if (filterObject.searchTerm.length > 0) {
     filteredData = data.filter(
       (item) =>
         item.faculty
@@ -94,17 +92,33 @@ const filterFunction = (filterObject: FilterObject) => {
           .includes(filterObject.searchTerm.toLowerCase()),
     );
   }
+  if (
+    !filterObject.unfilteredSearchQ ||
+    filterObject.searchTerm.length == 0
+  ) {
+    filteredData = filteredData.filter(
+      (item) =>
+        filterObject.professors.includes(item.faculty) &&
+        (filterObject.formStatus.includes(item.status[0]) ||
+          filterObject.formStatus.includes(item.status[1])),
+    );
+  }
+  return filteredData;
 };
 
 const searchBar = (inputText: string, setInputText: Function) => {
   const handleTextChange = (newText: string) => {
     setInputText(newText);
-    filteredData = data.filter(
+    console.log(inputText);
+    /*filteredData = data.filter(
       (item) =>
         item.faculty.toLowerCase().includes(newText.toLowerCase()) ||
         item.student.toLowerCase().includes(newText.toLowerCase()) ||
         item.major.toLowerCase().includes(newText.toLowerCase()),
-    );
+    );*/
+    let newFilter = defaultFilters;
+    newFilter.searchTerm = newText;
+    filteredData = filterFunction(newFilter);
   };
 
   return (
