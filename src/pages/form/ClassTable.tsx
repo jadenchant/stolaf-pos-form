@@ -13,14 +13,22 @@ const dataFormat = (
   formValues: FormData[],
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>,
   screenSize: ScreenSize,
-) => {
+): any => {
   return data.map((item) => ({
-    class: `${formatID(item.id)}: ${item.name}`,
+    class:
+      screenSize.width > 750 ? (
+        `${formatID(item.id)}: ${item.name}`
+      ) : (
+        <div>
+          <div>{formatID(item.id)}: </div>
+          <div className="w-20 text-wrap">{item.name}</div>
+        </div>
+      ),
     prerequisite: formatID(item.prerequisite),
     term: (
       <Select
         width="max"
-        size="m"
+        size={screenSize.width > 750 ? 'm' : 's'}
         value={[
           formValues.find(
             (value) => formatID(item.id) === formatID(value.id),
@@ -64,7 +72,7 @@ const dataFormat = (
     year: (
       <Select
         width="max"
-        size="m"
+        size={screenSize.width > 750 ? 'm' : 's'}
         value={[
           formValues
             .find((value) => formatID(item.id) === formatID(value.id))

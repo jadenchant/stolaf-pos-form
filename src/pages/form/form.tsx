@@ -3,7 +3,7 @@ import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
 import useScreenSize from '../../hooks/useScreenSize';
-import {Button} from '@gravity-ui/uikit';
+import {Button, Modal} from '@gravity-ui/uikit';
 import ElectiveSelect from './ElectiveSelect';
 import {FormData} from '../../interface';
 import ClassTable from './ClassTable';
@@ -156,9 +156,9 @@ const Form = () => {
           Create Signature
         </Button>
 
-        {openModel && (
-          <div className="flex fixed justify-center items-center w-screen h-screen top-0 bottom-0 left-0 right-0 z-50">
-            <div className="flex flex-col justify-center items-center w-11/12 max-w-[850px] max-h-[300px] p-3 border-2 bg-slate-200 opacity-100">
+        <Modal open={openModel} onClose={() => setOpenModal(false)}>
+          <div className="">
+            <div className="flex flex-col justify-center items-center m-4">
               <SignatureCanvas
                 penColor="black"
                 canvasProps={{
@@ -193,7 +193,7 @@ const Form = () => {
               </div>
             </div>
           </div>
-        )}
+        </Modal>
 
         {imageURL && (
           <img src={imageURL} alt="signature" className="signature" />
