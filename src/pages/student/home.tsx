@@ -1,3 +1,5 @@
+import {ClassData, ScreenSize} from '@/interface';
+import useScreenSize from '../../hooks/useScreenSize';
 import {Button, Label, Table} from '@gravity-ui/uikit';
 import {Link} from 'react-router-dom';
 
@@ -29,41 +31,52 @@ const data = [
   },
 ];
 
-const dataFormat = data.map((item) => ({
-  major: (
-    <Link className="underline" to={'/form/' + String(item.form_id)}>
-      {item.major}
-    </Link>
-  ),
-  status: (
-    <div className="flex justify-between">
-      {item.status.map((status) => (
-        <Link to={'/form/' + String(item.form_id)}>
-          <Label
-            theme={
-              status === 'in_progress'
-                ? 'info'
-                : status === 'complete'
-                  ? 'success'
-                  : status === 'submitted_for_review'
-                    ? 'warning'
-                    : 'danger'
-            }
-          >
-            {status === 'in_progress'
-              ? 'In Progress'
-              : status === 'complete'
-                ? 'Complete'
-                : status === 'submitted_for_review'
-                  ? 'Submitted For Review'
-                  : 'Rejected'}
-          </Label>
-        </Link>
-      ))}
-    </div>
-  ),
-  updated: item.updated,
-}));
+const dataFormat = (data: any, screenSize: ScreenSize) => {
+  return data.map((item: any) => ({
+    major: (
+      <Link
+        className="underline"
+        to={'/form/' + String(item.form_id)}
+      >
+        {item.major}
+      </Link>
+    ),
+    status: (
+      <div className="flex justify-between">
+        {item.status.map((status: any) => (
+          <Link to={'/form/' + String(item.form_id)}>
+            <Label
+              theme={
+                status === 'in_progress'
+                  ? 'info'
+                  : status === 'complete'
+                    ? 'success'
+                    : status === 'submitted_for_review'
+                      ? 'warning'
+                      : 'danger'
+              }
+            >
+              <span className="md:text-[12px] text-[10px]">
+                {status === 'in_progress'
+                  ? 'In Progress'
+                  : status === 'complete'
+                    ? 'Complete'
+                    : status === 'submitted_for_review'
+                      ? 'Submitted For Review'
+                      : 'Rejected'}
+              </span>
+            </Label>
+          </Link>
+        ))}
+      </div>
+    ),
+    // FIX
+    updated:
+      screenSize.width > 700
+        ? item.updated
+        : item.updated.match(/(\d{2}-\d{2}-\d{4})/),
+  }));
+};
 
 const col = [
   {id: 'major', name: 'Major', width: 400},
@@ -72,6 +85,7 @@ const col = [
 ];
 
 const StudentHome = () => {
+  const screenSize = useScreenSize();
   return (
     <section>
       <div className="flex justify-between">
@@ -84,7 +98,7 @@ const StudentHome = () => {
           </Button>
         </Link>
       </div>
-      <Table data={dataFormat} columns={col} />
+      <Table data={dataFormat(data, screenSize)} columns={col} />
     </section>
   );
 };
