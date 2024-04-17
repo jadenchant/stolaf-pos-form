@@ -70,11 +70,10 @@ const dataFormat = (data: any, screenSize: ScreenSize) => {
         ))}
       </div>
     ),
-    // FIX
     updated:
       screenSize.width > 700
         ? item.updated
-        : item.updated.match(/(\d{2}-\d{2}-\d{4})/),
+        : item.updated.match(/(\d{2}-\d{2}-\d{4})/)[0],
   }));
 };
 
@@ -88,8 +87,8 @@ const StudentHome = () => {
   const screenSize = useScreenSize();
   return (
     <section>
-      <div className="flex justify-between">
-        <h1 className="text-3xl font-bold">
+      <div className="flex justify-between  mx-2">
+        <h1 className="md:text-3xl text-xl font-bold">
           St. Olaf Program of Study
         </h1>
         <Link to="/form/new">
