@@ -311,7 +311,7 @@ export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
 
           <View style={styles.signatureDate}>
             <Text>Date: </Text>
-            <Text>{new Date().toLocaleDateString()}</Text>
+            {sigURL && <Text>{new Date().toLocaleDateString()}</Text>}
           </View>
         </View>
         <View style={styles.signature}>
