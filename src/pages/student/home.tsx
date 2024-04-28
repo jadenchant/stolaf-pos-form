@@ -2,34 +2,13 @@ import {Link} from 'react-router-dom';
 import {Button, Label, Table} from '@gravity-ui/uikit';
 import {ScreenSize} from '@/interface';
 import useScreenSize from '../../hooks/useScreenSize';
+import form0 from '../../data/form0.json';
+import form1 from '../../data/form1.json';
+import form2 from '../../data/form2.json';
+import form3 from '../../data/form3.json';
+import form4 from '../../data/form4.json';
 
-// Dummy data
-const data = [
-  {
-    form_id: 0,
-    major: 'Computer Science',
-    status: ['in_progress', 'rejected'],
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    form_id: 1,
-    major: 'Mathematics',
-    status: ['submitted_for_review'],
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    form_id: 2,
-    major: 'Mathematics',
-    status: ['complete'],
-    updated: '01-02-2023 09:30 AM',
-  },
-  {
-    form_id: 3,
-    major: 'Computer Science',
-    status: ['complete'],
-    updated: '01-02-2023 09:30 AM',
-  },
-];
+const forms: any = [form0, form1, form2, form3, form4];
 
 const dataFormat = (data: any, screenSize: ScreenSize) => {
   return data.map((item: any) => ({
@@ -95,6 +74,16 @@ const col = [
 
 const StudentHome = () => {
   const screenSize = useScreenSize();
+
+  const data = forms.map((form: any) => ({
+    form_id: form.id,
+    major: form.major,
+    status: form.isRejected
+      ? [form.formStatus, 'rejected']
+      : [form.formStatus],
+    updated: form.updated,
+  }));
+
   return (
     <section>
       <div className="flex justify-between  mx-2">

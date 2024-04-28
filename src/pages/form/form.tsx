@@ -18,9 +18,10 @@ import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
+import form4 from '../../data/form4.json';
 import formatID from './FormatID';
 
-const forms: any = [form0, form1, form2, form3];
+const forms: any = [form0, form1, form2, form3, form4];
 
 // Cancel doesn't save the form
 // Save sends a post request to the database

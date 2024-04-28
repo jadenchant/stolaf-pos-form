@@ -1,5 +1,9 @@
 {
+  "id": 0,
+  "major": "Computer Science",
   "formStatus": "in_progress",
+  "isRejected": true,
+  "updated": "01-02-2023 09:30 AM",
   "classes": [
     {
       "id": "csci121",
