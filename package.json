@@ -1,5 +1,5 @@
 {
-  "name": "St. Olaf POS",
+  "name": "@st-olaf/pos",
   "version": "0.1.0",
   "type": "module",
   "keywords": [
@@ -9,7 +9,10 @@
     "typescript",
     "gravity",
     "uikit",
-    "sass"
+    "sass",
+    "react-pdf",
+    "react-signature-canvas",
+    "react-router"
   ],
   "description": "Vite template with: typescript, sass and @gravity-ui packages",
   "repository": {

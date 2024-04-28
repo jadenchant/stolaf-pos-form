@@ -1,13 +1,17 @@
 # St. Olaf Program of Study
 
-## Technologies list
+## Technologies List
 
-- [Gravity UI](https://gravity-ui.com/)
+- [Vite](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+- [React Router](https://reactrouter.com/en/main)
+- [Gravity UI](https://gravity-ui.com/)
+- [Tailwind](https://tailwindcss.com/)
 - [Sass](https://sass-lang.com/)
 - [ESlint](https://eslint.org/) & [Prettier](https://prettier.io/)
-- [Tailwind](https://tailwindcss.com/)
-- [React Router](https://reactrouter.com/en/main)
+- [React Signature Canvas](https://www.npmjs.com/package/react-signature-canvas)
+- [React PDF](https://react-pdf.org/)
 
 ## Dev
 
