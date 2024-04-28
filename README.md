@@ -1,5 +1,7 @@
 # St. Olaf Program of Study
 
+St. Olaf Program of Study is a website that allows St. Olaf Students to plan for their four year major. It also allows for faculty to review and approve a student's plan.
+
 ## Technologies List
 
 - [Vite](https://vitejs.dev/)
