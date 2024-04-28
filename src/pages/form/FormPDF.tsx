@@ -234,45 +234,63 @@ export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
             </View>
           </View>
         </View>
-        <View style={styles.flexRow}>
-          <Text style={styles.bold}>Foundational Courses: </Text>
-          <Text style={styles.smallerText}>
-            Must complete by the end of sophomore year.
-          </Text>
-        </View>
 
-        <Table data={foundationDataFiltered} />
+        {foundationDataFiltered.length > 0 && (
+          <View>
+            <View style={styles.flexRow}>
+              <Text style={styles.bold}>Foundational Courses: </Text>
+              <Text style={styles.smallerText}>
+                Must complete by the end of sophomore year.
+              </Text>
+            </View>
 
-        <View style={styles.flexRow}>
-          <Text style={styles.bold}>Required Courses: </Text>
-          <Text style={styles.smallerText}>
-            Generally completed by end of junior year, perhaps 1 for
-            senior year.
-          </Text>
-        </View>
+            <Table data={foundationDataFiltered} />
+          </View>
+        )}
 
-        <Table data={requiredDataFiltered} />
+        {requiredDataFiltered.length > 0 && (
+          <View>
+            <View style={styles.flexRow}>
+              <Text style={styles.bold}>Required Courses: </Text>
+              <Text style={styles.smallerText}>
+                Generally completed by end of junior year, perhaps 1
+                for senior year.
+              </Text>
+            </View>
 
-        <View style={styles.flexRow}>
-          <Text style={styles.bold}>Electives: </Text>
-          <Text style={styles.smallerText}>
-            Complete 3, at least 1 must be 300-level
-          </Text>
-        </View>
-        <View style={styles.flexRow}>
-          <Text style={styles.bold}>Designated: </Text>
-          <Text style={styles.smallerText}>
-            Must complete at least 2 of these
-          </Text>
-        </View>
+            <Table data={requiredDataFiltered} />
+          </View>
+        )}
 
-        <Table data={electiveDataFiltered} />
+        {electiveDataFiltered.length > 0 && (
+          <View>
+            <View style={styles.flexRow}>
+              <Text style={styles.bold}>Electives: </Text>
+              <Text style={styles.smallerText}>
+                Complete 3, at least 1 must be 300-level
+              </Text>
+            </View>
+            <View style={styles.flexRow}>
+              <Text style={styles.bold}>Designated: </Text>
+              <Text style={styles.smallerText}>
+                Must complete at least 2 of these
+              </Text>
+            </View>
 
-        <View style={styles.flexRow}>
-          <Text style={styles.bold}>Other electives Include: </Text>
-        </View>
-        {otherElectiveDataFiltered.length === 0 && (
-          <Table data={otherElectiveDataFiltered} />
+            <Table data={electiveDataFiltered} />
+          </View>
+        )}
+
+        {otherElectiveDataFiltered.length > 0 && (
+          <View>
+            <View style={styles.flexRow}>
+              <Text style={styles.bold}>
+                Other electives Include:{' '}
+              </Text>
+            </View>
+
+            <Table data={otherElectiveDataFiltered} />
+          </View>
         )}
 
         <View style={styles.signature}>
