@@ -2,7 +2,7 @@ import {useRef, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
-import {Button, Modal} from '@gravity-ui/uikit';
+import {Button, Card, Modal} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
 import ElectiveSelect from './components/ElectiveSelect';
@@ -47,6 +47,12 @@ const Form = () => {
 
   const [formStatus] = useState<string>(formDataJson.formStatus);
 
+  const isRejected: boolean = formDataJson.isRejected;
+
+  const rejectionReasons: string = isRejected
+    ? formDataJson.rejectionReasons
+    : '';
+
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson.classes as FormData[],
   );
@@ -68,6 +74,25 @@ const Form = () => {
       <h1 className="text-3xl font-bold">
         St. Olaf Program of Study Form
       </h1>
+
+      {isRejected && (
+        <Card
+          theme="warning"
+          type="container"
+          view="filled"
+          className="mt-4"
+        >
+          <div className="flex flex-col md:flex-row p-4 lg:p-6 text-[14pt]">
+            <p className="mr-2 mb-2 w-96 lg:w-[300px]">
+              Rejection Reasons:
+            </p>
+            <p className="text-[12pt] relative leading-6">
+              {rejectionReasons}
+            </p>
+          </div>
+        </Card>
+      )}
+
       <div className="">
         <h2 className="text-2xl font-bold mt-8 mb-2">
           Foundational Courses

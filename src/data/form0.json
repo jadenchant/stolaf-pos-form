@@ -3,6 +3,7 @@
   "major": "Computer Science",
   "formStatus": "in_progress",
   "isRejected": true,
+  "rejectionReasons": "Missing Prerequisites. Please complete the following courses: CSCI 121, CSCI 125, CSCI 221, MATH 220, CSCI 241, CSCI 251, CSCI 263, MATH 234, CSCI 353, CSCI 273, CSCI 276",
   "updated": "01-02-2023 09:30 AM",
   "classes": [
     {
