@@ -132,6 +132,15 @@ const styles = StyleSheet.create({
   },
   signatureImg: {
     width: '200px',
+    height: '20px',
+    marginLeft: 10,
+  },
+  signatureDate: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '95px',
+    fontSize: '12pt',
   },
 });
 
@@ -282,18 +291,52 @@ export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
             )}
           </View>
 
-          <View style={styles.flexRow}>
+          <View style={styles.signatureDate}>
             <Text>Date: </Text>
             <Text>{new Date().toLocaleDateString()}</Text>
           </View>
         </View>
         <View style={styles.signature}>
-          <Text>Faculty Signature: </Text>
-          <Text>Date: </Text>
+          <View style={styles.flexRow}>
+            <Text>Faculty Signature: </Text>
+            {undefined && (
+              <Image
+                source={{
+                  uri: sigURL,
+                  method: 'GET',
+                  headers: {},
+                  body: null,
+                }}
+                style={styles.signatureImg}
+              />
+            )}
+          </View>
+
+          <View style={styles.signatureDate}>
+            <Text>Date: </Text>
+            <Text></Text>
+          </View>
         </View>
         <View style={styles.signature}>
-          <Text>CS Director Signature: </Text>
-          <Text>Date: </Text>
+          <View style={styles.flexRow}>
+            <Text>Director Signature: </Text>
+            {undefined && (
+              <Image
+                source={{
+                  uri: sigURL,
+                  method: 'GET',
+                  headers: {},
+                  body: null,
+                }}
+                style={styles.signatureImg}
+              />
+            )}
+          </View>
+
+          <View style={styles.signatureDate}>
+            <Text>Date: </Text>
+            <Text></Text>
+          </View>
         </View>
       </Page>
     </Document>
