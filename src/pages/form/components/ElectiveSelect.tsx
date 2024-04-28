@@ -1,7 +1,10 @@
 import {Select} from '@gravity-ui/uikit';
 import {ClassData, FormData} from '@/interface';
-import formatID from './FormatID';
-import {electiveData, otherElectiveData} from '../../data/CSFormData';
+import formatID from '../FormatID';
+import {
+  electiveData,
+  otherElectiveData,
+} from '../../../data/CSFormData';
 
 interface ElectiveSelectProps {
   formStatus: string;

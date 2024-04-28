@@ -5,9 +5,9 @@ import SignatureCanvas from 'react-signature-canvas';
 import {Button, Modal} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
-import ElectiveSelect from './ElectiveSelect';
-import ClassTable from './ClassTable';
-import {FormPDF} from './FormPDF';
+import ElectiveSelect from './components/ElectiveSelect';
+import ClassTable from './components/ClassTable';
+import {FormPDF} from './components/FormPDF';
 import {
   foundationData,
   requiredData,

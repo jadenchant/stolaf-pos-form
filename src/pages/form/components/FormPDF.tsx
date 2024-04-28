@@ -12,8 +12,8 @@ import {
   requiredData,
   electiveData,
   otherElectiveData,
-} from '../../data/CSFormData';
-import formatID from './FormatID';
+} from '../../../data/CSFormData';
+import formatID from '../FormatID';
 
 const styles = StyleSheet.create({
   page: {

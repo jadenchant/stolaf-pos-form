@@ -1,7 +1,7 @@
 import {Select, Table} from '@gravity-ui/uikit';
 import {ClassData, FormData, ScreenSize} from '@/interface';
-import formatID from './FormatID';
-import useScreenSize from '../../hooks/useScreenSize';
+import formatID from '../FormatID';
+import useScreenSize from '../../../hooks/useScreenSize';
 
 const dataFormat = (
   data: ClassData[],
