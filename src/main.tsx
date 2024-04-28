@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '@gravity-ui/uikit/styles/fonts.css';
-import '@gravity-ui/uikit/styles/styles.css';
-import './styles/globals.scss';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
-import NotFound from './pages/NotFound';
-import {Wrapper} from './components/Wrapper';
 import App from './App';
 import StudentHome from './pages/student/home';
 import FacultyHome from './pages/faculty/home';
 import DirectorHome from './pages/director/home';
 import Form from './pages/form/form';
+import NotFound from './pages/NotFound';
+import {Wrapper} from './components/Wrapper';
+import '@gravity-ui/uikit/styles/fonts.css';
+import '@gravity-ui/uikit/styles/styles.css';
+import './styles/globals.scss';
 
 const router = createBrowserRouter([
   {
