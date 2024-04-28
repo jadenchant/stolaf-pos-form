@@ -6,14 +6,14 @@ import {
   Document,
   StyleSheet,
 } from '@react-pdf/renderer';
+import {FormData} from '@/interface';
 import {
   foundationData,
   requiredData,
   electiveData,
   otherElectiveData,
-} from './CSFormData';
+} from '../../data/CSFormData';
 import formatID from './FormatID';
-import {FormData} from '@/interface';
 
 const styles = StyleSheet.create({
   page: {

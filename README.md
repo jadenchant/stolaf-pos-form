@@ -18,10 +18,15 @@ npm run dev
 ## To Do List
 
 - Rejection Reasons - Jaden
-- PDF Generation - Jaden
-- Signature - Jaden
 - Faculty View
 - Director View
 - API endpoints
 - Authentication
 - DB Connection
+
+## Completed
+
+- Student View
+- Form
+- PDF Generation
+- Signature

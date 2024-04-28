@@ -9,22 +9,6 @@ export interface ClassData {
   prerequisite: string;
 }
 
-export interface ClassTableProps {
-  formStatus: string;
-  selectedValues: ClassData[];
-  formValues: FormData[];
-  setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
-  classNames?: string;
-}
-
-export interface ElectiveSelectProps {
-  formStatus: string;
-  classes: ClassData[];
-  formValues: FormData[];
-  setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
-  isOtherElective?: boolean;
-}
-
 export interface FormData {
   id: string;
   name: string;

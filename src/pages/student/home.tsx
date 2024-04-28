@@ -1,7 +1,7 @@
+import {Link} from 'react-router-dom';
+import {Button, Label, Table} from '@gravity-ui/uikit';
 import {ScreenSize} from '@/interface';
 import useScreenSize from '../../hooks/useScreenSize';
-import {Button, Label, Table} from '@gravity-ui/uikit';
-import {Link} from 'react-router-dom';
 
 // Dummy data
 const data = [

@@ -1,10 +1,5 @@
 import {Select, Table} from '@gravity-ui/uikit';
-import {
-  ClassData,
-  FormData,
-  ClassTableProps,
-  ScreenSize,
-} from '@/interface';
+import {ClassData, FormData, ScreenSize} from '@/interface';
 import formatID from './FormatID';
 import useScreenSize from '../../hooks/useScreenSize';
 
@@ -65,7 +60,7 @@ const dataFormat = (
 
           console.log(newFormValues);
 
-          setFormValues(newFormValues);
+          setFormValues(newFormValues as FormData[]);
         }}
       >
         <Select.Option value="fall" key="fall">
@@ -142,6 +137,14 @@ const col = [
   {id: 'term', name: 'Term', width: 200},
   {id: 'year', name: 'Year', width: 200},
 ];
+
+interface ClassTableProps {
+  formStatus: string;
+  selectedValues: ClassData[];
+  formValues: FormData[];
+  setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
+  classNames?: string;
+}
 
 const ClassTable = ({
   formStatus,

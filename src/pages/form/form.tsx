@@ -2,24 +2,23 @@ import {useRef, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
-import useScreenSize from '../../hooks/useScreenSize';
 import {Button, Modal} from '@gravity-ui/uikit';
-import ElectiveSelect from './ElectiveSelect';
 import {FormData} from '../../interface';
+import useScreenSize from '../../hooks/useScreenSize';
+import ElectiveSelect from './ElectiveSelect';
 import ClassTable from './ClassTable';
+import {FormPDF} from './FormPDF';
 import {
   foundationData,
   requiredData,
   electiveData,
   otherElectiveData,
-} from './CSFormData';
+} from '../../data/CSFormData';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import formatID from './FormatID';
-
-import {FormPDF} from './FormPDF';
 
 const forms: any = [form0, form1, form2, form3];
 
