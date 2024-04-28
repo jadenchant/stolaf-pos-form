@@ -2,17 +2,18 @@ import {
   Page,
   Text,
   View,
+  Image,
   Document,
   StyleSheet,
 } from '@react-pdf/renderer';
 import {
-  electiveData,
   foundationData,
-  otherElectiveData,
   requiredData,
+  electiveData,
+  otherElectiveData,
 } from './CSFormData';
 import formatID from './FormatID';
-import {ClassData} from '@/interface';
+import {FormData} from '@/interface';
 
 const styles = StyleSheet.create({
   page: {
@@ -25,11 +26,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     fontWeight: 'bold',
-    marginBottom: 15,
   },
   title: {
     fontSize: 16,
-    marginBottom: 5,
+    marginBottom: 10,
   },
   headText: {
     display: 'flex',
@@ -130,6 +130,9 @@ const styles = StyleSheet.create({
   smallerText: {
     fontSize: '10pt',
   },
+  signatureImg: {
+    width: '200px',
+  },
 });
 
 const data = {
@@ -137,7 +140,14 @@ const data = {
   gradYear: '1993',
 };
 
-const Table = ({data}: {data: ClassData[]}) => (
+const termNames = {
+  jterm: 'J-Term',
+  spring: 'Spring',
+  summer: 'Summer',
+  fall: 'Fall',
+};
+
+const Table = ({data}: {data: FormData[]}) => (
   <View style={styles.tableView}>
     <View style={styles.tableHeader}>
       <Text style={styles.tableClassHeader}>Course</Text>
@@ -145,7 +155,7 @@ const Table = ({data}: {data: ClassData[]}) => (
       <Text style={styles.tableTermHeader}>Term</Text>
       <Text style={styles.tableYearHeader}>Year</Text>
     </View>
-    {data.map((course: ClassData) => (
+    {data.map((course: FormData) => (
       <View style={styles.table} key={course.id}>
         <Text style={styles.tableClass}>
           {formatID(course.id)}: {course.name}
@@ -153,18 +163,43 @@ const Table = ({data}: {data: ClassData[]}) => (
         <Text style={styles.tablePrereq}>
           {formatID(course.prerequisite)}
         </Text>
-        <Text style={styles.tableTerm}>Spring</Text>
-        <Text style={styles.tableYear}>2024</Text>
+        <Text style={styles.tableTerm}>{termNames[course.term]}</Text>
+        <Text style={styles.tableYear}>{course.year}</Text>
       </View>
     ))}
   </View>
 );
-
 interface FormPDFProps {
   formValues: FormData[];
+  sigURL: string | null;
 }
 
-export const FormPDF = ({formValues}: FormPDFProps) => {
+export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
+  const foundationDataFiltered = formValues.filter((formValue) =>
+    foundationData.some(
+      (foundationCourse) => foundationCourse.id === formValue.id,
+    ),
+  );
+
+  const requiredDataFiltered = formValues.filter((formValue) =>
+    requiredData.some(
+      (requiredCourse) => requiredCourse.id === formValue.id,
+    ),
+  );
+
+  const electiveDataFiltered = formValues.filter((formValue) =>
+    electiveData.some(
+      (electiveCourse) => electiveCourse.id === formValue.id,
+    ),
+  );
+
+  const otherElectiveDataFiltered = formValues.filter((formValue) =>
+    otherElectiveData.some(
+      (otherElectiveCourse) =>
+        otherElectiveCourse.id === formValue.id,
+    ),
+  );
+
   return (
     <Document
       title="St. Olaf CS Program Of Study Form"
@@ -197,7 +232,7 @@ export const FormPDF = ({formValues}: FormPDFProps) => {
           </Text>
         </View>
 
-        <Table data={foundationData} />
+        <Table data={foundationDataFiltered} />
 
         <View style={styles.flexRow}>
           <Text style={styles.bold}>Required Courses: </Text>
@@ -207,7 +242,7 @@ export const FormPDF = ({formValues}: FormPDFProps) => {
           </Text>
         </View>
 
-        <Table data={requiredData} />
+        <Table data={requiredDataFiltered} />
 
         <View style={styles.flexRow}>
           <Text style={styles.bold}>Electives: </Text>
@@ -222,17 +257,35 @@ export const FormPDF = ({formValues}: FormPDFProps) => {
           </Text>
         </View>
 
-        <Table data={electiveData} />
+        <Table data={electiveDataFiltered} />
 
         <View style={styles.flexRow}>
           <Text style={styles.bold}>Other electives Include: </Text>
         </View>
-
-        <Table data={otherElectiveData} />
+        {otherElectiveDataFiltered.length === 0 && (
+          <Table data={otherElectiveDataFiltered} />
+        )}
 
         <View style={styles.signature}>
-          <Text>Student Signature: </Text>
-          <Text>Date: </Text>
+          <View style={styles.flexRow}>
+            <Text>Student Signature: </Text>
+            {sigURL && (
+              <Image
+                source={{
+                  uri: sigURL,
+                  method: 'GET',
+                  headers: {},
+                  body: null,
+                }}
+                style={styles.signatureImg}
+              />
+            )}
+          </View>
+
+          <View style={styles.flexRow}>
+            <Text>Date: </Text>
+            <Text>{new Date().toLocaleDateString()}</Text>
+          </View>
         </View>
         <View style={styles.signature}>
           <Text>Faculty Signature: </Text>

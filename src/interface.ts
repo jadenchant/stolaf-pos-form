@@ -29,8 +29,7 @@ export interface FormData {
   id: string;
   name: string;
   prerequisite: string;
-  term?: string;
-  // term?: 'fall' | 'jterm' | 'spring' | 'summer';
+  term?: 'fall' | 'jterm' | 'spring' | 'summer';
   year?: number;
 }
 

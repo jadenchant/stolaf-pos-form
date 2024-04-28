@@ -45,9 +45,7 @@ const Form = () => {
     formDataJson = forms[lastCharacter];
   }
 
-  const [formStatus, setFormStatus] = useState<string>(
-    formDataJson.formStatus,
-  );
+  const [formStatus] = useState<string>(formDataJson.formStatus);
 
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson.classes as FormData[],
@@ -246,7 +244,7 @@ const Form = () => {
 
         {/* Temporary To View PDF */}
         <PDFViewer width="100%" height="800">
-          <FormPDF formValues={formValues} />
+          <FormPDF formValues={formValues} sigURL={imageURL} />
         </PDFViewer>
       </div>
     </div>
