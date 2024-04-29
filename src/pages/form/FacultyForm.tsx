@@ -6,8 +6,10 @@ import {
   Button,
   Card,
   Modal,
+  Radio,
   RadioGroup,
   RadioGroupOption,
+  TextArea,
 } from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
@@ -71,10 +73,7 @@ const FacultyForm = () => {
     setOpenModal(false);
   };
 
-  const rejectionOptions: RadioGroupOption[] = [
-    {value: 'approved', content: 'Approved'},
-    {value: 'rejected', content: 'Rejected'},
-  ];
+  const [approval, setApproval] = useState<string | null>(null);
 
   return (
     <div className="lg:w-[1000px] md:w-[800px] w-[375px] md:text-sm text-[10px]">
@@ -167,12 +166,38 @@ const FacultyForm = () => {
       </PDFViewer>
 
       <div className="flex justify-center mt-8">
-        <RadioGroup
-          name="aproval"
+        <Radio
+          content="Approve"
+          value="approved"
           size="l"
-          options={rejectionOptions}
+          disabled={formStatus === 'complete'}
+          checked={approval === 'approved'}
+          onUpdate={(value) =>
+            value ? setApproval('approved') : null
+          }
+        />
+        <Radio
+          content="Reject"
+          value="rejected"
+          size="l"
+          disabled={formStatus === 'complete'}
+          checked={approval === 'rejected'}
+          onUpdate={(value) =>
+            value ? setApproval('rejected') : null
+          }
         />
       </div>
+
+      {approval === 'rejected' && (
+        <div className="flex justify-center mt-8">
+          <TextArea
+            size="l"
+            placeholder="Reasons for Rejection"
+            value={rejectionReasons}
+            // onChange={(e) => setRejectionReasons(e.target.value)}
+          />
+        </div>
+      )}
 
       <div
         className={`flex ${
