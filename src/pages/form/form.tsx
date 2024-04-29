@@ -53,6 +53,10 @@ const Form = () => {
     ? formDataJson.rejectionReasons
     : '';
 
+  const facultyName: string = isRejected
+    ? formDataJson.facultyName
+    : '';
+
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson.classes as FormData[],
   );
@@ -82,13 +86,16 @@ const Form = () => {
           view="filled"
           className="mt-4"
         >
-          <div className="flex flex-col md:flex-row p-4 lg:p-6 text-[14pt]">
-            <p className="mr-2 mb-2 w-96 lg:w-[300px]">
-              Rejection Reasons:
-            </p>
-            <p className="text-[12pt] relative leading-6">
-              {rejectionReasons}
-            </p>
+          <div className="p-4 lg:p-6">
+            <div className="flex flex-col md:flex-row">
+              <p className="mr-2 mb-2 text-[14pt]">
+                Rejection Reasons:
+              </p>
+              <p className="text-[12pt] leading-6">
+                {rejectionReasons}
+              </p>
+            </div>
+            <p className="text-[12pt] text-right">- {facultyName}</p>
           </div>
         </Card>
       )}
