@@ -23,8 +23,10 @@ npm run dev
 
 ## To Do List
 
-- Rejection Reasons - Jaden
 - Faculty View
+  - Form
+  - Rejection Reasons
+  - Signature
 - Director View
 - API endpoints
 - Authentication
@@ -33,6 +35,7 @@ npm run dev
 ## Completed
 
 - Student View
-- Form
-- PDF Generation
-- Signature
+  - Form
+  - Rejection Reasons
+  - PDF Generation
+  - Signature
