@@ -1,9 +1,10 @@
+import {useState} from 'react';
+import {Link} from 'react-router-dom';
 import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Magnifier} from '@gravity-ui/icons';
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
 import {FacultyClassList, FilterObject} from '@/interface';
 
+// Dummy data
 const data = [
   {
     faculty: 'undecided',
