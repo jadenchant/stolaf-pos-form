@@ -5,21 +5,13 @@ import SignatureCanvas from 'react-signature-canvas';
 import {Button, Card, Modal} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
-import ElectiveSelect from './components/ElectiveSelect';
-import ClassTable from './components/ClassTable';
 import {FormPDF} from './components/FormPDF';
-import {
-  foundationData,
-  requiredData,
-  electiveData,
-  otherElectiveData,
-} from '../../data/CSFormData';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import form4 from '../../data/form4.json';
-import formatID from './FormatID';
+import Form from './components/Form';
 
 const forms: any = [form0, form1, form2, form3, form4];
 
@@ -28,7 +20,7 @@ const forms: any = [form0, form1, form2, form3, form4];
 // Submit sends a post requst to the database for both form data and form status
 // Changes status to submitted_for_review
 
-const Form = () => {
+const StudentForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -76,7 +68,7 @@ const Form = () => {
   return (
     <div className="lg:w-[1000px] md:w-[800px] w-[375px] md:text-sm text-[10px]">
       <h1 className="text-3xl font-bold">
-        St. Olaf Program of Study Form
+        St. Olaf Computer Science MaP
       </h1>
 
       {isRejected && (
@@ -91,16 +83,22 @@ const Form = () => {
               <p className="mr-2 mb-2 text-[14pt]">
                 Rejection Reasons:
               </p>
-              <p className="text-[12pt] leading-6">
+              <p className="text-[11pt] leading-6">
                 {rejectionReasons}
               </p>
             </div>
-            <p className="text-[12pt] text-right">- {facultyName}</p>
+            <p className="text-[11pt] text-right">- {facultyName}</p>
           </div>
         </Card>
       )}
 
-      <h2 className="text-2xl font-bold mt-8 mb-2">
+      <Form
+        formStatus={formStatus}
+        formValues={formValues}
+        setFormValues={setFormValues}
+      />
+
+      {/* <h2 className="text-2xl font-bold mt-8 mb-2">
         Foundational Courses
       </h2>
       <p className="mb-2">
@@ -187,7 +185,7 @@ const Form = () => {
         )}
         formValues={formValues}
         setFormValues={setFormValues}
-      />
+      /> */}
 
       <div className="flex justify-center mt-8">
         <Button onClick={() => setOpenModal(true)} view="action">
@@ -273,4 +271,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default StudentForm;

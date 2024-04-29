@@ -5,7 +5,7 @@ import App from './App';
 import StudentHome from './pages/student/home';
 import FacultyHome from './pages/faculty/home';
 import DirectorHome from './pages/director/home';
-import Form from './pages/form/form';
+import StudentForm from './pages/form/StudentForm';
 import NotFound from './pages/NotFound';
 import {Wrapper} from './components/Wrapper';
 import '@gravity-ui/uikit/styles/fonts.css';
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/form/:id',
-    element: <Form />,
+    element: <StudentForm />,
   },
 ]);
 
