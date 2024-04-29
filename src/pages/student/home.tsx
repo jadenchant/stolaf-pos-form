@@ -15,7 +15,7 @@ const dataFormat = (data: any, screenSize: ScreenSize) => {
     major: (
       <Link
         className="underline"
-        to={'/form/' + String(item.form_id)}
+        to={'/student/form/' + String(item.form_id)}
       >
         {item.major}
       </Link>
@@ -23,7 +23,7 @@ const dataFormat = (data: any, screenSize: ScreenSize) => {
     status: (
       <div className="flex justify-between">
         {item.status.map((status: any) => (
-          <Link to={'/form/' + String(item.form_id)}>
+          <Link to={'/student/form/' + String(item.form_id)}>
             <Label
               theme={
                 status === 'in_progress'

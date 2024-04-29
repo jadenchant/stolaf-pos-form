@@ -178,12 +178,16 @@ const Table = ({data}: {data: FormData[]}) => (
     ))}
   </View>
 );
+
 interface FormPDFProps {
   formValues: FormData[];
-  sigURL: string | null;
+  studentSigURL: string | null;
 }
 
-export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
+export const FormPDF = ({
+  formValues,
+  studentSigURL,
+}: FormPDFProps) => {
   const foundationDataFiltered = formValues.filter((formValue) =>
     foundationData.some(
       (foundationCourse) => foundationCourse.id === formValue.id,
@@ -296,10 +300,10 @@ export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
         <View style={styles.signature}>
           <View style={styles.flexRow}>
             <Text>Student Signature: </Text>
-            {sigURL && (
+            {studentSigURL && (
               <Image
                 source={{
-                  uri: sigURL,
+                  uri: studentSigURL,
                   method: 'GET',
                   headers: {},
                   body: null,
@@ -311,16 +315,19 @@ export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
 
           <View style={styles.signatureDate}>
             <Text>Date: </Text>
-            {sigURL && <Text>{new Date().toLocaleDateString()}</Text>}
+            {studentSigURL && (
+              <Text>{new Date().toLocaleDateString()}</Text>
+            )}
           </View>
         </View>
         <View style={styles.signature}>
           <View style={styles.flexRow}>
             <Text>Faculty Signature: </Text>
+            {/* Need to impliment */}
             {undefined && (
               <Image
                 source={{
-                  uri: sigURL,
+                  uri: studentSigURL,
                   method: 'GET',
                   headers: {},
                   body: null,
@@ -338,10 +345,11 @@ export const FormPDF = ({formValues, sigURL}: FormPDFProps) => {
         <View style={styles.signature}>
           <View style={styles.flexRow}>
             <Text>Director Signature: </Text>
+            {/* Need to impliment */}
             {undefined && (
               <Image
                 source={{
-                  uri: sigURL,
+                  uri: studentSigURL,
                   method: 'GET',
                   headers: {},
                   body: null,

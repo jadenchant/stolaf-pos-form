@@ -21,7 +21,7 @@ const forms: any = [form0, form1, form2, form3, form4];
 // Changes status to submitted_for_review
 // Save Signature sends a post request to the database
 
-const StudentForm = () => {
+const FacultyForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -182,4 +182,4 @@ const StudentForm = () => {
   );
 };
 
-export default StudentForm;
+export default FacultyForm;

@@ -126,7 +126,7 @@ const searchBar = (inputText: string, setInputText: Function) => {
     <view>
       <TextInput
         placeholder="Search"
-        leftContent={<Magnifier></Magnifier>}
+        leftContent={<Magnifier />}
         value={inputText}
         onUpdate={handleTextChange}
       />
