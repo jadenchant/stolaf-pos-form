@@ -104,6 +104,7 @@ const FacultyForm = () => {
       )}
 
       <Form
+        // CHANGE BACK TO formStatus={formStatus}
         // formStatus={formStatus}
         formStatus={'submitted_for_review'}
         formValues={formValues}
