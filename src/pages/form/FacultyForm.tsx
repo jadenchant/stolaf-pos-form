@@ -2,7 +2,13 @@ import {useRef, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
-import {Button, Card, Modal} from '@gravity-ui/uikit';
+import {
+  Button,
+  Card,
+  Modal,
+  RadioGroup,
+  RadioGroupOption,
+} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
 import {FormPDF} from './components/FormPDF';
@@ -22,12 +28,12 @@ const forms: any = [form0, form1, form2, form3, form4];
 // Save Signature sends a post request to the database
 
 const FacultyForm = () => {
+  const screenSize = useScreenSize();
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const lastCharacter = location.pathname.slice(-1);
-
-  const screenSize = useScreenSize();
 
   let formDataJson = [];
 
@@ -65,6 +71,11 @@ const FacultyForm = () => {
     setOpenModal(false);
   };
 
+  const rejectionOptions: RadioGroupOption[] = [
+    {value: 'approved', content: 'Approved'},
+    {value: 'rejected', content: 'Rejected'},
+  ];
+
   return (
     <div className="lg:w-[1000px] md:w-[800px] w-[375px] md:text-sm text-[10px]">
       <h1 className="text-3xl font-bold">
@@ -93,7 +104,8 @@ const FacultyForm = () => {
       )}
 
       <Form
-        formStatus={formStatus}
+        // formStatus={formStatus}
+        formStatus={'submitted_for_review'}
         formValues={formValues}
         setFormValues={setFormValues}
       />
@@ -145,13 +157,29 @@ const FacultyForm = () => {
         </div>
       )}
 
+      <PDFViewer width="100%" height="800" className="mt-8">
+        <FormPDF
+          formValues={formValues}
+          studentSigURL={null}
+          facultySigURL={imageURL}
+        />
+      </PDFViewer>
+
+      <div className="flex justify-center mt-8">
+        <RadioGroup
+          name="aproval"
+          size="l"
+          options={rejectionOptions}
+        />
+      </div>
+
       <div
         className={`flex ${
           formStatus !== 'submitted_for_review' &&
           formStatus !== 'complete'
             ? 'justify-between'
             : 'justify-center'
-        } mt-20 mx-4`}
+        } my-20 mx-4`}
       >
         <Button view="normal" size="l" onClick={() => navigate(-1)}>
           Cancel
@@ -173,11 +201,6 @@ const FacultyForm = () => {
             </Link>
           )}
       </div>
-
-      {/* Temporary To View PDF */}
-      <PDFViewer width="100%" height="800" className="mt-8">
-        <FormPDF formValues={formValues} studentSigURL={imageURL} />
-      </PDFViewer>
     </div>
   );
 };

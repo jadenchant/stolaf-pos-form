@@ -182,11 +182,15 @@ const Table = ({data}: {data: FormData[]}) => (
 interface FormPDFProps {
   formValues: FormData[];
   studentSigURL: string | null;
+  facultySigURL?: string | null;
+  directorSigURL?: string | null;
 }
 
 export const FormPDF = ({
   formValues,
   studentSigURL,
+  facultySigURL,
+  directorSigURL,
 }: FormPDFProps) => {
   const foundationDataFiltered = formValues.filter((formValue) =>
     foundationData.some(
@@ -323,11 +327,10 @@ export const FormPDF = ({
         <View style={styles.signature}>
           <View style={styles.flexRow}>
             <Text>Faculty Signature: </Text>
-            {/* Need to impliment */}
-            {undefined && (
+            {facultySigURL && (
               <Image
                 source={{
-                  uri: studentSigURL,
+                  uri: facultySigURL,
                   method: 'GET',
                   headers: {},
                   body: null,
@@ -339,17 +342,19 @@ export const FormPDF = ({
 
           <View style={styles.signatureDate}>
             <Text>Date: </Text>
-            <Text></Text>
+            {facultySigURL && (
+              <Text>{new Date().toLocaleDateString()}</Text>
+            )}
           </View>
         </View>
         <View style={styles.signature}>
           <View style={styles.flexRow}>
             <Text>Director Signature: </Text>
             {/* Need to impliment */}
-            {undefined && (
+            {directorSigURL && (
               <Image
                 source={{
-                  uri: studentSigURL,
+                  uri: directorSigURL,
                   method: 'GET',
                   headers: {},
                   body: null,
@@ -361,7 +366,9 @@ export const FormPDF = ({
 
           <View style={styles.signatureDate}>
             <Text>Date: </Text>
-            <Text></Text>
+            {directorSigURL && (
+              <Text>{new Date().toLocaleDateString()}</Text>
+            )}
           </View>
         </View>
       </Page>

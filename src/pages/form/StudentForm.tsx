@@ -22,12 +22,12 @@ const forms: any = [form0, form1, form2, form3, form4];
 // Save Signature sends a post request to the database
 
 const StudentForm = () => {
+  const screenSize = useScreenSize();
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const lastCharacter = location.pathname.slice(-1);
-
-  const screenSize = useScreenSize();
 
   let formDataJson = [];
 
