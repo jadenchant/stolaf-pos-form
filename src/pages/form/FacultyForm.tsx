@@ -7,8 +7,6 @@ import {
   Card,
   Modal,
   Radio,
-  RadioGroup,
-  RadioGroupOption,
   TextArea,
 } from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
