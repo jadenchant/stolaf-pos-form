@@ -23,14 +23,11 @@ npm run dev
 
 ## To Do List
 
-- Faculty View
-  - Form
-  - Rejection Reasons
-  - Signature
 - Director View
-- API endpoints
-- Authentication
 - DB Connection
+- API endpoints
+- Integration
+- Authentication
 
 ## Completed
 
@@ -38,4 +35,8 @@ npm run dev
   - Form
   - Rejection Reasons
   - PDF Generation
+  - Signature
+- Faculty View
+  - Form
+  - Rejection Reasons
   - Signature
