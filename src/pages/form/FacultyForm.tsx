@@ -45,9 +45,9 @@ const FacultyForm = () => {
 
   const isRejected: boolean = formDataJson.isRejected;
 
-  const rejectionReasons: string = isRejected
-    ? formDataJson.rejectionReasons
-    : '';
+  const [rejectionReasons, setRejectionReasons] = useState<string>(
+    isRejected ? formDataJson.rejectionReasons : '',
+  );
 
   const facultyName: string = isRejected
     ? formDataJson.facultyName
@@ -173,6 +173,7 @@ const FacultyForm = () => {
           onUpdate={(value) =>
             value ? setApproval('approved') : null
           }
+          className="mr-4"
         />
         <Radio
           content="Reject"
@@ -183,6 +184,7 @@ const FacultyForm = () => {
           onUpdate={(value) =>
             value ? setApproval('rejected') : null
           }
+          className="ml-4"
         />
       </div>
 
@@ -190,17 +192,17 @@ const FacultyForm = () => {
         <div className="flex justify-center mt-8">
           <TextArea
             size="l"
+            minRows={2}
             placeholder="Reasons for Rejection"
             value={rejectionReasons}
-            // onChange={(e) => setRejectionReasons(e.target.value)}
+            onUpdate={(value) => setRejectionReasons(value)}
           />
         </div>
       )}
 
       <div
         className={`flex ${
-          formStatus !== 'submitted_for_review' &&
-          formStatus !== 'complete'
+          formStatus !== 'in_progress' && formStatus !== 'complete'
             ? 'justify-between'
             : 'justify-center'
         } my-20 mx-4`}
@@ -208,17 +210,17 @@ const FacultyForm = () => {
         <Button view="normal" size="l" onClick={() => navigate(-1)}>
           Cancel
         </Button>
-        {formStatus !== 'submitted_for_review' &&
+        {formStatus !== 'in_progress' &&
           formStatus !== 'complete' && (
-            <Link to="/student">
+            <Link to="/faculty">
               <Button view="action" size="l">
                 Save
               </Button>
             </Link>
           )}
-        {formStatus !== 'submitted_for_review' &&
+        {formStatus !== 'in_progress' &&
           formStatus !== 'complete' && (
-            <Link to="/student">
+            <Link to="/faculty">
               <Button view="action" size="l">
                 Submit
               </Button>
