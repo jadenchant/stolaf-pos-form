@@ -22,7 +22,7 @@ import Form from './components/Form';
 const forms: any = [form0, form1, form2, form3, form4];
 
 // Cancel doesn't save the form
-// Save sends a post request to the database
+// NO Save (don't need to save anything, just submit)
 // Submit sends a post requst to the database for both form data and form status
 // Changes status to submitted_for_review
 // Save Signature sends a post request to the database
@@ -210,14 +210,6 @@ const FacultyForm = () => {
         <Button view="normal" size="l" onClick={() => navigate(-1)}>
           Cancel
         </Button>
-        {formStatus !== 'in_progress' &&
-          formStatus !== 'complete' && (
-            <Link to="/faculty">
-              <Button view="action" size="l">
-                Save
-              </Button>
-            </Link>
-          )}
         {formStatus !== 'in_progress' &&
           formStatus !== 'complete' && (
             <Link to="/faculty">
