@@ -6,6 +6,7 @@ import {Button, Card, Modal} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
 import {FormPDF} from './components/FormPDF';
+import faculty from '../../data/faculty.json';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
