@@ -2,7 +2,7 @@ import {useRef, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
-import {Button, Card, Modal} from '@gravity-ui/uikit';
+import {Button, Card, Modal, Select} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
 import {FormPDF} from './components/FormPDF';
@@ -92,6 +92,16 @@ const StudentForm = () => {
           </div>
         </Card>
       )}
+
+      <div className="flex justify-center">
+        <Select size="l" width="max" label="Faculty" filterable>
+          {faculty.map((faculty, index) => (
+            <Select.Option key={index} value={faculty}>
+              {faculty}
+            </Select.Option>
+          ))}
+        </Select>
+      </div>
 
       <Form
         formStatus={formStatus}
