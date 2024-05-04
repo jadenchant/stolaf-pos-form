@@ -36,6 +36,10 @@ const StudentForm = () => {
     formDataJson = forms[lastCharacter];
   }
 
+  const [selectedFaculty, setSelectedFaculty] = useState<
+    string[] | undefined
+  >([]);
+
   const [formStatus] = useState<string>(formDataJson.formStatus);
 
   const isRejected: boolean = formDataJson.isRejected;
@@ -93,8 +97,15 @@ const StudentForm = () => {
         </Card>
       )}
 
-      <div className="flex justify-center">
-        <Select size="l" width="max" label="Faculty" filterable>
+      <div className="flex justify-center md:justify-start md:w-72 mt-8">
+        <Select
+          size="l"
+          width="max"
+          label="Faculty:"
+          filterable
+          value={selectedFaculty}
+          onUpdate={(value: string[]) => setSelectedFaculty(value)}
+        >
           {faculty.map((faculty, index) => (
             <Select.Option key={index} value={faculty}>
               {faculty}
