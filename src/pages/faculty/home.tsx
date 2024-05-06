@@ -107,7 +107,10 @@ const filterFunction = (filterObject: FilterObject) => {
   return filteredData;
 };
 
-const searchBar = (inputText: string, setInputText: Function) => {
+const searchBarTable = (
+  inputText: string,
+  setInputText: Function,
+) => {
   const handleTextChange = (newText: string) => {
     setInputText(newText);
     console.log(inputText);
@@ -129,6 +132,7 @@ const searchBar = (inputText: string, setInputText: Function) => {
         leftContent={<Magnifier />}
         value={inputText}
         onUpdate={handleTextChange}
+        className="mt-4 mb-4"
       />
       <Table
         data={dataFormat(filteredData)}
@@ -143,8 +147,12 @@ const FacultyHome = () => {
   const [inputText, setInputText] = useState('');
   return (
     <section>
-      <h1 className="text-xl font-bold">St. Olaf POS</h1>
-      {searchBar(inputText, setInputText)}
+      <div className="flex flex-col justify-between mx-2">
+        <h1 className="md:text-3xl text-xl font-bold">
+          St. Olaf Program of Study
+        </h1>
+        {searchBarTable(inputText, setInputText)}
+      </div>
     </section>
   );
 };

@@ -29,7 +29,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/director',
-    element: <DirectorHome />,
+    element: <FacultyHome />,
   },
   {
     path: '/student/form/:id',
