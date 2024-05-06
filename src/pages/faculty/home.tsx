@@ -25,13 +25,13 @@ const data = [
 ];
 let filteredData = data;
 
-const professorName = 'Walter White';
+const professorName = 'Sravya Kondrakunta';
 const defaultFilters = {
   unfilteredSearchQ: true,
   searchTerm: '',
   professors: [professorName, 'undecided'],
   formStatus: ['submitted_for_review', 'in_progress', 'complete'],
-  timeFrame: 'Last 20 years',
+  // timeFrame: 'Last 20 years',
 };
 
 const dataFormat = function (data: FacultyClassList[]) {

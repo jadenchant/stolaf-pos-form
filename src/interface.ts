@@ -31,5 +31,5 @@ export interface FilterObject {
   searchTerm: string;
   professors: Array<string>;
   formStatus: Array<string>;
-  timeFrame: string;
+  timeFrame?: string;
 }
