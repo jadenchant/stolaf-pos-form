@@ -108,7 +108,52 @@ const FacultyForm = () => {
         setFormValues={setFormValues}
       />
 
+      <PDFViewer width="100%" height="800" className="mt-8">
+        <FormPDF
+          formValues={formValues}
+          studentSigURL={null}
+          facultySigURL={imageURL}
+        />
+      </PDFViewer>
+
       <div className="flex justify-center mt-8">
+        <Radio
+          content="Approve"
+          value="approved"
+          size="l"
+          disabled={formStatus === 'complete'}
+          checked={approval === 'approved'}
+          onUpdate={(value) =>
+            value ? setApproval('approved') : null
+          }
+          className="mr-4"
+        />
+        <Radio
+          content="Reject"
+          value="rejected"
+          size="l"
+          disabled={formStatus === 'complete'}
+          checked={approval === 'rejected'}
+          onUpdate={(value) =>
+            value ? setApproval('rejected') : null
+          }
+          className="ml-4"
+        />
+      </div>
+
+      {approval === 'rejected' && (
+        <div className="flex justify-center mt-8">
+          <TextArea
+            size="l"
+            minRows={2}
+            placeholder="Reasons for Rejection"
+            value={rejectionReasons}
+            onUpdate={(value) => setRejectionReasons(value)}
+          />
+        </div>
+      )}
+
+      <div className="flex justify-center mt-12">
         <Button onClick={() => setOpenModal(true)} view="action">
           Create Signature
         </Button>
@@ -152,51 +197,6 @@ const FacultyForm = () => {
       {imageURL && (
         <div className="flex justify-center mt-8 bg-slate-100">
           <img src={imageURL} alt="signature" className="signature" />
-        </div>
-      )}
-
-      <PDFViewer width="100%" height="800" className="mt-8">
-        <FormPDF
-          formValues={formValues}
-          studentSigURL={null}
-          facultySigURL={imageURL}
-        />
-      </PDFViewer>
-
-      <div className="flex justify-center mt-8">
-        <Radio
-          content="Approve"
-          value="approved"
-          size="l"
-          disabled={formStatus === 'complete'}
-          checked={approval === 'approved'}
-          onUpdate={(value) =>
-            value ? setApproval('approved') : null
-          }
-          className="mr-4"
-        />
-        <Radio
-          content="Reject"
-          value="rejected"
-          size="l"
-          disabled={formStatus === 'complete'}
-          checked={approval === 'rejected'}
-          onUpdate={(value) =>
-            value ? setApproval('rejected') : null
-          }
-          className="ml-4"
-        />
-      </div>
-
-      {approval === 'rejected' && (
-        <div className="flex justify-center mt-8">
-          <TextArea
-            size="l"
-            minRows={2}
-            placeholder="Reasons for Rejection"
-            value={rejectionReasons}
-            onUpdate={(value) => setRejectionReasons(value)}
-          />
         </div>
       )}
 
