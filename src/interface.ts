@@ -18,18 +18,18 @@ export interface FormData {
 }
 
 export interface FacultyClassList {
+  id: string;
   faculty: string;
   student: string;
   major: string;
-  status: Array<string>;
+  status: string[];
   updated: string;
-  id: string;
 }
 
 export interface FilterObject {
   unfilteredSearchQ: boolean;
   searchTerm: string;
-  professors: Array<string>;
-  formStatus: Array<string>;
+  professors: string[];
+  formStatus: string[];
   timeFrame?: string;
 }
