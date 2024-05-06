@@ -1,6 +1,6 @@
 # St. Olaf Program of Study
 
-St. Olaf Program of Study is a website that allows St. Olaf Students to plan for their four year major. It also allows for faculty to review and approve a student's plan.
+St. Olaf Program of Study is a website that allows St. Olaf Students to plan for their four year major. It also allows for faculty to review and approve a student's plan. This for integrates with the [POS Backend Form](https://github.com/kombofuud/pos-form-backend).
 
 ## Technologies List
 
