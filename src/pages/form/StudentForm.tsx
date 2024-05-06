@@ -36,24 +36,24 @@ const StudentForm = () => {
     formDataJson = forms[lastCharacter];
   }
 
-  const [selectedFaculty, setSelectedFaculty] = useState<
-    string[] | undefined
-  >([]);
+  const [formStatus] = useState<string>(
+    formDataJson ? formDataJson.formStatus : 'in_progress',
+  );
 
-  const [formStatus] = useState<string>(formDataJson.formStatus);
-
-  const isRejected: boolean = formDataJson.isRejected;
+  const isRejected: boolean = formDataJson
+    ? formDataJson.isRejected
+    : false;
 
   const rejectionReasons: string = isRejected
     ? formDataJson.rejectionReasons
     : '';
 
-  const facultyName: string = isRejected
-    ? formDataJson.facultyName
-    : '';
+  const [facultyName, setFacultyName] = useState<string[]>([
+    isRejected ? formDataJson.facultyName : '',
+  ]);
 
   const [formValues, setFormValues] = useState<FormData[]>(
-    formDataJson.classes as FormData[],
+    formDataJson ? (formDataJson.classes as FormData[]) : [],
   );
 
   const sigCanvas = useRef<SignatureCanvas | null>(null);
@@ -97,21 +97,29 @@ const StudentForm = () => {
         </Card>
       )}
 
-      <div className="flex justify-center md:justify-start md:w-72 mt-8">
-        <Select
-          size="l"
-          width="max"
-          label="Faculty:"
-          filterable
-          value={selectedFaculty}
-          onUpdate={(value: string[]) => setSelectedFaculty(value)}
-        >
-          {faculty.map((faculty, index) => (
-            <Select.Option key={index} value={faculty}>
-              {faculty}
-            </Select.Option>
-          ))}
-        </Select>
+      <div className="mt-8">
+        <p className="text-sm mb-2">Select Faculty to Review:</p>
+
+        <div className="flex justify-center md:justify-start md:w-72 ">
+          <Select
+            size="l"
+            width="max"
+            label="Faculty:"
+            filterable
+            value={facultyName}
+            onUpdate={(value: string[]) => setFacultyName(value)}
+            disabled={
+              formStatus === 'submitted_for_review' ||
+              formStatus === 'complete'
+            }
+          >
+            {faculty.map((faculty, index) => (
+              <Select.Option key={index} value={faculty}>
+                {faculty}
+              </Select.Option>
+            ))}
+          </Select>
+        </div>
       </div>
 
       <Form
