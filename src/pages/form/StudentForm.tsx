@@ -98,7 +98,9 @@ const StudentForm = () => {
       )}
 
       <div className="mt-8">
-        <p className="text-sm mb-2">Select Faculty to Review:</p>
+        <p className="text-sm mb-2">
+          Select a Faculty Member to Review:
+        </p>
 
         <div className="flex justify-center md:justify-start md:w-72 ">
           <Select
