@@ -1,8 +1,11 @@
 {
   "id": 2,
   "studentID": 0,
+  "studentName": "Joe Fresh",
   "major": "Computer Science",
   "formStatus": "complete",
+  "facultyID": 0,
+  "facultyName": "Sravya Kondrakunta",
   "isRejected": false,
   "updated": "01-02-2023 09:30 AM",
   "classes": [
@@ -10,8 +13,8 @@
       "id": "csci121",
       "name": "Intro to CS course",
       "prerequisite": "None",
-      "term": "jterm",
-      "year": 2025
+      "term": "fall",
+      "year": 2024
     },
     {
       "id": "csci125",
@@ -32,7 +35,63 @@
       "name": "Elementary Linear Algebra",
       "prerequisite": "CSCI 221 or Calculus I",
       "term": "fall",
+      "year": 2024
+    },
+    {
+      "id": "csci241",
+      "name": "Hardware Design",
+      "prerequisite": "CSCI 221",
+      "term": "fall",
+      "year": 2025
+    },
+    {
+      "id": "csci251",
+      "name": "Software Design",
+      "prerequisite": "CSCI 221",
+      "term": "spring",
       "year": 2026
+    },
+    {
+      "id": "csci263",
+      "name": "Ethical Issues in Software Design",
+      "prerequisite": "CSCI 251",
+      "term": "fall",
+      "year": 2025
+    },
+    {
+      "id": "math234",
+      "name": "Discrete Math Reasoning",
+      "prerequisite": "CSCI 221 || Calculus II",
+      "term": "spring",
+      "year": 2025
+    },
+    {
+      "id": "csci353",
+      "name": "Analysis of Algorithms",
+      "prerequisite": "CSCI 251 && MATH 234",
+      "term": "fall",
+      "year": 2027
+    },
+    {
+      "id": "csci273",
+      "name": "Operating Systems",
+      "prerequisite": "csci241 && csci251",
+      "term": "spring",
+      "year": 2026
+    },
+    {
+      "id": "csci276",
+      "name": "Programming Languages",
+      "prerequisite": "csci251",
+      "term": "fall",
+      "year": 2026
+    },
+    {
+      "id": "csci390",
+      "name": "Senior Capstone",
+      "prerequisite": "csci263 && csci353",
+      "term": "spring",
+      "year": 2027
     }
   ]
 }
