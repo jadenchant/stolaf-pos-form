@@ -49,7 +49,7 @@ const StudentForm = () => {
     : '';
 
   const [facultyName, setFacultyName] = useState<string[]>([
-    isRejected ? formDataJson.facultyName : '',
+    formDataJson.facultyName ? formDataJson.facultyName : '',
   ]);
 
   const [formValues, setFormValues] = useState<FormData[]>(

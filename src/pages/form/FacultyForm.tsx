@@ -49,8 +49,12 @@ const FacultyForm = () => {
     isRejected ? formDataJson.rejectionReasons : '',
   );
 
-  const facultyName: string = isRejected
+  const facultyName: string = formDataJson.facultyName
     ? formDataJson.facultyName
+    : '';
+
+  const studentName: string = formDataJson.studentName
+    ? formDataJson.studentName
     : '';
 
   const [formValues, setFormValues] = useState<FormData[]>(
@@ -78,6 +82,8 @@ const FacultyForm = () => {
       <h1 className="text-3xl font-bold">
         St. Olaf Computer Science MaP
       </h1>
+
+      <h2 className="text-xl mt-4">Student: {studentName}</h2>
 
       {isRejected && (
         <Card

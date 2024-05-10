@@ -1,3 +1,5 @@
+// This wrapper component is from the Gravity UI template
+
 import React from 'react';
 import block from 'bem-cn-lite';
 import {Button, Icon, Theme, ThemeProvider} from '@gravity-ui/uikit';

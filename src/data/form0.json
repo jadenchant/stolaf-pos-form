@@ -77,7 +77,7 @@
       "id": "csci273",
       "name": "Operating Systems",
       "prerequisite": "csci241 && csci251",
-      "term": "fall",
+      "term": "spring",
       "year": 2026
     },
     {
