@@ -83,8 +83,6 @@ const FacultyForm = () => {
         St. Olaf Computer Science MaP
       </h1>
 
-      <h2 className="text-xl mt-4">Student: {studentName}</h2>
-
       {isRejected && (
         <Card
           theme="warning"
@@ -106,12 +104,15 @@ const FacultyForm = () => {
         </Card>
       )}
 
+      <h2 className="text-xl mt-4">Student: {studentName}</h2>
+
       <Form
         // CHANGE BACK TO formStatus={formStatus}
         // formStatus={formStatus}
         formStatus={'submitted_for_review'}
         formValues={formValues}
         setFormValues={setFormValues}
+        className="mt-6"
       />
 
       <PDFViewer width="100%" height="800" className="mt-8">

@@ -128,6 +128,7 @@ const StudentForm = () => {
         formStatus={formStatus}
         formValues={formValues}
         setFormValues={setFormValues}
+        className="mt-6"
       />
 
       <div className="flex justify-center mt-8">

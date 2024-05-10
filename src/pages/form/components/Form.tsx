@@ -13,12 +13,18 @@ interface FormProps {
   formStatus: string;
   formValues: FormData[];
   setFormValues: React.Dispatch<React.SetStateAction<FormData[]>>;
+  className?: string;
 }
 
-const Form = ({formStatus, formValues, setFormValues}: FormProps) => {
+const Form = ({
+  formStatus,
+  formValues,
+  setFormValues,
+  className,
+}: FormProps) => {
   return (
-    <>
-      <h2 className="text-2xl font-bold mt-8 mb-2">
+    <div className={className}>
+      <h2 className="text-2xl font-bold mb-2">
         Foundational Courses
       </h2>
       <p className="mb-2">
@@ -106,7 +112,7 @@ const Form = ({formStatus, formValues, setFormValues}: FormProps) => {
         formValues={formValues}
         setFormValues={setFormValues}
       />
-    </>
+    </div>
   );
 };
 
