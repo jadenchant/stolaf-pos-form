@@ -3,6 +3,7 @@
   "studentID": 3,
   "studentName": "Linus Torvalds",
   "major": "Computer Science",
+  "expectedGrad": "2000",
   "formStatus": "complete",
   "facultyID": 0,
   "facultyName": "Sravya Kondrakunta",

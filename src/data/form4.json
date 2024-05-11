@@ -3,6 +3,7 @@
   "studentID": 1,
   "studentName": "Steve Jobs",
   "major": "Computer Science",
+  "expectedGrad": "2002",
   "formStatus": "complete",
   "facultyID": 0,
   "facultyName": "Sravya Kondrakunta",

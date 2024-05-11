@@ -3,6 +3,7 @@
   "studentID": 2,
   "studentName": "Alan Turing",
   "major": "Computer Science",
+  "expectedGrad": "1914",
   "formStatus": "complete",
   "facultyID": 0,
   "facultyName": "Sravya Kondrakunta",

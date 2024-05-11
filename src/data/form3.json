@@ -2,6 +2,7 @@
   "id": 3,
   "studentID": 0,
   "studentName": "Grace Hopper",
+  "expectedGrad": "2027",
   "major": "Computer Science",
   "formStatus": "complete",
   "facultyID": 0,

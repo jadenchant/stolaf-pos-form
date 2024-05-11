@@ -3,6 +3,7 @@
   "studentID": 0,
   "studentName": "Grace Hopper",
   "major": "Computer Science",
+  "expectedGrad": "2027",
   "formStatus": "in_progress",
   "isRejected": true,
   "facultyID": 0,

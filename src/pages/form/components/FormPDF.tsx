@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
 });
 
 const data = {
-  name: 'John Cena',
   gradYear: '1993',
 };
 

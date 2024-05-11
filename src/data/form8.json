@@ -3,6 +3,7 @@
   "studentID": 4,
   "studentName": "Ada Lovelace",
   "major": "Computer Science",
+  "expectedGrad": "1852",
   "formStatus": "complete",
   "facultyID": 0,
   "facultyName": "Sravya Kondrakunta",
