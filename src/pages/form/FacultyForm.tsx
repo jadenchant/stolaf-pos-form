@@ -12,14 +12,28 @@ import {
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
 import {FormPDF} from './components/FormPDF';
+import Form from './components/Form';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import form4 from '../../data/form4.json';
-import Form from './components/Form';
+import form5 from '../../data/form5.json';
+import form6 from '../../data/form6.json';
+import form7 from '../../data/form7.json';
+import form8 from '../../data/form8.json';
 
-const forms: any = [form0, form1, form2, form3, form4];
+const forms: any = [
+  form0,
+  form1,
+  form2,
+  form3,
+  form4,
+  form5,
+  form6,
+  form7,
+  form8,
+];
 
 // Cancel doesn't save the form
 // NO Save (don't need to save anything, just submit)

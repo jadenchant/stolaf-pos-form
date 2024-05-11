@@ -1,7 +1,7 @@
 {
   "id": 0,
   "studentID": 0,
-  "studentName": "Joe Fresh",
+  "studentName": "Grace Hopper",
   "major": "Computer Science",
   "formStatus": "in_progress",
   "isRejected": true,

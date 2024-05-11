@@ -2,16 +2,29 @@ import {useState, useMemo} from 'react';
 import {Link} from 'react-router-dom';
 import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Magnifier} from '@gravity-ui/icons';
+import {ScreenSize} from '@/interface';
+import useScreenSize from '../../hooks/useScreenSize';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import form4 from '../../data/form4.json';
 import form5 from '../../data/form5.json';
-import {ScreenSize} from '@/interface';
-import useScreenSize from '../../hooks/useScreenSize';
+import form6 from '../../data/form6.json';
+import form7 from '../../data/form7.json';
+import form8 from '../../data/form8.json';
 
-const forms = [form0, form1, form2, form3, form4, form5];
+const forms = [
+  form0,
+  form1,
+  form2,
+  form3,
+  form4,
+  form5,
+  form6,
+  form7,
+  form8,
+];
 
 interface StudentForm {
   id: string;

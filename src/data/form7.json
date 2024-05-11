@@ -1,7 +1,7 @@
 {
-  "id": 3,
-  "studentID": 0,
-  "studentName": "Grace Hopper",
+  "id": 7,
+  "studentID": 3,
+  "studentName": "Linus Torvalds",
   "major": "Computer Science",
   "formStatus": "complete",
   "facultyID": 0,
