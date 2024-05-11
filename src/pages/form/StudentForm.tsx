@@ -28,12 +28,14 @@ const StudentForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const lastCharacter = location.pathname.slice(-1);
-
   let formDataJson = [];
 
-  if (!isNaN(Number(lastCharacter))) {
-    formDataJson = forms[lastCharacter];
+  const pathname = location.pathname;
+  const formID = pathname.match(/\/(\d+)$/);
+
+  if (formID) {
+    console.log(formID[1]);
+    formDataJson = forms[parseInt(formID[1], 10)];
   }
 
   const [formStatus] = useState<string>(
@@ -49,7 +51,9 @@ const StudentForm = () => {
     : '';
 
   const [facultyName, setFacultyName] = useState<string[]>([
-    formDataJson.facultyName ? formDataJson.facultyName : '',
+    formDataJson && formDataJson.facultyName
+      ? formDataJson.facultyName
+      : '',
   ]);
 
   const [formValues, setFormValues] = useState<FormData[]>(
