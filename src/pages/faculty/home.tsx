@@ -40,7 +40,11 @@ const defaultFilters = {
 
 const dataFormat = (data: StudentForm[], screenSize: ScreenSize) =>
   data.map((item) => ({
-    faculty: item.faculty,
+    faculty: (
+      <Link to={'/faculty/form/' + String(item.id)}>
+        {item.faculty}
+      </Link>
+    ),
     student: (
       <Link
         className="underline"
