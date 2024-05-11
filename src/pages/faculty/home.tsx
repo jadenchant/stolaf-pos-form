@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useMemo} from 'react';
 import {Link} from 'react-router-dom';
 import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Magnifier} from '@gravity-ui/icons';
@@ -7,28 +7,28 @@ import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
 import form3 from '../../data/form3.json';
 import form4 from '../../data/form4.json';
+import form5 from '../../data/form5.json';
+import {ScreenSize} from '@/interface';
+import useScreenSize from '../../hooks/useScreenSize';
 
-const forms: any = [form0, form1, form2, form3, form4];
+const forms = [form0, form1, form2, form3, form4, form5];
 
-// Dummy data
-const data = [
-  {
-    faculty: 'undecided',
-    student: 'Reinhardt von Lohengramm',
-    major: 'Politics',
-    status: ['in_progress'],
-    updated: '10-01-3600 09:30 AM',
-    id: '01',
-  },
-  {
-    faculty: 'undecided',
-    student: 'Qui-Gon-Jin',
-    major: 'Jedi Master',
-    status: ['complete'],
-    updated: '10-01-0000 09:30 AM',
-    id: '02',
-  },
-];
+interface StudentForm {
+  id: string;
+  faculty: string;
+  student: string;
+  major: string;
+  status: string[];
+  updated: string;
+}
+
+interface FilterObject {
+  unfilteredSearchQ: boolean;
+  searchTerm: string;
+  professors: string[];
+  formStatus: string[];
+  timeFrame?: string;
+}
 
 const professorName = 'Sravya Kondrakunta';
 const defaultFilters = {
@@ -36,18 +36,28 @@ const defaultFilters = {
   searchTerm: '',
   professors: [professorName, 'undecided'],
   formStatus: ['submitted_for_review', 'in_progress', 'complete'],
-  // timeFrame: 'Last 20 years',
 };
 
-const dataFormat = function (data: StudentForm[]) {
-  return data.map((item) => ({
+const dataFormat = (data: StudentForm[], screenSize: ScreenSize) =>
+  data.map((item) => ({
     faculty: item.faculty,
-    student: item.student,
-    major: <Link to="/">{item.major}</Link>,
+    student: (
+      <Link
+        className="underline"
+        to={'/faculty/form/' + String(item.id)}
+      >
+        {item.student}
+      </Link>
+    ),
+    major: (
+      <Link to={'/faculty/form/' + String(item.id)}>
+        {item.major}
+      </Link>
+    ),
     status: (
       <div className="flex justify-between">
-        {item.status.map((status) => (
-          <Link to="/">
+        {item.status.map((status: any) => (
+          <Link to={'/faculty/form/' + String(item.id)}>
             <Label
               theme={
                 status === 'in_progress'
@@ -59,21 +69,26 @@ const dataFormat = function (data: StudentForm[]) {
                       : 'danger'
               }
             >
-              {status === 'in_progress'
-                ? 'In Progress'
-                : status === 'complete'
-                  ? 'Complete'
-                  : status === 'submitted_for_review'
-                    ? 'Submitted For Review'
-                    : 'Rejected'}
+              <span className="lg:text-[14px] md:text-[12px] text-[10px]">
+                {status === 'in_progress'
+                  ? 'In Progress'
+                  : status === 'complete'
+                    ? 'Complete'
+                    : status === 'submitted_for_review'
+                      ? 'Submitted For Review'
+                      : 'Rejected'}
+              </span>
             </Label>
           </Link>
         ))}
       </div>
     ),
-    updated: item.updated,
+    updated:
+      screenSize.width > 700
+        ? item.updated
+        : item.updated.match(/(\d{2}-\d{2}-\d{4})/)?.[0],
   }));
-};
+
 const col = [
   {id: 'faculty', name: 'Faculty', width: 200},
   {id: 'student', name: 'Student', width: 200},
@@ -82,15 +97,10 @@ const col = [
   {id: 'updated', name: 'Updated', width: 300},
 ];
 
-interface FilterObject {
-  unfilteredSearchQ: boolean;
-  searchTerm: string;
-  professors: string[];
-  formStatus: string[];
-  timeFrame?: string;
-}
-
-const filterFunction = (filterObject: FilterObject) => {
+const filterFunction = (
+  data: StudentForm[],
+  filterObject: FilterObject,
+) => {
   let filteredData = data;
   if (filterObject.searchTerm.length > 0) {
     filteredData = data.filter(
@@ -108,7 +118,7 @@ const filterFunction = (filterObject: FilterObject) => {
   }
   if (
     !filterObject.unfilteredSearchQ ||
-    filterObject.searchTerm.length == 0
+    filterObject.searchTerm.length === 0
   ) {
     filteredData = filteredData.filter(
       (item) =>
@@ -120,54 +130,30 @@ const filterFunction = (filterObject: FilterObject) => {
   return filteredData;
 };
 
-interface StudentForm {
-  id: string;
-  faculty: string;
-  student: string;
-  major: string;
-  status: string[];
-  updated: string;
-}
-
-const searchBarTable = (
-  inputText: string,
-  setInputText: Function,
-  filteredData: StudentForm[],
-) => {
-  const handleTextChange = (newText: string) => {
-    setInputText(newText);
-    let newFilter = defaultFilters;
-    newFilter.searchTerm = newText;
-    filteredData = filterFunction(newFilter);
-  };
-
-  return (
-    <>
-      <TextInput
-        placeholder="Search"
-        leftContent={<Magnifier />}
-        value={inputText}
-        onUpdate={handleTextChange}
-        className="mt-4 mb-4"
-      />
-      <Table data={dataFormat(filteredData)} columns={col} />
-    </>
-  );
-};
-
 const FacultyHome = () => {
+  const screenSize = useScreenSize();
   const [inputText, setInputText] = useState('');
+  const [studentFormData] = useState<StudentForm[]>(() =>
+    forms.map((form: any) => ({
+      id: form.id,
+      faculty: form.facultyName,
+      student: form.studentName,
+      major: form.major,
+      status: form.isRejected
+        ? [form.formStatus, 'rejected']
+        : [form.formStatus],
+      updated: form.updated,
+    })),
+  );
 
-  const data: StudentForm[] = forms.map((form: any) => ({
-    id: form.id,
-    faculty: form.facultyName,
-    student: form.studentName,
-    major: form.major,
-    status: form.isRejected
-      ? [form.formStatus, 'rejected']
-      : [form.formStatus],
-    updated: form.updated,
-  }));
+  const filteredData = useMemo(() => {
+    return filterFunction(studentFormData, {
+      ...defaultFilters,
+      searchTerm: inputText,
+    });
+  }, [inputText, studentFormData]);
+
+  const handleTextChange = (newText: string) => setInputText(newText);
 
   return (
     <section>
@@ -175,7 +161,17 @@ const FacultyHome = () => {
         <h1 className="md:text-3xl text-xl font-bold">
           St. Olaf Program of Study
         </h1>
-        {searchBarTable(inputText, setInputText, data)}
+        <TextInput
+          placeholder="Search"
+          leftContent={<Magnifier />}
+          value={inputText}
+          onUpdate={handleTextChange}
+          className="mt-4 mb-4"
+        />
+        <Table
+          data={dataFormat(filteredData, screenSize)}
+          columns={col}
+        />
       </div>
     </section>
   );
