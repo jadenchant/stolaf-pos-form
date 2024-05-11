@@ -172,7 +172,9 @@ const Table = ({data}: {data: FormData[]}) => (
         <Text style={styles.tablePrereq}>
           {formatID(course.prerequisite)}
         </Text>
-        <Text style={styles.tableTerm}>{termNames[course.term]}</Text>
+        <Text style={styles.tableTerm}>
+          {course.term && termNames[course.term]}
+        </Text>
         <Text style={styles.tableYear}>{course.year}</Text>
       </View>
     ))}
@@ -181,6 +183,7 @@ const Table = ({data}: {data: FormData[]}) => (
 
 interface FormPDFProps {
   formValues: FormData[];
+  studentName: string;
   studentSigURL: string | null;
   facultySigURL?: string | null;
   directorSigURL?: string | null;
@@ -188,6 +191,7 @@ interface FormPDFProps {
 
 export const FormPDF = ({
   formValues,
+  studentName,
   studentSigURL,
   facultySigURL,
   directorSigURL,
@@ -231,7 +235,7 @@ export const FormPDF = ({
         <View style={styles.headText}>
           <View style={styles.flexRow}>
             <Text>Name: </Text>
-            <Text>{data.name}</Text>
+            <Text>{studentName}</Text>
           </View>
           <View>
             <View style={styles.flexRow}>

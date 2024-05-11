@@ -132,6 +132,7 @@ const FacultyForm = () => {
       <PDFViewer width="100%" height="800" className="mt-8">
         <FormPDF
           formValues={formValues}
+          studentName={studentName}
           studentSigURL={null}
           facultySigURL={imageURL}
         />

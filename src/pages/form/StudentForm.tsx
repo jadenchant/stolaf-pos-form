@@ -213,7 +213,7 @@ const StudentForm = () => {
 
       {/* Temporary To View PDF */}
       {/* <PDFViewer width="100%" height="800" className="mt-8">
-        <FormPDF formValues={formValues} studentSigURL={imageURL} />
+        <FormPDF formValues={formValues} studentName={formDataJson.studentName} studentSigURL={imageURL} />
       </PDFViewer> */}
     </div>
   );
