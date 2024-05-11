@@ -144,10 +144,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const data = {
-  gradYear: '1993',
-};
-
 const termNames = {
   jterm: 'J-Term',
   spring: 'Spring',
@@ -183,6 +179,7 @@ const Table = ({data}: {data: FormData[]}) => (
 interface FormPDFProps {
   formValues: FormData[];
   studentName: string;
+  expectedGrad: string;
   studentSigURL: string | null;
   facultySigURL?: string | null;
   directorSigURL?: string | null;
@@ -191,6 +188,7 @@ interface FormPDFProps {
 export const FormPDF = ({
   formValues,
   studentName,
+  expectedGrad,
   studentSigURL,
   facultySigURL,
   directorSigURL,
@@ -241,7 +239,7 @@ export const FormPDF = ({
               <Text style={styles.bold}>
                 Expected graduation year:{' '}
               </Text>
-              <Text>{data.gradYear}</Text>
+              <Text>{expectedGrad}</Text>
             </View>
           </View>
         </View>

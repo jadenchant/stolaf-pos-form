@@ -71,6 +71,10 @@ const FacultyForm = () => {
     ? formDataJson.studentName
     : '';
 
+  const expectedGrad: string = formDataJson.expectedGrad
+    ? formDataJson.expectedGrad
+    : '';
+
   const [formValues, setFormValues] = useState<FormData[]>(
     formDataJson.classes as FormData[],
   );
@@ -133,6 +137,7 @@ const FacultyForm = () => {
         <FormPDF
           formValues={formValues}
           studentName={studentName}
+          expectedGrad={expectedGrad}
           studentSigURL={null}
           facultySigURL={imageURL}
         />
