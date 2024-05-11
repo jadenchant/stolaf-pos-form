@@ -2,7 +2,6 @@ import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Label, Table, TextInput} from '@gravity-ui/uikit';
 import {Magnifier} from '@gravity-ui/icons';
-import {FacultyClassList, FilterObject} from '@/interface';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
 import form2 from '../../data/form2.json';
@@ -30,7 +29,6 @@ const data = [
     id: '02',
   },
 ];
-let filteredData = data;
 
 const professorName = 'Sravya Kondrakunta';
 const defaultFilters = {
@@ -41,7 +39,7 @@ const defaultFilters = {
   // timeFrame: 'Last 20 years',
 };
 
-const dataFormat = function (data: FacultyClassList[]) {
+const dataFormat = function (data: StudentForm[]) {
   return data.map((item) => ({
     faculty: item.faculty,
     student: item.student,
@@ -84,8 +82,16 @@ const col = [
   {id: 'updated', name: 'Updated', width: 300},
 ];
 
+interface FilterObject {
+  unfilteredSearchQ: boolean;
+  searchTerm: string;
+  professors: string[];
+  formStatus: string[];
+  timeFrame?: string;
+}
+
 const filterFunction = (filterObject: FilterObject) => {
-  filteredData = data;
+  let filteredData = data;
   if (filterObject.searchTerm.length > 0) {
     filteredData = data.filter(
       (item) =>
@@ -114,9 +120,19 @@ const filterFunction = (filterObject: FilterObject) => {
   return filteredData;
 };
 
+interface StudentForm {
+  id: string;
+  faculty: string;
+  student: string;
+  major: string;
+  status: string[];
+  updated: string;
+}
+
 const searchBarTable = (
   inputText: string,
   setInputText: Function,
+  filteredData: StudentForm[],
 ) => {
   const handleTextChange = (newText: string) => {
     setInputText(newText);
@@ -142,7 +158,7 @@ const searchBarTable = (
 const FacultyHome = () => {
   const [inputText, setInputText] = useState('');
 
-  const data: FacultyClassList = forms.map((form: any) => ({
+  const data: StudentForm[] = forms.map((form: any) => ({
     id: form.id,
     faculty: form.facultyName,
     student: form.studentName,
@@ -159,7 +175,7 @@ const FacultyHome = () => {
         <h1 className="md:text-3xl text-xl font-bold">
           St. Olaf Program of Study
         </h1>
-        {searchBarTable(inputText, setInputText)}
+        {searchBarTable(inputText, setInputText, data)}
       </div>
     </section>
   );

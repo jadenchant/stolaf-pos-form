@@ -1,11 +1,11 @@
 import {useRef, useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
-import {PDFViewer} from '@react-pdf/renderer';
+// import {PDFViewer} from '@react-pdf/renderer';
 import SignatureCanvas from 'react-signature-canvas';
 import {Button, Card, Modal, Select} from '@gravity-ui/uikit';
 import {FormData} from '../../interface';
 import useScreenSize from '../../hooks/useScreenSize';
-import {FormPDF} from './components/FormPDF';
+// import {FormPDF} from './components/FormPDF';
 import faculty from '../../data/faculty.json';
 import form0 from '../../data/form0.json';
 import form1 from '../../data/form1.json';
