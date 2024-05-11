@@ -109,9 +109,9 @@ const dataFormat = (data: StudentForm[], screenSize: ScreenSize) =>
 const col = [
   {id: 'faculty', name: 'Faculty', width: 200},
   {id: 'student', name: 'Student', width: 200},
-  {id: 'major', name: 'Major', width: 400},
+  {id: 'major', name: 'Major', width: 200},
   {id: 'status', name: 'Status', width: 200},
-  {id: 'updated', name: 'Updated', width: 300},
+  {id: 'updated', name: 'Updated', width: 200},
 ];
 
 const filterFunction = (
