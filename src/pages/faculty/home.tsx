@@ -180,7 +180,8 @@ const FacultyHome = () => {
         </h1>
         <TextInput
           placeholder="Search"
-          leftContent={<Magnifier />}
+          leftContent={<Magnifier className="mx-2" />}
+          size="l"
           value={inputText}
           onUpdate={handleTextChange}
           className="mt-4 mb-4"
