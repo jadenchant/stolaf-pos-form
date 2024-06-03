@@ -21,13 +21,21 @@ St. Olaf Program of Study is a website that allows St. Olaf Students to plan for
 
 ![St. Olaf POS Student Dashboard](.github/img/stolaf-pos-student.png)
 
+### Faculty Dashboard
+
+![St. Olaf POS Faculty Dashboard](.github/img/stolaf-pos-faculty.png)
+
 ### Form
 
 ![St. Olaf POS Form](.github/img/stolaf-pos-form.png)
 
-### Faculty Dashboard
+### Signature Modal
 
-![St. Olaf POS Faculty Dashboard](.github/img/stolaf-pos-faculty.png)
+![St. Olaf POS Signature Modal](.github/img/stolaf-pos-signature.png)
+
+### PDF
+
+![St. Olaf POS Faculty Dashboard](.github/img/stolaf-pos-pdf.png)
 
 ## Dev
 
