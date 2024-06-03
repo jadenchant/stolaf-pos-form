@@ -15,6 +15,20 @@ St. Olaf Program of Study is a website that allows St. Olaf Students to plan for
 - [React Signature Canvas](https://www.npmjs.com/package/react-signature-canvas)
 - [React PDF](https://react-pdf.org/)
 
+## Screenshots
+
+### Student Dashboard
+
+![St. Olaf POS Student Dashboard](.github/img/stolaf-pos-student.png)
+
+### Form
+
+![St. Olaf POS Form](.github/img/stolaf-pos-form.png)
+
+### Faculty Dashboard
+
+![St. Olaf POS Faculty Dashboard](.github/img/stolaf-pos-faculty.png)
+
 ## Dev
 
 ```sh
