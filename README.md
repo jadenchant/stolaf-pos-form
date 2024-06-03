@@ -38,10 +38,10 @@ npm run dev
 ## To Do List
 
 - Director View
+- Authentication / Login Page
+- Routing
 - DB Connection
-- API endpoints
-- Integration
-- Authentication
+- API requests
 
 ## Completed
 
