@@ -19,6 +19,9 @@ St. Olaf Program of Study is a website that allows St. Olaf Students to plan for
 
 - [Figma Design Prototype](https://www.figma.com/design/4Qm4nWdzbU04dDLyzQJa6h/St.-Olaf-POS-Gravity-UI?node-id=48654-31725&t=s3r66BASvuKHDBZR-1)
 
+![Figma Design Prototype](https://github.com/user-attachments/assets/006db590-e670-4de2-ab3a-e092619a6515)
+
+
 ## Screenshots
 
 ### Student Dashboard
