@@ -1,6 +1,6 @@
 # St. Olaf Program of Study
 
-St. Olaf Program of Study is a website that allows St. Olaf Students to plan for their four year major. It also allows for faculty to review and approve a student's plan. This integrates with the [POS Form Backend](https://github.com/kombofuud/pos-form-backend).
+St. Olaf Program of Study is a website that allows St. Olaf Students to plan for their four year major. It also allows for faculty to review and approve a student's plan. In the future this frontend would integrate with the [POS Form Backend](https://github.com/kombofuud/pos-form-backend).
 
 ## Technologies List
 
@@ -20,7 +20,6 @@ St. Olaf Program of Study is a website that allows St. Olaf Students to plan for
 - [Figma Design Prototype](https://www.figma.com/design/4Qm4nWdzbU04dDLyzQJa6h/St.-Olaf-POS-Gravity-UI?node-id=48654-31725&t=s3r66BASvuKHDBZR-1)
 
 ![Figma Design Prototype](https://github.com/user-attachments/assets/006db590-e670-4de2-ab3a-e092619a6515)
-
 
 ## Screenshots
 
