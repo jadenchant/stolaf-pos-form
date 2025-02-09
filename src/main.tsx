@@ -14,29 +14,29 @@ import './styles/globals.scss';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/stolaf-pos-form/',
     element: <App />,
     errorElement: <NotFound />,
   },
   {
-    path: '/student',
+    path: '/stolaf-pos-form/student',
     element: <StudentHome />,
   },
   {
-    path: '/faculty',
+    path: '/stolaf-pos-form/faculty',
     element: <FacultyHome />,
   },
   {
-    path: '/director',
+    path: '/stolaf-pos-form/director',
     // element: <DirectorHome />,
     element: <FacultyHome />,
   },
   {
-    path: '/student/form/:id',
+    path: '/stolaf-pos-form/student/form/:id',
     element: <StudentForm />,
   },
   {
-    path: '/faculty/form/:id',
+    path: '/stolaf-pos-form/faculty/form/:id',
     element: <FacultyForm />,
   },
 ]);
