@@ -19,24 +19,24 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: '/stolaf-pos-form/student',
+    path: '/student',
     element: <StudentHome />,
   },
   {
-    path: '/stolaf-pos-form/faculty',
+    path: '/faculty',
     element: <FacultyHome />,
   },
   {
-    path: '/stolaf-pos-form/director',
+    path: '/director',
     // element: <DirectorHome />,
     element: <FacultyHome />,
   },
   {
-    path: '/stolaf-pos-form/student/form/:id',
+    path: '/student/form/:id',
     element: <StudentForm />,
   },
   {
-    path: '/stolaf-pos-form/faculty/form/:id',
+    path: '/faculty/form/:id',
     element: <FacultyForm />,
   },
 ]);
