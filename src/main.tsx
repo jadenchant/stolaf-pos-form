@@ -4,7 +4,6 @@ import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import App from './App';
 import StudentHome from './pages/student/home';
 import FacultyHome from './pages/faculty/home';
-import DirectorHome from './pages/director/home';
 import StudentForm from './pages/form/StudentForm';
 import FacultyForm from './pages/form/FacultyForm';
 import NotFound from './pages/NotFound';
